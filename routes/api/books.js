@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const passport = require("passport");
 
 const Book = require("../../models/Book");
+const books = require("../../validation/books");
 const validateBookInput = require("../../validation/books");
 
 // router.get("/test", (req, res) => res.json({ msg: "This is the books route" }));
@@ -43,13 +44,45 @@ router.post(
     const newBook = new Book({
       title: req.body.title,
       author: req.user.id,
-      // editor: req.body.editor,
-      // genre: req.body.genre,
-      // description: req.body.description,
+      editor: req.body.editor,
+      genre: req.body.genre,
+      description: req.body.description,
     });
 
     newBook.save().then((book) => res.json(book));
   }
+);
+
+router.delete('/:id',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => { 
+    const book = Book.findById(req.params.id)
+    if (!book) {
+      return res.status(404).json({ nobookfound: 'No book found with that ID' })
+    }
+    books.splice(book, 1)
+    res.json(books)
+  }
+)
+
+router.put('/:id', passport.authenticate("jwt", { session: false }),
+(req, res) => {
+  const { errors, isValid } = validateBookInput(req.body);
+
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+
+  const newBook = new Book({
+    title: req.body.title,
+    author: req.user.id,
+    editor: req.body.editor,
+    genre: req.body.genre,
+    description: req.body.description
+  });
+
+  newBook.save().then((book) => res.json(book));
+}
 );
 
 module.exports = router;
