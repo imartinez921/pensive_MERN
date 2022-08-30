@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { fetchDefinitions } from "../../util/dictionary_api_util";
+import { lookupWord } from "../../actions/dictionary_actions";
 import Dictionary from './dictionary';
 
 const mapStateToProps = (state) => {
@@ -10,7 +10,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchDefinitions: (query) => dispatch(fetchDefinitions(query)),
+        lookupWord: (query) => dispatch(lookupWord(query)),
     };
 };
 
