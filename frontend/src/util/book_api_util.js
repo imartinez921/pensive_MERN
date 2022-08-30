@@ -14,5 +14,5 @@ export const deleteBook = (id) => {
 };
 
 export const updateBook = (data) => {
-  return axios.put(`/api/books/${data.id}`, data);
+  return axios.patch(`/api/books/${data.id}`, data);
 }

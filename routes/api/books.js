@@ -8,13 +8,6 @@ const books = require("../../validation/books");
 const validateBookInput = require("../../validation/books");
 
 // router.get("/test", (req, res) => res.json({ msg: "This is the books route" }));
-router.get("/", (req, res) => {
-  Book.find()
-    .sort({ date: -1 })
-    .then((books) => res.json(books))
-    .catch((err) => res.status(404).json({ nobooksfound: "No books found" }));
-});
-
 router.get("/user/:user_id", (req, res) => {
   Book.find({author: req.params.user_id })
     .then((books) => res.json(books))
@@ -60,12 +53,12 @@ router.delete('/:id',
     if (!book) {
       return res.status(404).json({ nobookfound: 'No book found with that ID' })
     }
-    books.splice(book, 1)
-    res.json(books)
+    delete book;
+    res.json({ success: true }) 
   }
 )
 
-router.put('/:id', passport.authenticate("jwt", { session: false }),
+router.patch('/:id', passport.authenticate("jwt", { session: false }),
 (req, res) => {
   const { errors, isValid } = validateBookInput(req.body);
 

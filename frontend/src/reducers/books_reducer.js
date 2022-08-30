@@ -5,20 +5,21 @@ import {
   } from "../actions/book_actions";
   
   const BooksReducer = (
-    state = { all: {}, user: {}, new: undefined },
+    state = { },
     action
   ) => {
     Object.freeze(state);
     let newState = Object.assign({}, state);
     switch (action.type) {
       case RECEIVE_USER_BOOKS:
-        newState.user= action.books.data;
+        const books = action.books.data;
+        books.forEach((book) => newState[book._id] = book);
         return newState;
       case RECEIVE_NEW_BOOK:
-        newState.new = action.book.data;
+        newState[action.book._id] = action.book.data;
         return newState;
       case DELETE_BOOK:
-        delete newState.user[action.bookId];
+        delete newState[action.bookId];
         return newState;
       default:
         return state;

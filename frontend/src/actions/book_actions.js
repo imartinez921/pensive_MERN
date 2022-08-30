@@ -36,9 +36,12 @@ export const clearErrors = () => ({
 
 
 export const fetchUserBooks = (id) => (dispatch) =>
-  getUserBooks(id)
+{ 
+  return (getUserBooks(id)
+    // .then(books => console.log(books.data[0]._id)))
     .then((books) => dispatch(receiveUserBooks(books)),
-      (err) => dispatch(receiveBookErrors(err.response.data)));
+      (err) => dispatch(receiveBookErrors(err.response.data))))
+};
 
 export const composeBook = (data) => (dispatch) =>
   writeBook(data)
