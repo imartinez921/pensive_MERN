@@ -4,8 +4,9 @@ const mongoose = require("mongoose");
 const passport = require("passport");
 
 const Character = require("../../models/Character");
-const characters = require("../../validation/characters");
 const validateCharacterInput = require("../../validation/characters");
+
+
 
 
 
