@@ -8,6 +8,7 @@ import {
     let newState = Object.assign({}, state);
     switch (action.type) {
       case RECEIVE_WORD:
+        console.log('WORD.DATA', action.word.data)
         newState.word = action.word.data;
         return newState;
       default:

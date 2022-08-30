@@ -8,8 +8,11 @@ export const fetchDefinitions = (query) => {
     console.log('QUERY', query)
     // const params = new URLSearchParams({ tag: query, api_key: dictionaryKey });
     // console.log('PARAMS', params)
-    console.log('dictionaryKey', dictionaryKey);
     console.log((`${baseURL}/word.json/${query}/definitions?api_key=${dictionaryKey}`))
     return fetch(`${baseURL}/word.json/${query}/definitions?api_key=${dictionaryKey}`)
-        .then(res => res.json());
+        .then(res => console.log(res.json()))
+        .then(res => res.json())
+        .then(data => console.log('MADE IT TO RESOLUTION', data))
+            // if (res.status >= 200 && res.status > 400)
+        // })
 };
