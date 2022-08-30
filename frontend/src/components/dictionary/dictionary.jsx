@@ -1,18 +1,26 @@
-import {
-  RECEIVE_WORD,
-} from "../actions/dictionary_actions.js";
-  
-  const dictionaryReducer = (state = {},action) => {
-    Object.freeze(state);
+import React from "react";
+// import { fetchDefinitions } from "../../util/dictionary_api_util";
 
-    let newState = Object.assign({}, state);
-    switch (action.type) {
-      case RECEIVE_WORD:
-        newState.word = action.word.data;
-        return newState;
-      default:
-        return state;
-    }
-  };
-  
-export default dictionaryReducer;
+class Dictionary extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+        query: 'bluebird',
+    };
+  }
+
+  componentWillMount() {
+    this.props.fetchDefinitions(this.state.query);
+  }
+
+  componentWillReceiveProps(newState) {
+    // this.setState({ tweets: newState.tweets });
+  }
+
+  render() {
+    return console.log('I HAVE RENDERED')
+  }
+}
+
+export default Dictionary;
