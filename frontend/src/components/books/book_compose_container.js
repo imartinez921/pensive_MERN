@@ -1,17 +1,20 @@
 import { connect } from "react-redux";
-import { composeBook } from "../../actions/book_actions";
+import { composeBook, clearErrors } from "../../actions/book_actions";
 import BookCompose from "./book_compose";
 
 const mapStateToProps = (state) => {
   return {
     currentUser: state.session.user,
     newBook: state.books.new,
+    errors: state.errors.book,
   };
 };
+
 
 const mapDispatchToProps = (dispatch) => {
   return {
     composeBook: (data) => dispatch(composeBook(data)),
+    clearErrors: () => dispatch(clearErrors())
   };
 };
 
