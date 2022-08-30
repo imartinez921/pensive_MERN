@@ -15,8 +15,8 @@ router.get("/", (req, res) => {
     .catch((err) => res.status(404).json({ nobooksfound: "No books found" }));
 });
 
-router.get("/author/:user_id", (req, res) => {
-  Book.find({ user: req.params.user_id })
+router.get("/user/:user_id", (req, res) => {
+  Book.find({author: req.params.user_id })
     .then((books) => res.json(books))
     .catch((err) =>
       res.status(404).json({ nobooksfound: "No books found from that user" })

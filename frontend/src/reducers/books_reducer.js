@@ -12,7 +12,7 @@ import {
     let newState = Object.assign({}, state);
     switch (action.type) {
       case RECEIVE_USER_BOOKS:
-        newState.user = action.books.data;
+        newState.user= action.books.data;
         return newState;
       case RECEIVE_NEW_BOOK:
         newState.new = action.book.data;
