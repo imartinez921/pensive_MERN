@@ -5,7 +5,7 @@ class Dictionary extends React.Component {
     super(props);
 
     this.state = {
-      query: 'bluebird',
+      query: 'bluebird', 
     };
   }
 
