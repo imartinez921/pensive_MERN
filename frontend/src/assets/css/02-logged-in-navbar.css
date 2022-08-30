@@ -1,0 +1,27 @@
+.logged-in-navbar{
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    justify-content: space-around;
+    /* border-right: 1px solid #9aa676;; */
+    box-shadow: 0px 0px 20px #aab48c; 
+    background: #aab48c;
+}
+
+.logged-in-navbar button{
+    /* width: 60px; */
+    margin: 0 auto;
+    font-size: 16px;
+    background: transparent;
+    border: 1px solid gray;
+    padding: 5px;
+    border-radius: 15px;
+}
+.logged-in-navbar a{
+    text-decoration: none;
+    color: rgba(41,41,41,1);
+    margin: 0 auto;
+}

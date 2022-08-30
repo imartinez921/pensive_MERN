@@ -1,5 +1,5 @@
 import React from "react";
-import BookBox from "./book_box";
+// import BookBox from "./book_box";
 
 class BookCompose extends React.Component {
   constructor(props) {

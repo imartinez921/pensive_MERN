@@ -1,5 +1,6 @@
 import React from "react";
 import BookBox from "../books/book_box";
+import '../../assets/css/03-books-main-section-container.css';
 
 class Profile extends React.Component {
   constructor(props) {
@@ -24,11 +25,13 @@ class Profile extends React.Component {
       return <div>You no Books</div>;
     } else {
       return (
-        <div>
+        <div className="books-main-section-container">
           <h2>All of This User's Books</h2>
+          <div className="all-books-container">
           {this.state.books.map((book) => (
             <BookBox key={book._id} text={book.title} />
           ))}
+          </div>
         </div>
       );
     }
