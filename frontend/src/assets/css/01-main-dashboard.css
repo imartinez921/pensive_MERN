@@ -1,0 +1,7 @@
+.main-dashboard{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* background: #bac2a2; */
+    background: #BAC097;
+}

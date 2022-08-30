@@ -14,6 +14,10 @@ const BookSchema = new Schema({
     type: String,
     require: true,
   },
+  // chapter: {
+  //   type: Schema.Types.ObjectId,
+  //   ref: "chapters",
+  // },
   genre: {
     type: String,
     require: true,  
