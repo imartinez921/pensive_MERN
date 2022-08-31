@@ -28,7 +28,7 @@ class BookBox extends React.Component {
       <div className="individual-book">
         <button id="delete-button" onClick={() => this.props.removeBook(this.props.id)}><RiDeleteBin5Line /></button>
         <button id="edit-button" onClick={this.handleClick}><FaEdit/></button>
-        <h3>{this.props.text}</h3>
+        <Link to={`/writing_page/${this.props.id}`} className="book-title-link">{this.props.text}</Link>
       </div>
     );
   }
