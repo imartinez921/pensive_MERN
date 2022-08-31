@@ -49,8 +49,40 @@ router.post(
 
     newCharacter.save().then((character) => res.json(character));
   }
-  
+
 );
+
+router.delete('/:id',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => { 
+    Character.findOneAndDelete({id: req.params.id}).catch((err) =>res.status(404).json({ nocharacterfound: 'No character found with that ID' }))
+    
+    res.json({ success: true }) 
+  }
+)
+
+router.patch('/:id', passport.authenticate("jwt", { session: false }),
+(req, res) => {
+  const { errors, isValid } = validateCharacterInput(req.body);
+
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+
+  Character.findById(req.params.id)
+    .then(character => {
+      character.name = req.body.name;
+      character.age = req.body.age;
+      character.sex = req.body.sex; 
+      character.book = req.book.id;
+      character.height= req.body.height;
+      character.weight = req.body.weight;
+      character.species = req.body.species;
+      character.description= req.body.description;
+        return character.save().then(character => res.json(character)).catch(err => console.log(err))
+      })
+        .catch(err => res.status(404).json( { nocharacterFound: "No character found with that ID"} ))
+});
 
 
 
