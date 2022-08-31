@@ -27,8 +27,10 @@ class BookEdit extends React.Component {
       errors: nextProps.errors});
   }
 
-    componentDidMount() {
-      this.props.fetchBookById(this.props.match.params.bookId);
+  componentDidMount() {
+    // this.props.fetchUserBooks(this.props.currentUser.id).then(() => {
+    //   this.props.fetchBookById(this.props.match.params.id)
+    // });
   }
 
   componentWillUnmount() {
@@ -41,13 +43,12 @@ class BookEdit extends React.Component {
       title: this.state.title,
       editor: this.state.editor,
       genre: this.state.genre,
-      description: this.state.description
+      description: this.state.description,
+      id: this.props.book._id
     };
 
-    this.props.editBook(book);
+    this.props.editBook(book).then(() => this.props.history.push(`/profile`));
     this.setState({ title: "", editor: "", genre: "", description: "" });
-    if (!this.state.errors)
-    { this.props.history.push(`/profile`) };
   }
 
   update(property) {
