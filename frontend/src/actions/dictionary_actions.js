@@ -1,7 +1,8 @@
 import { fetchDefinitions } from "../util/dictionary_api_util";
 
 export const RECEIVE_DEFINITIONS = "RECEIVE_DEFINITIONS";
-export const RECEIVE_DICTIONARY_ERRORS = "RECEIVE_DICTIONARY_ERRORS";
+export const RECEIVE_DICTIONARY_ERROR = "RECEIVE_DICTIONARY_ERROR";
+export const CLEAR_DICTIONARY_ERRORS = "CLEAR_DICTIONARY_ERRORS";
 
 
 const receiveDefinitions = (definitions) => {
@@ -11,17 +12,27 @@ const receiveDefinitions = (definitions) => {
   definitions, // this is an array
 });}
 
-const receiveDictionaryErrors = (errors) => ({
-    type: RECEIVE_DICTIONARY_ERRORS,
-    errors: errors,
-  })
+const clearDictionaryErrors = () => ({
+  type: CLEAR_DICTIONARY_ERRORS,
+})
+
+
+export const resetDictionaryErrors = () => dispatch => (
+  dispatch(clearDictionaryErrors())
+  );
+  
+  
+  const receiveDictionaryError = (error) => ({
+      type: RECEIVE_DICTIONARY_ERROR,
+      error: error,
+    })
 
 export const lookupWord = query => dispatch => {
   return (
     fetchDefinitions(query)
     .then(res => res.json())
     .then(res => dispatch( receiveDefinitions(res) ),
-    err => (dispatch( receiveDictionaryErrors(err.responseJSON) )))
+    err => (dispatch( receiveDictionaryError(err.responseJSON) )))
   )};
 
 // RES is an ARRAY of definition objects

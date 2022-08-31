@@ -1,4 +1,5 @@
 import React from "react";
+import DefinitionWindow from "./definition_window";
 
 class Dictionary extends React.Component {
   constructor(props) {
@@ -36,13 +37,21 @@ class Dictionary extends React.Component {
 
   handleSubmit (e) {
     e.preventDefault();
+    let query = this.state.query;
+    if (query === query.toUpperCase()) {
+      query = query.toLowerCase();
+    }
 
-    this.props.lookupWord(this.state.query);
+    this.props.lookupWord(query);
     }
 
 
   render() {
     console.log('DICTIONARY HAS RENDERED')
+
+    const {queries,
+      definitions,
+    } = this.props;
 
     const dictionaryForm = (
       <form>
@@ -63,6 +72,9 @@ class Dictionary extends React.Component {
         <div>
           {dictionaryForm}
           <button onClick={this.handleSubmit}>Define</button>
+        </div>
+        <div>
+          <DefinitionWindow queries={queries} definitions={definitions} />
         </div>
       </div>
     )

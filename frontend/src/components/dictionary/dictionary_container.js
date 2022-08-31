@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import { lookupWord,
+    resetDictionaryErrors,
 } from "../../actions/dictionary_actions";
 import {
     resetQueries,
@@ -9,12 +10,14 @@ import Dictionary from './dictionary';
 const mapStateToProps = (state) => {
     return {
         queries: state.queries,
+        definitions: state.definitions,
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
         lookupWord: (query) => dispatch(lookupWord(query)),
+        resetDictionaryErrors: (err) => dispatch(resetDictionaryErrors(err)),
         resetQueries: (query) => dispatch(resetQueries(query)),
     };
 };

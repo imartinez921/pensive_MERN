@@ -1,11 +1,19 @@
 import React from 'react';
 
-const defWindow = (props) => {
-  render() {
+const DefinitionWindow = (props) => {
+    console.log(props)
     return (
-      <div>definition_window</div>
+        <div>
+            DefinitionWindow
+            <div>
+                <ol>
+                    {/* {props.definitions.map( (def, i) => (
+                        <li key={`${def.attributionUrl}-i`}>{def.attributionUrl}</li>
+                    ))} */}
+                </ol>
+            </div>
+        </div>
     )
-  }
 }
 
-export default defWindow;
+export default DefinitionWindow;
