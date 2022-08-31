@@ -8,7 +8,7 @@ import Dictionary from './dictionary';
 
 const mapStateToProps = (state) => {
     return {
-        // tweets: Object.values(state.tweets.all),
+        queries: state.queries,
     };
 };
 
