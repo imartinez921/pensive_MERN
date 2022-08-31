@@ -10,6 +10,7 @@ import SignupFormContainer from "./session/signup_form_container";
 import MainDashboard from "./main-dashboard/main_dashboard";
 import BookComposeContainer from "./books/book_compose_container";
 import BookEditContainer from "./books/edit_book_container";
+import WritingPageContainer from "./writing-page/writing-page-container";
 
 const App = () => (
   <div>
@@ -19,6 +20,7 @@ const App = () => (
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
       <ProtectedRoute exact path="/profile" component={MainDashboard} />
+      <ProtectedRoute exact path="/writing_page/:id" component={WritingPageContainer} />
       <ProtectedRoute
         exact
         path="/new_book"

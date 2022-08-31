@@ -40,6 +40,7 @@ router.post(
       editor: req.body.editor,
       genre: req.body.genre,
       description: req.body.description,
+      content: req.body.content
     });
 
     newBook.save().then((book) => res.json(book));

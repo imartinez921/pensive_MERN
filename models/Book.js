@@ -25,6 +25,9 @@ const BookSchema = new Schema({
   description: {
     type: String,
     require: true,
+  },
+  content: {
+    type: String
   }
 });
 
