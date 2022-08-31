@@ -1,4 +1,4 @@
-import { getUserBooks, writeBook, deleteBook, updateBook } from "../util/book_api_util";
+import { getUserBooks, writeBook, deleteBook, updateBook, getBook} from "../util/book_api_util";
 
 
 export const RECEIVE_USER_BOOKS = "RECEIVE_USER_BOOKS";
@@ -8,6 +8,7 @@ export const DELETE_BOOK = "DELETE_BOOK";
 
 export const RECEIVE_BOOK_ERRORS = "RECEIVE_BOOK_ERRORS";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
+export const CLEAR_BOOKS = "CLEAR_BOOKS";
 
 
 export const receiveUserBooks = (books) => ({
@@ -36,14 +37,29 @@ export const clearErrors = () => ({
 
 
 export const fetchUserBooks = (id) => (dispatch) =>
-  getUserBooks(id)
-    .then((books) => dispatch(receiveUserBooks(books)),
+{
+  return (getUserBooks(id)
+    // .then(books => console.log(books.data[0]._id)))
+    .then((books) => dispatch(receiveUserBooks(books.data)),
+      (err) => dispatch(receiveBookErrors(err.response.data))))
+};
+
+export const fetchBookById = (id) => (dispatch) =>
+  getBook(id)
+  // .then(book => console.log(book))
+    .then((book) => dispatch(receiveNewBook(book.data)),
       (err) => dispatch(receiveBookErrors(err.response.data)));
 
 export const composeBook = (data) => (dispatch) =>
   writeBook(data)
-    .then((book) => dispatch(receiveNewBook(book)),
-      (err) => dispatch(receiveBookErrors(err.response.data)));
+    .then((book) => dispatch(receiveNewBook(book.data)))
+    .catch((err) =>
+    {
+      dispatch(receiveBookErrors(err.response.data))
+      return new Promise((resolve, reject) => {
+        return reject();
+      })
+    });
 
 export const removeBook = (id) => (dispatch) => 
   deleteBook(id)
@@ -52,5 +68,5 @@ export const removeBook = (id) => (dispatch) =>
 
 export const editBook = (data) => (dispatch) =>
   updateBook(data)
-    .then((book) => dispatch(receiveNewBook(book)),
+    .then((book) => dispatch(receiveNewBook(book.data)),
       (err) => dispatch(receiveBookErrors(err.response.data)));
