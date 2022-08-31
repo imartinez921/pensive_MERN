@@ -1,9 +1,9 @@
-import { getBookCharacters, writeCharacter, deleteCharacter, updateCharacter } from "../util/character_api_util";
+import { getBookCharacters, writeCharacter } from "../util/character_api_util";
+// , deleteCharacter, updateCharacter
 
-
-export const RECEIVE_USER_CHARACTERS = "RECEIVE_USER_CHARACTERS";
+export const RECEIVE_BOOK_CHARACTERS = "RECEIVE_BOOK_CHARACTERS";
 export const RECEIVE_NEW_CHARACTER = "RECEIVE_NEW_CHARACTER";
-export const DELETE_CHARACTER = "DELETE_CHARACTER";
+// export const DELETE_CHARACTER = "DELETE_CHARACTER";
 
 
 export const RECEIVE_CHARACTER_ERRORS = "RECEIVE_CHARACTER_ERRORS";
@@ -11,7 +11,7 @@ export const CLEAR_ERRORS = "CLEAR_ERRORS";
 
 
 export const receiveBookCharacters = (characters) => ({
-  type: RECEIVE_USER_CHARACTERS,
+  type: RECEIVE_BOOK_CHARACTERS,
   characters,
 });
 
@@ -25,18 +25,18 @@ export const receiveCharacterErrors = (errors) => ({
   errors,
 }); 
 
-export const deleteBookCharacter = (characterId) => ({
-  type: DELETE_CHARACTER,
-  characterId,
-})
+// export const deleteBookCharacter = (characterId) => ({
+//   type: DELETE_CHARACTER,
+//   characterId,
+// })
 
 export const clearErrors = () => ({
   type: CLEAR_ERRORS
 });
 
 
-export const fetchBookCharacters = (id) => (dispatch) =>
-  getBookCharacters(id)
+export const fetchBookCharacters = (bookId) => (dispatch) =>
+  getBookCharacters(bookId)
     .then((characters) => dispatch(receiveBookCharacters(characters)),
       (err) => dispatch(receiveCharacterErrors(err.response.data)));
 
@@ -45,12 +45,12 @@ export const composeCharacter = (data) => (dispatch) =>
     .then((character) => dispatch(receiveNewCharacter(character)),
       (err) => dispatch(receiveCharacterErrors(err.response.data)));
 
-export const removeCharacter = (id) => (dispatch) => 
-  deleteCharacter(id)
-    .then(() => dispatch(deleteBookCharacter(id)),
-      (err) => dispatch(receiveCharacterErrors(err.response.data)));
+// export const removeCharacter = (id) => (dispatch) => 
+//   deleteCharacter(id)
+//     .then(() => dispatch(deleteBookCharacter(id)),
+//       (err) => dispatch(receiveCharacterErrors(err.response.data)));
 
-export const editCharacter = (data) => (dispatch) =>
-  updateCharacter(data)
-    .then((character) => dispatch(receiveNewCharacter(character)),
-      (err) => dispatch(receiveCharacterErrors(err.response.data)));
+// export const editCharacter = (data) => (dispatch) =>
+//   updateCharacter(data)
+//     .then((character) => dispatch(receiveNewCharacter(character)),
+//       (err) => dispatch(receiveCharacterErrors(err.response.data)));

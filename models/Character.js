@@ -7,24 +7,19 @@ const CharacterSchema = new Schema({
     require: true,
   },
   age: {
-    type: Number,
-    require: true,
+    type: Number
   },
   sex: {
-    type: String,
-    require: true,
+    type: String
   },
   height: {
-    type: Number,
-    require: true,
+    type: Number
   },
   weight: {
-    type: Number,
-    require: true,
+    type: Number
   },
   species: {
-    type: String,
-    require: true,  
+    type: String
   },
   description: {
     type: String,

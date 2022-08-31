@@ -33,7 +33,7 @@ class Profile extends React.Component {
           <h2>All of This User's Books</h2>
           <div className="all-books-container">
           {this.state.books.map((book) => (
-            <BookBox key={book._id} text={book.title} />
+            <BookBox key={book._id} text={book.title} id={book._id} />
           ))}
           </div>
         </div>

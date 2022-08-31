@@ -4,7 +4,7 @@ import CharacterCompose from "./character_compose";
 
 const mapStateToProps = (state) => {
   return {
-    currentUser: state.session.user,
+    currentUser: state.session.user,     //?currentBook
     newCharacter: state.characters.new,
     errors: state.errors.character,
   };
