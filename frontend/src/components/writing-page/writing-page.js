@@ -9,11 +9,9 @@ import { updateBook } from "../../util/book_api_util";
 const WritingPage = (props) => {
     const {selected} = props;
     const { quill, quillRef } = useQuill();
-
+    console.log(props.book)
     //current state, updating the current state
     const [content, setContent] = useState();   
-
-    let book = "whatever";
 
 
 
