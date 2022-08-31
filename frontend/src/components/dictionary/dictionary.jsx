@@ -11,6 +11,7 @@ class Dictionary extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.handleClear = this.handleClear.bind(this);
   }
 
   componentDidMount() {
@@ -33,6 +34,11 @@ class Dictionary extends React.Component {
     if (event.key === "Enter") {
       this.handleSubmit(event);
     }
+  }
+
+  handleClear (e) {
+    e.preventDefault();
+    this.props.resetQueries();
   }
 
   handleSubmit (e) {
@@ -72,6 +78,7 @@ class Dictionary extends React.Component {
         <div>
           {dictionaryForm}
           <button onClick={this.handleSubmit}>Define</button>
+          <button onClick={this.handleClear}>Clear history</button>
         </div>
         <div>
           <DefinitionWindow queries={queries} definitions={definitions} />

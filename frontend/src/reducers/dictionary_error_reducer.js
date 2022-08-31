@@ -1,6 +1,7 @@
 import {
     RECEIVE_DICTIONARY_ERROR,
     CLEAR_DICTIONARY_ERRORS,
+    RECEIVE_DEFINITIONS,
   } from "../actions/dictionary_actions.js";
     
 const dictionaryErrorReducer = (prevState = [], action) => {
@@ -9,10 +10,10 @@ const dictionaryErrorReducer = (prevState = [], action) => {
 
     switch (action.type) {
     case RECEIVE_DICTIONARY_ERROR:
-        console.log('action.error', action.error)
-        newState.concat(action.error);
-        console.log(newState)
+        newState.push([action.error.message]);
         return newState;
+    case RECEIVE_DEFINITIONS:
+        return [];
     case CLEAR_DICTIONARY_ERRORS:
         return [];
     default:

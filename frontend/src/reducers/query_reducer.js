@@ -12,10 +12,10 @@ const queryReducer = (prevState = [], action) => {
     switch (action.type) {
     case RECEIVE_DEFINITIONS:
         const query = action.definitions[0].word
-        console.log(query, 'HERE IS YOUR QUERY')
+        console.log('HERE IS YOUR QUERY', query)
         if (!newState.includes(query)) {
-            newState.concat([query]);
-            console.log('ADDING TO QUERIES')
+            newState.push(query);
+            console.log('ADDING TO QUERIES', newState)
         }
         return newState;
     case CLEAR_QUERIES:

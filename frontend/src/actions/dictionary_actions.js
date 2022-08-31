@@ -16,24 +16,36 @@ const clearDictionaryErrors = () => ({
   type: CLEAR_DICTIONARY_ERRORS,
 })
 
+const receiveDictionaryError = (error) => ({
+  type: RECEIVE_DICTIONARY_ERROR,
+  error: error,
+})
 
 export const resetDictionaryErrors = () => dispatch => (
   dispatch(clearDictionaryErrors())
   );
-  
-  
-  const receiveDictionaryError = (error) => ({
-      type: RECEIVE_DICTIONARY_ERROR,
-      error: error,
-    })
+
+// export const resetQueries = () => dispatch => (
+//   dispatch(clearDictionaryErrors())
+//   );
 
 export const lookupWord = query => dispatch => {
   return (
-    fetchDefinitions(query)
-    .then(res => res.json())
-    .then(res => dispatch( receiveDefinitions(res) ),
-    err => (dispatch( receiveDictionaryError(err.responseJSON) )))
-  )};
+      fetchDefinitions(query)
+      .then(response => { // check if response.ok === true
+        if (!response.ok) {
+          return Promise.reject(response);
+        } else { // if true, then convert to .json body
+          return response.json();
+      }})
+      .then(data => {
+        dispatch( receiveDefinitions(data) );
+      })
+      .catch(error => {
+        if (typeof error.json === "function") {
+          error.json().then(jsonError => {dispatch( receiveDictionaryError(jsonError) );
+      })}})
+  )}
 
 // RES is an ARRAY of definition objects
   // eg. query = 'bluebird'
