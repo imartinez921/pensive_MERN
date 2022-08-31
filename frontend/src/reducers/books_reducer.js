@@ -1,11 +1,13 @@
 import {
     RECEIVE_USER_BOOKS,
     RECEIVE_NEW_BOOK,
-    DELETE_BOOK
+  DELETE_BOOK,
+    
   } from "../actions/book_actions";
+import { RECEIVE_USER_LOGOUT } from "../actions/session_actions";
   
   const BooksReducer = (
-    state = { },
+    state = {},
     action
   ) => {
     Object.freeze(state);
@@ -21,6 +23,8 @@ import {
       case DELETE_BOOK:
         delete newState[action.bookId];
         return newState;
+      case RECEIVE_USER_LOGOUT:
+        return {};
       default:
         return state;
     }

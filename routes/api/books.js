@@ -9,6 +9,7 @@ const validateBookInput = require("../../validation/books");
 
 // router.get("/test", (req, res) => res.json({ msg: "This is the books route" }));
 router.get("/user/:user_id", (req, res) => {
+  debugger
   Book.find({author: req.params.user_id })
     .then((books) => res.json(books))
     .catch((err) =>
@@ -17,6 +18,7 @@ router.get("/user/:user_id", (req, res) => {
 });
 
 router.get("/:id", (req, res) => {
+  debugger
   Book.findById(req.params.id)
     .then((book) => res.json(book))
     .catch((err) =>
@@ -49,11 +51,8 @@ router.post(
 router.delete('/:id',
   passport.authenticate('jwt', { session: false }),
   (req, res) => { 
-    const book = Book.findById(req.params.id)
-    if (!book) {
-      return res.status(404).json({ nobookfound: 'No book found with that ID' })
-    }
-    delete book;
+    Book.findOneAndDelete({id: req.params.id}).catch((err) =>res.status(404).json({ nobookfound: 'No book found with that ID' }))
+    
     res.json({ success: true }) 
   }
 )

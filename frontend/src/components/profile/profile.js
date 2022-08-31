@@ -16,16 +16,17 @@ class Profile extends React.Component {
 
   }
   
-  componentWillMount() {
-    // console.log(this.props.currentUser.id)
-    this.props.fetchUserBooks(this.props.currentUser.id);
-  }
+  // componentWillMount() {
+  //   // console.log(this.props.currentUser.id)
+  //   this.props.fetchUserBooks(this.props.currentUser.id);
+  // }
 
   componentWillReceiveProps(newState) {
     this.setState({ books: newState.books });
   }
 
   render() {
+    debugger
     if (this.state.books.length === 0) {
       return <div>You have no Books</div>;
     } else {
