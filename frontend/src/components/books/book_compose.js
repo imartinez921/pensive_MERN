@@ -1,6 +1,5 @@
 import React from "react";
 // import BookBox from "./book_box";
-
 class BookCompose extends React.Component {
   constructor(props) {
     super(props);
@@ -13,6 +12,7 @@ class BookCompose extends React.Component {
       newBook: "",
       errors: {},
     };
+
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
@@ -40,10 +40,18 @@ class BookCompose extends React.Component {
       description: this.state.description
     };
 
-    this.props.composeBook(book);
+    this.props.composeBook(book).then(() => this.props.history.push(`/profile`)).catch(err => console.log(err));
+    //   .then(() => {
+    //   { this.props.history.push(`/profile`) }
+    // }, (err) => { });
+
+
+    debugger
+  
+
+
     this.setState({ title: "", editor: "", genre: "", description: "" });
-    if (!this.state.errors)
-    { this.props.history.push(`/profile`) };
+    
   }
 
   update(property) {

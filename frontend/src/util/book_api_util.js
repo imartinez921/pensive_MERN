@@ -2,7 +2,6 @@ import axios from "axios";
 
 
 export const getUserBooks = (id) => {
-  debugger
   return axios.get(`/api/books/user/${id}`);
 };
 
@@ -19,6 +18,5 @@ export const deleteBook = (id) => {
 };
 
 export const updateBook = (data) => {
-  debugger;
   return axios.patch(`/api/books/${data.id}`, data);
 }

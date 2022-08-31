@@ -9,7 +9,6 @@ const validateBookInput = require("../../validation/books");
 
 // router.get("/test", (req, res) => res.json({ msg: "This is the books route" }));
 router.get("/user/:user_id", (req, res) => {
-  debugger
   Book.find({author: req.params.user_id })
     .then((books) => res.json(books))
     .catch((err) =>
@@ -18,7 +17,6 @@ router.get("/user/:user_id", (req, res) => {
 });
 
 router.get("/:id", (req, res) => {
-  debugger
   Book.findById(req.params.id)
     .then((book) => res.json(book))
     .catch((err) =>
@@ -33,7 +31,7 @@ router.post(
     const { errors, isValid } = validateBookInput(req.body);
 
     if (!isValid) {
-      return res.status(400).json(errors);
+      return res.status(404).json(errors);
     }
 
     const newBook = new Book({
@@ -64,17 +62,25 @@ router.patch('/:id', passport.authenticate("jwt", { session: false }),
   if (!isValid) {
     return res.status(400).json(errors);
   }
+  console.log(req.body)
+  console.log(mongoose.isValidObjectId(req.user.id))
 
-  const newBook = new Book({
-    title: req.body.title,
-    author: req.user.id,
-    editor: req.body.editor,
-    genre: req.body.genre,
-    description: req.body.description
-  });
-
-  newBook.save().then((book) => res.json(book));
-}
-);
+  Book.findById(req.params.id)
+    .then(book => {
+        // console.log("HERE");
+        // console.log(req.user.id);
+        // console.log(book)
+        // book = book || req.body
+        // console.log(book)
+        book.title = req.body.title;
+        book.editor = req.body.editor;
+        book.genre = req.body.genre; 
+        book.author = req.user.id;
+        book.description = req.body.description;
+        
+        return book.save().then(book => res.json(book)).catch(err => console.log(err))
+      })
+        // .catch(err => res.status(404).json( { nobookFound: "No book found with that ID"} ))
+});
 
 module.exports = router;

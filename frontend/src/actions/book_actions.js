@@ -37,24 +37,29 @@ export const clearErrors = () => ({
 
 
 export const fetchUserBooks = (id) => (dispatch) =>
-{ 
-  debugger
+{
   return (getUserBooks(id)
     // .then(books => console.log(books.data[0]._id)))
-    .then((books) => dispatch(receiveUserBooks(books)),
+    .then((books) => dispatch(receiveUserBooks(books.data)),
       (err) => dispatch(receiveBookErrors(err.response.data))))
 };
 
 export const fetchBookById = (id) => (dispatch) =>
   getBook(id)
-  .then(book => console.log(book))
-    // .then((book) => dispatch(receiveNewBook(book)),
-    //   (err) => dispatch(receiveBookErrors(err.response.data)));
+  // .then(book => console.log(book))
+    .then((book) => dispatch(receiveNewBook(book.data)),
+      (err) => dispatch(receiveBookErrors(err.response.data)));
 
 export const composeBook = (data) => (dispatch) =>
   writeBook(data)
-    .then((book) => dispatch(receiveNewBook(book)),
-      (err) => dispatch(receiveBookErrors(err.response.data)));
+    .then((book) => dispatch(receiveNewBook(book.data)))
+    .catch((err) =>
+    {
+      dispatch(receiveBookErrors(err.response.data))
+      return new Promise((resolve, reject) => {
+        return reject();
+      })
+    });
 
 export const removeBook = (id) => (dispatch) => 
   deleteBook(id)
@@ -63,5 +68,5 @@ export const removeBook = (id) => (dispatch) =>
 
 export const editBook = (data) => (dispatch) =>
   updateBook(data)
-    .then((book) => dispatch(receiveNewBook(book)),
+    .then((book) => dispatch(receiveNewBook(book.data)),
       (err) => dispatch(receiveBookErrors(err.response.data)));

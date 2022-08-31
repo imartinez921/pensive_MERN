@@ -6,10 +6,10 @@ class BookEdit extends React.Component {
     super(props);
 
     this.state = {
-      title: "",
-      editor: "",
-      genre: "",
-      description:"",
+      title: this.props.book.title,
+      editor: this.props.book.editor,
+      genre: this.props.book.genre,
+      description: this.props.book.description,
       newBook: "",
       errors: {},
     };
@@ -67,7 +67,7 @@ class BookEdit extends React.Component {
     );
   }
 
-    render() {
+  render() {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
