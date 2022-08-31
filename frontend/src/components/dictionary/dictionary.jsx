@@ -5,21 +5,23 @@ class Dictionary extends React.Component {
     super(props);
 
     this.state = {
-      query: 'bluebird',
+      query: 'bluebird', 
     };
   }
 
   componentDidMount() {
-    debugger
     this.props.lookupWord(this.state.query);
   }
 
-  componentDidUpdate(newState) {
-    // this.setState({ tweets: newState.tweets });
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.query !== this.state.query) {
+      this.props.lookupWord(this.state.query);
+    }
   }
 
   render() {
-    return console.log('I HAVE RENDERED')
+    console.log('DICTIONARY HAS RENDERED')
+    return 
   }
 }
 

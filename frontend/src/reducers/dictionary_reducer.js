@@ -1,6 +1,5 @@
 import {
   RECEIVE_DEFINITIONS,
-  // KEEP_QUERY,
 } from "../actions/dictionary_actions.js";
   
   const dictionaryReducer = (state = {}, action) => {
@@ -23,7 +22,6 @@ import {
           newState['wordURL'] = action.definitions[0].wordnikUrl;
         }
         return newState;
-      // case KEEP_QUERY:
       default:
         return state;
         
