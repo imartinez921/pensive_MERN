@@ -61,8 +61,8 @@ router.patch('/:id', passport.authenticate("jwt", { session: false }),
 
   if (!isValid) {
     return res.status(400).json(errors);
-  }
-
+  } 
+  debugger
   Book.findById(req.params.id)
     .then(book => {
         // console.log("HERE");
@@ -75,6 +75,7 @@ router.patch('/:id', passport.authenticate("jwt", { session: false }),
         book.genre = req.body.genre; 
         book.author = req.user.id;
         book.description = req.body.description;
+        book.content = req.body.content;
       
         
         return book.save().then(book => res.json(book)).catch(err => console.log(err))

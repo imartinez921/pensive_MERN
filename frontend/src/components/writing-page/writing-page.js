@@ -7,20 +7,19 @@ import axios from "axios";
 import { updateBook } from "../../util/book_api_util";
 
 const WritingPage = (props) => {
-    const {selected} = props;
+    let {book} = props;
+    
     const { quill, quillRef } = useQuill();
-    console.log(props.book)
+
     //current state, updating the current state
     const [content, setContent] = useState();   
 
-
-
     React.useEffect(() => {
         if (quill) {
+            quill.root.innerHTML = book.content;
             quill.on('text-change', () => {
-                console.log(quill.getText()); // Get text only
                 setContent(quill.getText());
-                console.log(quill.root.innerHTML); // Get innerHTML using quill
+                book.content = quill.root.innerHTML;
             });
         }
     }, [quill]);
@@ -30,7 +29,16 @@ const WritingPage = (props) => {
     // Save to the database
     const onSubmit = (e) =>{
         e.preventDefault();
-       
+        book={
+            title: book.title,
+            editor: book.editor,
+            genre: book.genre,
+            author: book.author,
+            description: book.description,
+            content: book.content,
+            id: book._id
+        }
+        updateBook(book);
         setContent("");
         quill.root.innerHTML = "";
     }
@@ -44,7 +52,6 @@ const WritingPage = (props) => {
                             <div ref={quillRef} />
                         </div>
                         <button type="submit" value="save" onClick={onSubmit}>Save</button>
-                        <p>{content}</p>
                     </div>
                     <div className="right-container-temp" ></div>
                 </div>
@@ -54,7 +61,3 @@ const WritingPage = (props) => {
 
     
 export default WritingPage;
-
-
-
-// export default WritingPage;
