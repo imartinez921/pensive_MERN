@@ -1,18 +1,18 @@
 import React from "react";
 // import BookBox from "./book_box";
-class BookCompose extends React.Component {
+
+class BookEdit extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      title: "",
-      editor: "",
-      genre: "",
-      description:"",
+      title: this.props.book.title,
+      editor: this.props.book.editor,
+      genre: this.props.book.genre,
+      description: this.props.book.description,
       newBook: "",
       errors: {},
     };
-
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
@@ -25,6 +25,10 @@ class BookCompose extends React.Component {
       // genre: nextProps.newBook.genre,
       // description: nextProps.newBook.description,
       errors: nextProps.errors});
+  }
+
+    componentDidMount() {
+      this.props.fetchBookById(this.props.match.params.bookId);
   }
 
   componentWillUnmount() {
@@ -40,18 +44,10 @@ class BookCompose extends React.Component {
       description: this.state.description
     };
 
-    this.props.composeBook(book).then(() => this.props.history.push(`/profile`)).catch(err => console.log(err));
-    //   .then(() => {
-    //   { this.props.history.push(`/profile`) }
-    // }, (err) => { });
-
-
-    debugger
-  
-
-
+    this.props.editBook(book);
     this.setState({ title: "", editor: "", genre: "", description: "" });
-    
+    if (!this.state.errors)
+    { this.props.history.push(`/profile`) };
   }
 
   update(property) {
@@ -107,4 +103,4 @@ class BookCompose extends React.Component {
   }
 }
 
-export default BookCompose;
+export default BookEdit;

@@ -13,6 +13,7 @@ class Profile extends React.Component {
 
   componentDidMount() {
     this.props.fetchUserBooks(this.props.currentUser.id);
+
   }
   
   componentWillMount() {
@@ -26,14 +27,14 @@ class Profile extends React.Component {
 
   render() {
     if (this.state.books.length === 0) {
-      return <div>You no Books</div>;
+      return <div>You have no Books</div>;
     } else {
       return (
         <div className="books-main-section-container">
-          <h2>All of This User's Books</h2>
+          <h2>Your Books</h2>
           <div className="all-books-container">
           {this.state.books.map((book) => (
-            <BookBox key={book._id} text={book.title} />
+            <BookBox key={book._id} text={book.title} removeBook={this.props.removeBook} id={book._id} data={book} editBook={this.props.editBook}  />
           ))}
           </div>
         </div>

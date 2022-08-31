@@ -10,6 +10,7 @@ import SignupFormContainer from "./session/signup_form_container";
 import MainDashboard from "./main-dashboard/main_dashboard";
 import BookComposeContainer from "./books/book_compose_container";
 import DictionaryContainer from "./dictionary/dictionary_container";
+import BookEditContainer from "./books/edit_book_container";
 
 const App = () => (
   <div>
@@ -24,6 +25,11 @@ const App = () => (
         exact
         path="/new_book"
         component={BookComposeContainer}
+      />
+      <ProtectedRoute
+        exact
+        path="/edit_book"
+        component={BookEditContainer}
       />
     </Switch>
   </div>
