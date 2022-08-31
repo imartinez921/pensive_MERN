@@ -28,7 +28,7 @@ const App = () => (
       />
       <ProtectedRoute
         exact
-        path="/edit_book"
+        path="/edit_book/:id"
         component={BookEditContainer}
       />
     </Switch>

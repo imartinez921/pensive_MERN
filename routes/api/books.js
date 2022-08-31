@@ -4,7 +4,6 @@ const mongoose = require("mongoose");
 const passport = require("passport");
 
 const Book = require("../../models/Book");
-const books = require("../../validation/books");
 const validateBookInput = require("../../validation/books");
 
 // router.get("/test", (req, res) => res.json({ msg: "This is the books route" }));
@@ -63,8 +62,6 @@ router.patch('/:id', passport.authenticate("jwt", { session: false }),
   if (!isValid) {
     return res.status(400).json(errors);
   }
-  console.log(req.body)
-  console.log(mongoose.isValidObjectId(req.user.id))
 
   Book.findById(req.params.id)
     .then(book => {
@@ -78,10 +75,11 @@ router.patch('/:id', passport.authenticate("jwt", { session: false }),
         book.genre = req.body.genre; 
         book.author = req.user.id;
         book.description = req.body.description;
+      
         
         return book.save().then(book => res.json(book)).catch(err => console.log(err))
       })
-        // .catch(err => res.status(404).json( { nobookFound: "No book found with that ID"} ))
+        .catch(err => res.status(404).json( { nobookFound: "No book found with that ID"} ))
 });
 
 module.exports = router;

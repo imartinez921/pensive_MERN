@@ -14,6 +14,7 @@ class Profile extends React.Component {
   componentDidMount() {
     this.props.fetchUserBooks(this.props.currentUser.id);
 
+
   }
   
   componentWillMount() {
@@ -26,6 +27,7 @@ class Profile extends React.Component {
   }
 
   render() {
+    console.log(this.props)
     if (this.state.books.length === 0) {
       return <div>You have no Books</div>;
     } else {
@@ -34,7 +36,7 @@ class Profile extends React.Component {
           <h2>Your Books</h2>
           <div className="all-books-container">
           {this.state.books.map((book) => (
-            <BookBox key={book._id} text={book.title} removeBook={this.props.removeBook} id={book._id} data={book} editBook={this.props.editBook}  />
+            <BookBox key={book._id} text={book.title} removeBook={this.props.removeBook} id={book._id} data={book} editBook={this.props.editBook} fetchbook={this.props.fetchBookById} history={this.props.history } />
           ))}
           </div>
         </div>

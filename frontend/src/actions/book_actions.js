@@ -8,8 +8,6 @@ export const DELETE_BOOK = "DELETE_BOOK";
 
 export const RECEIVE_BOOK_ERRORS = "RECEIVE_BOOK_ERRORS";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
-export const CLEAR_BOOKS = "CLEAR_BOOKS";
-
 
 export const receiveUserBooks = (books) => ({
   type: RECEIVE_USER_BOOKS,
@@ -68,5 +66,11 @@ export const removeBook = (id) => (dispatch) =>
 
 export const editBook = (data) => (dispatch) =>
   updateBook(data)
-    .then((book) => dispatch(receiveNewBook(book.data)),
-      (err) => dispatch(receiveBookErrors(err.response.data)));
+  .then((book) => dispatch(receiveNewBook(book.data)))
+  .catch((err) =>
+  {
+    dispatch(receiveBookErrors(err.response.data))
+    return new Promise((resolve, reject) => {
+      return reject();
+    })
+  });
