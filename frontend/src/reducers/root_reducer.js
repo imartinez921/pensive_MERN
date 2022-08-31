@@ -10,8 +10,8 @@ const RootReducer = combineReducers({
   session: sessionReducer,
   errors: errorsReducer,
   books: booksReducer,
-  definitions: dictionaryReducer,
-  queries: queryReducer,
+  // definitions: dictionaryReducer,
+  // queries: queryReducer,
 });
 
 export default RootReducer;

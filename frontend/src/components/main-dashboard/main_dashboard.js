@@ -8,14 +8,17 @@ import '../../assets/css/01-main-dashboard.css'
 
 
 class MainDashboard extends React.Component {
+    constructor(props) {
+        super(props);
+    }
 
     render() {
-
+       console.log(this.props)
         return(
             <>
             <div className="main-dashboard" >
                 <LoggedInNavbar />
-                <ProfileContainer />
+                    <ProfileContainer history={ this.props.history} />
                 <div className="temporary"></div>
             </div>
             </>
