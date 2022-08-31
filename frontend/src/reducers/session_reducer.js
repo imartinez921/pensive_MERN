@@ -9,7 +9,7 @@ import {
     user: {},
   };
   
-  export default function (state = initialState, action) {
+const SessionReducer = (state = initialState, action) => {
     switch (action.type) {
       case RECEIVE_CURRENT_USER:
         return {
@@ -31,3 +31,5 @@ import {
         return state;
     }
   }
+
+export default SessionReducer;
