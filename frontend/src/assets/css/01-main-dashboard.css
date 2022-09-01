@@ -3,5 +3,13 @@
     flex-direction: row;
     justify-content: space-between;
     /* background: #bac2a2; */
-    background: #BAC097;
+    background-image: url('../images/branch.png');
+    background-color: #FED168;
+    background-color: #A5885D; /*dark brown*/
+    background-color: #CCB188; /*medium brown*/
+    background-color: #EDD9AB; /*light brown*/
+    /* background-color: rgba(66,66,66); */
+    /* background-color: #D2E1E9;   */ /*grayish*/
+    /* background-color: #EBE2D9; */
+
 }
