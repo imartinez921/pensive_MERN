@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../../assets/css/04-writing-page.css";
 import { useQuill } from 'react-quilljs';
@@ -11,35 +11,40 @@ const WritingPage = (props) => {
     
     const { quill, quillRef } = useQuill();
 
-    //current state, updating the current state
-    const [content, setContent] = useState();   
+
+    const [currentBook, setCurrentBook] = useState(book)
+
+    useEffect(()=>{
+            setCurrentBook(JSON.parse(window.localStorage.getItem('currentBook')))
+    },[])
+
+    useEffect(() => {
+        window.localStorage.setItem('currentBook', JSON.stringify(currentBook))
+    }, [currentBook])
+
 
     React.useEffect(() => {
-        if (quill) {
-            quill.root.innerHTML = book.content;
+        if (quill) {git
+            quill.root.innerHTML = currentBook.content;
             quill.on('text-change', () => {
-                setContent(quill.getText());
-                book.content = quill.root.innerHTML;
+                currentBook.content = quill.root.innerHTML;
             });
         }
     }, [quill]);
-
-
 
     // Save to the database
     const onSubmit = (e) =>{
         e.preventDefault();
         book={
-            title: book.title,
-            editor: book.editor,
-            genre: book.genre,
-            author: book.author,
-            description: book.description,
-            content: book.content,
-            id: book._id
+            title: currentBook.title,
+            editor: currentBook.editor,
+            genre: currentBook.genre,
+            author: currentBook.author,
+            description: currentBook.description,
+            content: currentBook.content,
+            id: currentBook._id
         }
         updateBook(book);
-        setContent("");
         quill.root.innerHTML = "";
     }
 
