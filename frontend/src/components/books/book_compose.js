@@ -20,10 +20,6 @@ class BookCompose extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      // title: nextProps.newBook.title,
-      // editor: nextProps.newBook.editor,
-      // genre: nextProps.newBook.genre,
-      // description: nextProps.newBook.description,
       errors: nextProps.errors});
   }
 
@@ -41,10 +37,6 @@ class BookCompose extends React.Component {
     };
 
     this.props.composeBook(book).then(() => this.props.history.push(`/profile`));
-    //   .then(() => {
-    //   { this.props.history.push(`/profile`) }
-    // }, (err) => { });
-
 
   
 

@@ -5,6 +5,7 @@ import booksReducer from "./books_reducer";
 import dictionaryReducer from "./dictionary_reducer";
 import queryReducer from "./query_reducer";
 import charactersReducer from "./characters_reducer";
+import uiReducer from "./ui_reducer";
 
 
 const RootReducer = combineReducers({
@@ -12,6 +13,7 @@ const RootReducer = combineReducers({
   errors: errorsReducer,
   books: booksReducer,
   characters: charactersReducer,
+  ui: uiReducer,
   // definitions: dictionaryReducer,
   // queries: queryReducer,
 });
