@@ -2,10 +2,7 @@
     min-width: 600px;
     text-align: center;
     padding-top: 60px;
-    /* border-left: 1px solid #9aa676;
-    border-right: 1px solid #9aa676; */
     background: #aab48c;
-    /* box-shadow: 0px 0px 20px #9aa676; */
     box-shadow: 0px 0px 20px #aab48c;
 }
 
@@ -20,7 +17,6 @@
 .temporary{
     height: 100vh;
     width: 200px;
-    /* border-left: 1px solid #9aa676; */
     box-shadow: 0px 0px 20px #aab48c;
     background: #aab48c;
 }
@@ -28,23 +24,38 @@
 .all-books-container{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 10px;
+    gap: 25px;
 }
 
 .individual-book{
     height: 140px;
     width: 100px;
     margin: auto;
-    background: blue;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
+    background: darkolivegreen;
     border-bottom-left-radius: 5px;
     border-top-left-radius: 5px;
     text-align: center;
     font-size: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: end;
+    box-shadow: 1px 1px 1px 0px rgb(255 255 255), 2px 2px 1px 0px rgb(0 0 0), 3px 3px 1px 0px rgb(255 255 255), 4px 4px 1px 0px rgb(0 0 0), 4px 4px 3px 1px rgb(0 0 0);
+    
+}
+
+.book-buttons-container{
+    align-self: end;
+}
+
+.book-buttons-container button{
+    border: none;
+    margin-left: 5px;
+    background-color: transparent;
+    color: white;
+}
+
+.book-buttons-container button:last-child{
+    border-bottom-right-radius: 5px;
 }
 
 .book-title-link{
