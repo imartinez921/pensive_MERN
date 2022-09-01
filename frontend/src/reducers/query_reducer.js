@@ -1,5 +1,6 @@
 import {
     RECEIVE_DEFINITIONS,
+    RECEIVE_SYNONYMS,
   } from "../actions/dictionary_actions.js";  
 import {
    CLEAR_QUERIES,
@@ -9,13 +10,18 @@ const queryReducer = (prevState = [], action) => {
     Object.freeze(prevState);
     let newState = Object.assign([], prevState);
 
+    let query;
     switch (action.type) {
     case RECEIVE_DEFINITIONS:
-        const query = action.definitions[0].word
-        console.log('HERE IS YOUR QUERY', query)
+        query = action.definitions[0].word
         if (!newState.includes(query)) {
             newState.push(query);
-            console.log('ADDING TO QUERIES', newState)
+        }
+        return newState;
+    case RECEIVE_SYNONYMS:
+        query = action.synonyms.query
+        if (!newState.includes(query)) {
+            newState.push(query);
         }
         return newState;
     case CLEAR_QUERIES:

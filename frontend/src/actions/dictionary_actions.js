@@ -1,6 +1,10 @@
-import { fetchDefinitions } from "../util/dictionary_api_util";
+import { fetchDefinitions,
+  fetchSynonyms,
+  fetchAntonyms,
+ } from "../util/dictionary_api_util";
 
 export const RECEIVE_DEFINITIONS = "RECEIVE_DEFINITIONS";
+export const RECEIVE_SYNONYMS = "RECEIVE_SYNONYMS";
 export const RECEIVE_DICTIONARY_ERROR = "RECEIVE_DICTIONARY_ERROR";
 export const CLEAR_DICTIONARY_ERRORS = "CLEAR_DICTIONARY_ERRORS";
 
@@ -10,6 +14,13 @@ const receiveDefinitions = (definitions) => {
   return ({
   type: RECEIVE_DEFINITIONS,
   definitions, // this is an array
+});}
+
+const receiveSynonyms = (synonyms) => {
+  console.log('RECEIVING SYNONYMS', synonyms)
+  return ({
+  type: RECEIVE_SYNONYMS,
+  synonyms, // Synonyms object with {query, relationshipType, words}
 });}
 
 const clearDictionaryErrors = () => ({
@@ -25,11 +36,9 @@ export const resetDictionaryErrors = () => dispatch => (
   dispatch(clearDictionaryErrors())
   );
 
-// export const resetQueries = () => dispatch => (
-//   dispatch(clearDictionaryErrors())
-//   );
 
-export const lookupWord = query => dispatch => {
+// Fetch definitions
+export const defineWord = query => dispatch => {
   return (
       fetchDefinitions(query)
       .then(response => { // check if response.ok === true
@@ -62,3 +71,33 @@ export const lookupWord = query => dispatch => {
   // textProns: []
   // word: "bluebird"
   // wordnikUrl: "https://www.wordnik.com/words/bluebird"
+
+
+// Fetch synonyms
+export const synWord = query => dispatch => {
+  return (
+      fetchSynonyms(query)
+      .then(response => { // check if response.ok === true
+        if (!response.ok) {
+          return Promise.reject(response);
+        } else { // if true, then convert to .json body
+          return response.json();
+      }})
+      .then(data => { 
+        // data[0].query = query; // add query key-value to response
+        dispatch( receiveSynonyms(data[0]) );
+      })
+      .catch(error => {
+        if (typeof error.json === "function") {
+          error.json().then(jsonError => {dispatch( receiveDictionaryError(jsonError) );
+      })}})
+  )}
+
+  // Synonym response is an array containing an object as follows:
+  // [
+  //   {
+  //   "relationshipType": "synonym",
+  //   "words": [
+  //   "accidental",
+  //   "adventitious",
+  // ]

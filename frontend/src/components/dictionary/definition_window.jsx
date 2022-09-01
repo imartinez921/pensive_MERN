@@ -1,40 +1,61 @@
 import React from 'react';
 import parse from "html-react-parser";
+import { Link } from 'react-router-dom';
+import ExternalLink from '../external_link';
 
-const DefinitionWindow = (props) => {
+const DictionaryWindow = (props) => {
+    
+    const { errors,
+        definitions,
+        synonyms,
+        wordUrl,
+    } = props;
+
     console.log('THESE ARE PROPS', props);
-    console.log('THESE ARE ERRORS', props.errors);
+    console.log('THESE ARE ERRORS', errors);
 
     let display;
-    (props.errors.length !== 0) ?
-        (display = (
-            props.errors.map( (err, i) => (
+    if (errors === undefined || errors.length !== 0)
+        {(display = (
+            errors.map( (err, i) => (
                 <li key={`${err}-${i}`}>
                     <span>{err}</span>
                 </li>
             ))
-        ))
-        :
-        (display = (
-            props.definitions.map( (def, i) => (
+        ))}
+    if (definitions === undefined || definitions.length)
+        {(display = (
+            definitions.map( (def, i) => (
                 <li key={`${def.definition}-${i}`}>
                     <p/>
-                    ({def.partOfSpeech}) {parse(def.definition)}, from, <a href=`${def.sourceUrl}``>{}
+                    <span id="part-of-speech">({def.partOfSpeech})</span> <span id='definition-text'>"{parse(def.definition)}" </span>
+                    <ExternalLink url={def.sourceUrl}>From {def.sourceName}</ExternalLink>
                     <p/>
                 </li>
             ))
-        ))
+        ))}
+    if (synonyms === undefined || synonyms.length)
+        {(display = (
+            synonyms.map( (syn, i) => (
+                <li key={`${syn}-${i}`}>
+                    <p/>
+                    <span id="synonym">{syn}</span>
+                    <p/>
+                </li>
+            ))
+        ))}
     
     return (
         <div>
             <div>
-                <ul>
-                Here is a list
+                <ol>
                 {display}
-                </ul>
+                <ExternalLink url={wordUrl}>Powered by </ExternalLink>
+                <img src="https://www.wordnik.com/img/wordnik-logo-300px.png" alt="WordNik" width='50'/>
+                </ol>
             </div>
         </div>
     )
 }
 
-export default DefinitionWindow;
+export default DictionaryWindow;
