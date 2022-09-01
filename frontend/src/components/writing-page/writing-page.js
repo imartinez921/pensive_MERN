@@ -24,7 +24,7 @@ const WritingPage = (props) => {
 
 
     React.useEffect(() => {
-        if (quill) {git
+        if (quill) {
             quill.root.innerHTML = currentBook.content;
             quill.on('text-change', () => {
                 currentBook.content = quill.root.innerHTML;
