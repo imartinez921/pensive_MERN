@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../../assets/css/04-writing-page.css";
 import { useQuill } from 'react-quilljs';
@@ -7,33 +7,44 @@ import axios from "axios";
 import { updateBook } from "../../util/book_api_util";
 
 const WritingPage = (props) => {
-    const {selected} = props;
+    let {book} = props;
+    
     const { quill, quillRef } = useQuill();
 
-    //current state, updating the current state
-    const [content, setContent] = useState();   
 
-    let book = "whatever";
+    const [currentBook, setCurrentBook] = useState(book)
 
+    useEffect(()=>{
+            setCurrentBook(JSON.parse(window.localStorage.getItem('currentBook')))
+    },[])
+
+    useEffect(() => {
+        window.localStorage.setItem('currentBook', JSON.stringify(currentBook))
+    }, [currentBook])
 
 
     React.useEffect(() => {
         if (quill) {
+            quill.root.innerHTML = currentBook.content;
             quill.on('text-change', () => {
-                console.log(quill.getText()); // Get text only
-                setContent(quill.getText());
-                console.log(quill.root.innerHTML); // Get innerHTML using quill
+                currentBook.content = quill.root.innerHTML;
             });
         }
     }, [quill]);
 
-
-
     // Save to the database
     const onSubmit = (e) =>{
         e.preventDefault();
-       
-        setContent("");
+        book={
+            title: currentBook.title,
+            editor: currentBook.editor,
+            genre: currentBook.genre,
+            author: currentBook.author,
+            description: currentBook.description,
+            content: currentBook.content,
+            id: currentBook._id
+        }
+        updateBook(book);
         quill.root.innerHTML = "";
     }
 
@@ -46,7 +57,6 @@ const WritingPage = (props) => {
                             <div ref={quillRef} />
                         </div>
                         <button type="submit" value="save" onClick={onSubmit}>Save</button>
-                        <p>{content}</p>
                     </div>
                     <div className="right-container-temp" ></div>
                 </div>
@@ -56,7 +66,3 @@ const WritingPage = (props) => {
 
     
 export default WritingPage;
-
-
-
-// export default WritingPage;

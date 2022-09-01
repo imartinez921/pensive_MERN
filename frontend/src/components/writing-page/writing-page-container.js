@@ -1,12 +1,13 @@
 import { connect } from "react-redux";
 import WritingPage from "./writing-page";
 
-const mapStateToProps = (state, ownProps) => ({
-    book: state.books
-    //const selected_id = ownProps.match.params.id
-    // selected: state.books.selected_id
-    
-})
+
+const mapStateToProps = (state, ownProps) =>{ 
+    debugger
+    return({
+        book: state.books[ownProps.match.params.id]
+    })
+}
 
 
 const mapDispatchToProps = (dispatch) => ({
