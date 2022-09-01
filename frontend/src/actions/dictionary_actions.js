@@ -84,7 +84,7 @@ export const synWord = query => dispatch => {
           return response.json();
       }})
       .then(data => { 
-        // data[0].query = query; // add query key-value to response
+        data[0].query = query; // add query key-value to response
         dispatch( receiveSynonyms(data[0]) );
       })
       .catch(error => {
