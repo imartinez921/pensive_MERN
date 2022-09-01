@@ -6,11 +6,20 @@ import { IoCloseCircle } from "react-icons/io5";
 class SessionForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      email: '',
-      password: '',
-      errors: {}
-    }
+    (this.props.formType === 'Log in') ? (
+      this.state = {
+        email: '',
+        password: '',
+        errors: {}
+      }) : (
+      this.state = {
+        email: "",
+        username: "",
+        password: "",
+        password2: "",
+        errors: {},
+      });
+    
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.loginDemoUser = this.loginDemoUser.bind(this);
@@ -34,10 +43,21 @@ class SessionForm extends React.Component {
     return (e) => this.setState({ [field]: e.currentTarget.value });
   }
 
+  // handleSubmit(e) {
+  //   e.preventDefault();
+  //   this.props.processForm(this.state)
+  //     .then(this.props.closeModal);
+  // }
+
   handleSubmit(e) {
     e.preventDefault();
-    this.props.processForm(this.state)
-      .then(this.props.closeModal);
+    (this.props.formType === 'Log in') ? (
+      this.props.processForm(this.state)
+      .then(this.props.closeModal)
+    ) : (
+      this.props.processForm(this.state)
+      .then(this.props.openModal("login"))
+          )
   }
 
 
@@ -62,7 +82,7 @@ class SessionForm extends React.Component {
 
   renderErrors() {
     return (
-      <ul>
+      <ul className='session-errors'>
         {Object.keys(this.state.errors).map((error, i) => (
           <li key={`error-${i}`}>{this.state.errors[error]}</li>
         ))}
@@ -81,18 +101,81 @@ class SessionForm extends React.Component {
       existingAccountMessage = "Already have an account?";
     }
 
+    let inputpart = (this.props.formType === 'Log in') ? (
+      <div>
+      <div className='session-input-div'>
+            <p>Email</p>
+          <input 
+            type="text" 
+            value={this.state.email} 
+            placeholder=""
+            onChange={this.handleInput('email')} 
+            className="modal__input-text input__text modal__input-text--username"/>
+          </div>
+          <br/>
+          <div className='session-input-div'>
+            <p>Password</p>
+          <input 
+            type="password" 
+            value={this.state.password}
+            placeholder=""
+            onChange={this.handleInput('password')} 
+            className="modal__input-text input__text modal__input-text--password"/>
+          <br />
+          </div>
+          </div>
+  ) : (
+    <div>
+    <div className='session-input-div'>
+          <p>Email</p>
+        <input 
+          type="text" 
+          value={this.state.email} 
+          placeholder=""
+          onChange={this.handleInput('email')} 
+          className="modal__input-text input__text modal__input-text--username"/>
+        </div>
+        <br/>
+        <div className='session-input-div'>
+          <p>Username</p>
+        <input 
+          type="text" 
+          value={this.state.username} 
+          placeholder=""
+          onChange={this.handleInput('username')} 
+          className="modal__input-text input__text modal__input-text--username"/>
+        </div>
+        <br/>
+        <div className='session-input-div'>
+          <p>Password</p>
+        <input 
+          type="password" 
+          value={this.state.password}
+          placeholder=""
+          onChange={this.handleInput('password')} 
+          className="modal__input-text input__text modal__input-text--password"/>
+        <br />
+        </div>
+        <div className='session-input-div'>
+          <p>Confirm Password</p>
+        <input 
+          type="password" 
+          value={this.state.password2} 
+          placeholder=""
+          onChange={this.handleInput('password2')} 
+          className="modal__input-text input__text modal__input-text--username"/>
+        </div>
+        <br/>
+        </div>
+  );
+
+
 
     let demobutton = (this.props.formType === 'Log in') ? (
-        <div className='demobutton'>
-        <a 
+        <a
           href="#" 
           onClick={this.loginDemoUser} 
-          id="modal__btn-submit-id"
-          className="modal__btn--submit modal__btn--submit-demo modal__btn">Log in with demo account</a>
-        <div className="modal__divider-container">
-          <p className="modal__divider-content">or</p>
-        </div>
-        </div>
+          id="modal__btn-submit">demo log in</a>
     ) : (
         <div></div>
     );
@@ -111,30 +194,21 @@ class SessionForm extends React.Component {
         <form 
           onSubmit={this.handleSubmit} 
           className="ui form modal__form">
-
-
-          <input 
-            type="text" 
-            value={this.state.email} 
-            placeholder="Email"
-            onChange={this.handleInput('email')} 
-            className="modal__input-text input__text modal__input-text--username"/>
-          <br/>
-          <input 
-            type="password" 
-            value={this.state.password}
-            placeholder="Password"
-            onChange={this.handleInput('password')} 
-            className="modal__input-text input__text modal__input-text--password"/>
-          <br /><br />
+          {inputpart}
+          <br />
+          <div className='modal-session-submit-button'>
           <input 
             type="submit" 
             value={this.props.formType} 
-            id="modal__btn-submit-id"
-            className="ui button basic modal__btn--submit modal__btn" />
+            id="modal__btn-submit"/>
+          
+          <br />
             {demobutton}
+            </div>
+          {this.renderErrors()}
         </form>
-        {this.renderErrors()}
+        <br />
+        
         <div className="modal__other-form-container">
           <p className="modal__account-msg">
             {existingAccountMessage}
