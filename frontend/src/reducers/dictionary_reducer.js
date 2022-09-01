@@ -21,11 +21,11 @@ import {
           const def = action.definitions[i];
           if (def.text !== undefined) {
             newState.push({
-              sourceDictionary: def.sourceDictionary,
-              attributionText: def.attributionText,
-              attributionUrl: def.attributionUrl,
+              sourceName: def.sourceDictionary,
+              sourceUrl: def.attributionUrl,
               partOfSpeech: def.partOfSpeech,
               definition: def.text,
+              sourceText: def.attributionText,
           })}
           else {
             continue;

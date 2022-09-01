@@ -57,6 +57,7 @@ class Dictionary extends React.Component {
 
     const {queries,
       definitions,
+      errors,
     } = this.props;
 
     const dictionaryForm = (
@@ -81,7 +82,7 @@ class Dictionary extends React.Component {
           <button onClick={this.handleClear}>Clear history</button>
         </div>
         <div>
-          <DefinitionWindow queries={queries} definitions={definitions} />
+          <DefinitionWindow errors={errors} queries={queries} definitions={definitions} />
         </div>
       </div>
     )

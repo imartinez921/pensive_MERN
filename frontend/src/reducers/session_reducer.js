@@ -4,9 +4,11 @@ import {
     RECEIVE_USER_SIGN_IN,
   } from "../actions/session_actions";
   
+  import { RECEIVE_NEW_BOOK } from "../actions/book_actions";
   const initialState = {
     isAuthenticated: false,
     user: {},
+    currentBook: {}
   };
   
 const SessionReducer = (state = initialState, action) => {
@@ -26,6 +28,11 @@ const SessionReducer = (state = initialState, action) => {
         return {
           ...state,
           isSignedIn: true,
+        };
+      case RECEIVE_NEW_BOOK:
+        return {
+          ...state,
+          currentBook: action.book,
         };
       default:
         return state;

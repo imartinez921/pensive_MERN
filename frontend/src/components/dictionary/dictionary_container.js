@@ -11,6 +11,7 @@ const mapStateToProps = (state) => {
     return {
         queries: state.queries,
         definitions: state.definitions,
+        errors: state.errors.dictionary,
     };
 };
 
