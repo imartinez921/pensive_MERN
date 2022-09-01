@@ -13,6 +13,7 @@ class Dictionary extends React.Component {
     this.handleThesaurus = this.handleThesaurus.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.handleClear = this.handleClear.bind(this);
+    this.handlePrevQuery = this.handlePrevQuery.bind(this);
   }
 
   componentDidMount() {
@@ -29,6 +30,12 @@ class Dictionary extends React.Component {
     return (e) => {
         this.setState({ [field]: e.target.value })
     };
+  }
+
+  handlePrevQuery (e) {
+    console.log(e.target.value)
+    e.preventDefault();
+    this.setState({ query: `${e.target.value}`});
   }
 
   handleKeyPress(event) {
@@ -77,14 +84,13 @@ class Dictionary extends React.Component {
     } = this.props;
 
     const wordUrl = 'https://www.wordnik.com/words/' + `${lastQuery}`
-    console.log('wordUrl', wordUrl)
 
     const dictionaryForm = (
       <form>
         <p /><label>Lookup a word
           <p /><input 
             type="text" 
-            placeholder="Lookup  a word"
+            placeholder="Lookup a word"
             value={this.state.query} 
             onChange={this.handleInput('query')}
             onKeyPress={this.handleKeyPress}
@@ -102,7 +108,7 @@ class Dictionary extends React.Component {
           <button onClick={this.handleClear}>Clear history</button>
         </div>
         <div>
-          <DictionaryWindow errors={errors} wordUrl={wordUrl} queries={queries} definitions={definitions} synonyms={synonyms} anytonyms={antonyms} />
+          <DictionaryWindow errors={errors} handlePrevQuery={this.handlePrevQuery} wordUrl={wordUrl} queries={queries} definitions={definitions} synonyms={synonyms} anytonyms={antonyms} />
         </div>
       </div>
     )

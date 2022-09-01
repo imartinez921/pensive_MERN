@@ -1,14 +1,15 @@
 import React from 'react';
 import parse from "html-react-parser";
-import { Link } from 'react-router-dom';
 import ExternalLink from '../external_link';
 
-const DictionaryWindow = (props) => {
-    
+
+const DictionaryWindow = (props) => {    
     const { errors,
         definitions,
         synonyms,
+        queries,
         wordUrl,
+        handlePrevQuery,
     } = props;
 
     console.log('THESE ARE PROPS', props);
@@ -45,15 +46,29 @@ const DictionaryWindow = (props) => {
             ))
         ))}
     
+    let displayQueries;
+    if (queries === undefined || queries.length !== 0)
+        {
+            (displayQueries = (
+            queries.map( (query, i) => (
+                <button key={`${query}-${i}`} id="query-item" onClick={handlePrevQuery} value={query}>
+                   {query}
+                </button>
+            ))
+        ))}
+
+    const query = 'bluebird'
     return (
         <div>
-            <div>
-                <ol>
+            <ol>
                 {display}
-                <ExternalLink url={wordUrl}>Powered by </ExternalLink>
-                <img src="https://www.wordnik.com/img/wordnik-logo-300px.png" alt="WordNik" width='50'/>
-                </ol>
+            </ol>
+            <div>
+                {displayQueries}
+                <button onClick={handlePrevQuery} value={query}>yellow</button>
             </div>
+            <ExternalLink url={wordUrl}>Powered by </ExternalLink>
+            <img src="https://www.wordnik.com/img/wordnik-logo-300px.png" alt="WordNik" width='50'/>
         </div>
     )
 }
