@@ -16,7 +16,7 @@ import WritingPageContainer from "./writing-page/writing-page-container";
 const App = () => (
   <div>
      <NavBarContainer />
-
+     <ModalContainer />
     <Switch>
       <AuthRoute exact path="/" component={MainPage} />
       <AuthRoute exact path="/login" component={LoginFormContainer} />

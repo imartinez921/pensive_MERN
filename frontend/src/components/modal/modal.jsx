@@ -3,7 +3,7 @@ import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import LoginFormContainer from '../session/login_form_container';
 import SignupFormContainer from '../session/signup_form_container';
-
+import '../../assets/css/05-modal.css';
 
 const Modal = ({modal, closeModal}) => {
   if (!modal) return null;
@@ -22,8 +22,8 @@ const Modal = ({modal, closeModal}) => {
 
 
     return (
-      <div className="modal__background" onClick={closeModal}>
-        <div className="modal__child" onClick={e => e.stopPropagation()}>
+      <div className="modal-background" onClick={closeModal}>
+        <div className="modal-child" onClick={e => e.stopPropagation()}>
           { component }
         </div>
       </div>

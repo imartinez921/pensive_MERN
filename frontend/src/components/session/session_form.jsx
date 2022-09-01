@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { IoCloseCircle } from "react-icons/io5";
+
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -103,10 +105,8 @@ class SessionForm extends React.Component {
           href="#" 
           className="modal__btn-close"
           onClick={this.props.closeModal} >
-          <i className="fas fa-times">close</i>
+          <IoCloseCircle style={{color: '#cc5500', fontSize: '35px'}}/>
         </a>
-        {demobutton}
-        {this.renderErrors()}
         <br/>
         <form 
           onSubmit={this.handleSubmit} 
@@ -132,7 +132,9 @@ class SessionForm extends React.Component {
             value={this.props.formType} 
             id="modal__btn-submit-id"
             className="ui button basic modal__btn--submit modal__btn" />
+            {demobutton}
         </form>
+        {this.renderErrors()}
         <div className="modal__other-form-container">
           <p className="modal__account-msg">
             {existingAccountMessage}

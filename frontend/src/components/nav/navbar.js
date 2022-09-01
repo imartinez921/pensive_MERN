@@ -30,7 +30,7 @@ class NavBar extends React.Component {
         <div className="logged-out-navbar">
           <div className="signup-btn" onClick={() => this.handleOpenModal('signup')}>Sign up</div>
           <div className="login-btn" onClick={() => this.handleOpenModal('login')}>Log in</div>
-          <ModalContainer />
+          {/* <ModalContainer /> */}
         </div>
       );
     }
