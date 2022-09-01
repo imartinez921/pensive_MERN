@@ -5,7 +5,7 @@ import booksReducer from "./books_reducer";
 import definitionsReducer from "./definitions_reducer";
 import synonymsReducer from "./synonyms_reducer";
 import queryReducer from "./query_reducer";
-
+import uiReducer from "./ui_reducer";
 
 const RootReducer = combineReducers({
   session: SessionReducer,
@@ -14,6 +14,7 @@ const RootReducer = combineReducers({
   definitions: definitionsReducer,
   synonyms: synonymsReducer,
   queries: queryReducer,
+  ui: uiReducer
 });
 
 export default RootReducer;
