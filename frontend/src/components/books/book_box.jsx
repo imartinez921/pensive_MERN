@@ -17,7 +17,6 @@ class BookBox extends React.Component {
 
   handleClick(e) {
     e.preventDefault();
-    console.log(this.props);
     const id = this.props.id;
     this.props.history.push(`/edit_book/${id}`);
   }

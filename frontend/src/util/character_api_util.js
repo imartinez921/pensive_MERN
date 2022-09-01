@@ -1,11 +1,16 @@
 import axios from "axios";
 
 
-export const getBookCharacters = (id) => {
-  return axios.get(`/api/characters/book/${id}`);
+export const getBookCharacters = (bookId) => {
+  return axios.get(`/api/characters/book/${bookId}`);
 };
 
+export const getCharacter = (charId) => {
+  return axios.get(`/api/characters/${charId}`);
+}
+
 export const writeCharacter = (data) => {
+  debugger
   return axios.post("/api/characters/", data);
 };
 

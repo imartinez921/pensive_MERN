@@ -1,14 +1,18 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect, useRef} from "react";
+import { Link , useHistory} from "react-router-dom";
 import "../../assets/css/04-writing-page.css";
 import { useQuill } from 'react-quilljs';
 import 'quill/dist/quill.snow.css'; // Add css for snow theme 
 import axios from "axios";
 import { updateBook } from "../../util/book_api_util";
+import CharacterListContainer from "../characters/character_list";
+import { connect, useDispatch } from "react-redux";
+import { BsFillBackspaceFill } from 'react-icons/bs';
 
 const WritingPage = (props) => {
-    let {book} = props;
     
+    let {book,bookId, fetchBookById} = props;
+
     const { quill, quillRef } = useQuill();
 
 
@@ -48,19 +52,34 @@ const WritingPage = (props) => {
         quill.root.innerHTML = "";
     }
 
-        return (
-            <>
+    const history = useHistory();
+
+    const handleClick = () => {
+        history.push("/profile")
+    };
+
+
+
+    return (
                 <div className="writing-page-main-container">
-                    <div className="left-container-temp"></div>
+                     <div className="left-container-temp">
+                    <div id="back-to-profile">
+                        <button onClick={handleClick}><BsFillBackspaceFill /></button>
+                    </div>
+                    </div>
                     <div className="middle-container-temp">
                         <div id="writing-piece">
                             <div ref={quillRef} />
                         </div>
                         <button type="submit" value="save" onClick={onSubmit}>Save</button>
                     </div>
-                    <div className="right-container-temp" ></div>
+            <div className="right-container-temp" >
+                <div>
+                    <CharacterListContainer bookId={currentBook._id} book={currentBook} />
                 </div>
-            </>
+            </div>
+                    
+                </div>
         )
 }
 

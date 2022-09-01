@@ -1,7 +1,7 @@
-import { getBookCharacters, writeCharacter, deleteCharacter, updateCharacter } from "../util/character_api_util";
+import { getBookCharacters, writeCharacter, deleteCharacter, updateCharacter, getCharacter} from "../util/character_api_util";
 
 
-export const RECEIVE_USER_CHARACTERS = "RECEIVE_USER_CHARACTERS";
+export const RECEIVE_BOOK_CHARACTERS = "RECEIVE_BOOK_CHARACTERS";
 export const RECEIVE_NEW_CHARACTER = "RECEIVE_NEW_CHARACTER";
 export const DELETE_CHARACTER = "DELETE_CHARACTER";
 
@@ -11,7 +11,7 @@ export const CLEAR_ERRORS = "CLEAR_ERRORS";
 
 
 export const receiveBookCharacters = (characters) => ({
-  type: RECEIVE_USER_CHARACTERS,
+  type: RECEIVE_BOOK_CHARACTERS,
   characters,
 });
 
@@ -37,13 +37,20 @@ export const clearErrors = () => ({
 
 export const fetchBookCharacters = (id) => (dispatch) =>
   getBookCharacters(id)
-    .then((characters) => dispatch(receiveBookCharacters(characters)),
+    .then((characters) => dispatch(receiveBookCharacters(characters.data)),
       (err) => dispatch(receiveCharacterErrors(err.response.data)));
+
+export const fetchCharacterById = (id) => (dispatch) =>
+   getCharacter(id)
+// .then(book => console.log(book))
+  .then((character) => dispatch(receiveNewCharacter(character.data)),
+    (err) => dispatch(receiveCharacterErrors(err.response.data)));
 
 export const composeCharacter = (data) => (dispatch) =>
   writeCharacter(data)
-    .then((character) => dispatch(receiveNewCharacter(character)),
-      (err) => dispatch(receiveCharacterErrors(err.response.data)));
+    // .then((character) => console.log(character))
+  .then((character) => dispatch(receiveNewCharacter(character.data)),
+    (err) => dispatch(receiveCharacterErrors(err.response.data)));
 
 export const removeCharacter = (id) => (dispatch) => 
   deleteCharacter(id)
@@ -52,5 +59,5 @@ export const removeCharacter = (id) => (dispatch) =>
 
 export const editCharacter = (data) => (dispatch) =>
   updateCharacter(data)
-    .then((character) => dispatch(receiveNewCharacter(character)),
+    .then((character) => dispatch(receiveNewCharacter(character.data)),
       (err) => dispatch(receiveCharacterErrors(err.response.data)));
