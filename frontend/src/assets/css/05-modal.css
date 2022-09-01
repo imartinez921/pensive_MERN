@@ -18,12 +18,13 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border-radius: 5%;
+    border-radius: 10px;
+    padding: 20px;
   }
 
   .modal__form-container {
     width: 100%;
-    margin: 2rem 2rem 2rem 2rem;
+    margin: 0rem 2rem 0rem 2rem;
   }
 
   .modal__btn-close {
@@ -32,23 +33,122 @@
     top: 5px;
   }
 
+
+
   .modal__header {
       width: 100%;
       font-family: 'Fredoka One', cursive;
       font-size: 40px;
-      color: orange;
+      color: #636160;
       margin-top: 0px;
       margin-bottom: 10px;
       text-align: center;
       cursor: default;
   }
 
-  .demobutton {
+  .modal__form-container {
+    display: center;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    background-color: pink;
+    padding: 30px;
   }
+
+
 
   #modal__btn-submit-id {
     display: flex;
     justify-content: center;
   }
+
+  .session-input-div {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+
+  }
+
+
+  .session-input-div p {
+      font-family: 'Fredoka One', cursive;
+      font-size: 20px;
+      color: #636160;
+      margin-top: 0px;
+      margin-bottom: 10px;
+      cursor: default;
+      
+  }
+
+  .session-input-div input {
+    display: flex;
+    width: 100%;
+    height: 35px;
+    border: 0;
+    font-size: 20px;
+    border-radius: 10px;
+  }
+
+  .session-input-div input:focus{
+    outline: none;
+  }
+
+
+  .login-form-container {
+    display: flex;
+  }
+
+  .modal-session-submit-button {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    
+  }
+
+  .modal-session-submit-button input {
+    padding: 15px;
+    background-color: #D2E1E9;
+    border: 0;
+    border-radius: 5px;
+    font-family: 'Fredoka One', cursive;
+    font-size: 20px;
+    color: #636160;
+    cursor: pointer;
+}
+
+.modal-session-submit-button a {
+    padding: 15px;
+    background-color: #D2E1E9;
+    border: 0;
+    border-radius: 5px;
+    font-family: 'Fredoka One', cursive;
+    font-size: 20px;
+    color: #636160;
+    text-decoration: none;
+    padding-top: 16px;
+}
+
+.modal__other-form-container {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    margin-top: 10px;
+    color: rgb(129, 129, 129);
+    font-size: 18px;
+    font-family: 'Fredoka One', cursive;
+    align-items: center;
+}
+
+.modal__btn-other-form {
+    color: #017033b7;
+    text-decoration: none;
+}
+
+.session-errors {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: rgb(129, 129, 129);
+}
