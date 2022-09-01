@@ -35,9 +35,7 @@ const DictionaryWindow = (props) => {
     if (synonyms === undefined || synonyms.length)
         {(display = (
                 synMap.map( (syn, i) => (
-                    // <li key={`${syn}-${i}`}>
-                        <span key={`${syn}-${i}`} id="synonym">{syn} </span> 
-                    // </li>
+                    <button key={`${syn}-${i}`} id="syn-item" onClick={handlePrevQuery} value={syn}>{syn}</button>
                 ))
         ))}
     
