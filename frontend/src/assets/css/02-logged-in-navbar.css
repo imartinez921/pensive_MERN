@@ -6,22 +6,28 @@
     position: sticky;
     top: 0;
     justify-content: space-around;
-    /* border-right: 1px solid #9aa676;; */
-    box-shadow: 0px 0px 20px #aab48c; 
-    background: #aab48c;
+    box-shadow: 0px 0px 20px rgba(165, 136, 93, 0.3); 
+    background-color: rgba(165, 136, 93, 0.3);
 }
 
 .logged-in-navbar button{
-    /* width: 60px; */
-    margin: 0 auto;
-    font-size: 16px;
-    background: transparent;
-    border: 1px solid gray;
-    padding: 5px;
-    border-radius: 15px;
+    display: flex;
+    border: 2px solid #FED168;
+    height: 50px;
+    width: 80px;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 30px;
+    font-size: 20px;
+    background-color: rgb(32, 80, 67);
+    color: #FED168;
+    transition: .2s;
+    margin: auto;
 }
-.logged-in-navbar a{
-    text-decoration: none;
-    color: rgba(41,41,41,1);
-    margin: 0 auto;
+
+.logged-in-navbar button:hover{
+    background-color: #FED168;
+    border-color: rgb(32, 80, 67);
+    color: rgb(32, 80, 67);
 }

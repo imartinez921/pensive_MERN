@@ -12,3 +12,4 @@ export const openModal = (formType, props=null) => ({
 export const closeModal = () => ({
     type: CLOSE_MODAL
 }); 
+

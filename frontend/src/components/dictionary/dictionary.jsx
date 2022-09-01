@@ -1,4 +1,5 @@
 import React from "react";
+import DictionaryWindow from "./definition_window";
 
 class Dictionary extends React.Component {
   constructor(props) {
@@ -8,17 +9,20 @@ class Dictionary extends React.Component {
       query: '', 
     };
 
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDefine = this.handleDefine.bind(this);
+    this.handleThesaurus = this.handleThesaurus.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.handleClear = this.handleClear.bind(this);
+    this.handlePrevQuery = this.handlePrevQuery.bind(this);
   }
 
   componentDidMount() {
-    // this.props.lookupWord(this.state.query);
+    // this.props.defineWord(this.state.query);
   }
 
   componentDidUpdate(prevProps, prevState) {
     // if (prevState.query !== this.state.query) {
-    //   this.props.lookupWord(this.state.query);
+    //   this.props.defineWord(this.state.query);
     // }
   }
 
@@ -28,28 +32,65 @@ class Dictionary extends React.Component {
     };
   }
 
+  handlePrevQuery (e) {
+    console.log(e.target.value)
+    e.preventDefault();
+    this.setState({ query: `${e.target.value}`});
+  }
+
   handleKeyPress(event) {
     if (event.key === "Enter") {
-      this.handleSubmit(event);
+      this.handleDefine(event);
     }
   }
 
-  handleSubmit (e) {
+  handleClear (e) {
     e.preventDefault();
+    this.setState({ query: ''});
+    this.props.resetQueries();
+  }
 
-    this.props.lookupWord(this.state.query);
+  handleDefine (e) {
+    e.preventDefault();
+    let query = this.state.query;
+    if (query === query.toUpperCase()) {
+      query = query.toLowerCase();
     }
+
+    this.props.defineWord(query);
+  }
+
+  handleThesaurus (e) {
+    e.preventDefault();
+    let query = this.state.query;
+    if (query === query.toUpperCase()) {
+      query = query.toLowerCase();
+    }
+
+    this.props.synWord(query);
+    // this.props.fetchAntonyms(query);
+  }
 
 
   render() {
     console.log('DICTIONARY HAS RENDERED')
 
+    const {queries,
+      definitions,
+      errors,
+      synonyms,
+      antonyms,
+      lastQuery,
+    } = this.props;
+
+    const wordUrl = 'https://www.wordnik.com/words/' + `${lastQuery}`
+
     const dictionaryForm = (
       <form>
-        <p /><label>Define a word
+        <p /><label>Lookup a word
           <p /><input 
             type="text" 
-            placeholder="Define a word"
+            placeholder="Lookup a word"
             value={this.state.query} 
             onChange={this.handleInput('query')}
             onKeyPress={this.handleKeyPress}
@@ -62,7 +103,12 @@ class Dictionary extends React.Component {
       <div>
         <div>
           {dictionaryForm}
-          <button onClick={this.handleSubmit}>Define</button>
+          <button onClick={this.handleDefine}>Define</button>
+          <button onClick={this.handleThesaurus}>Thesaurus</button>
+          <button onClick={this.handleClear}>Clear history</button>
+        </div>
+        <div>
+          <DictionaryWindow errors={errors} handlePrevQuery={this.handlePrevQuery} wordUrl={wordUrl} queries={queries} definitions={definitions} synonyms={synonyms} anytonyms={antonyms} />
         </div>
       </div>
     )

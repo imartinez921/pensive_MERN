@@ -18,7 +18,7 @@ class LoggedInNavbar extends React.Component {
         return (
             <div className="logged-in-navbar">
                 <button onClick={this.logoutUser}>Logout</button>
-                <Link to={"/new_book"}>Create a Book</Link>
+                {/* <Link to={"/new_book"}>Create a Book</Link> */}
             </div>
         )
     }
