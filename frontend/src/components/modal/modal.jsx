@@ -3,23 +3,29 @@ import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import LoginFormContainer from '../session/login_form_container';
 import SignupFormContainer from '../session/signup_form_container';
+import CreateCharacterForm from '../characters/create_character_form';
 import '../../assets/css/05-modal.css';
 
-const Modal = ({modal, closeModal}) => {
-  if (!modal) return null;
+const Modal = (props) => {
+  if (!props.modal) return null;
 
   let component;
-  switch(modal) {
+  switch(props.modal.type) {
     case 'login':
       component = <LoginFormContainer />;
       break;
     case 'signup':
       component = <SignupFormContainer />;
       break;
+    case 'createCharacter':
+      component = <CreateCharacterForm />;
     default:
       return null;
   }
 
+  const closeModal = () => {
+    props.closeModal();
+  }
 
     return (
       <div className="modal-background" onClick={closeModal}>

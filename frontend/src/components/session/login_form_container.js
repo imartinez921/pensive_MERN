@@ -20,7 +20,7 @@ const mapDispatchToProps = (dispatch) => {
       <a
         href="#"
         className="modal__btn-other-form"
-        onClick={() => dispatch(openModal('signup'))}>
+        onClick={() => dispatch(openModal('signup', {}))}>
         Sign up
       </a>
     ),
