@@ -65,11 +65,6 @@ router.patch('/:id', passport.authenticate("jwt", { session: false }),
   debugger
   Book.findById(req.params.id)
     .then(book => {
-        // console.log("HERE");
-        // console.log(req.user.id);
-        // console.log(book)
-        // book = book || req.body
-        // console.log(book)
         book.title = req.body.title;
         book.editor = req.body.editor;
         book.genre = req.body.genre; 

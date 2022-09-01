@@ -1,0 +1,61 @@
+.modal-background {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(137, 137, 137, 0.7);
+    z-index: 10;
+  }
+
+.modal-child {
+background-color: #EBE2D9;
+position: absolute;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+border-radius: 5%;
+padding: 20px;
+}
+
+
+.create-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#name, #age, #height, #weight, #species, #description {
+    border-radius: 5px;
+    border: 1px solid rgb(0, 0, 0);
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+
+#label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#name:focus, #age:focus, #height:focus, #weight:focus, #species:focus, #description:focus {
+    outline: none;
+}
+
+.character-create-button {
+    padding: 15px;
+    background-color: #D2E1E9;
+    border: 0;
+    border-radius: 5px;
+    font-family: 'Fredoka One', cursive;
+    font-size: 20px;
+    color: #636160;
+    cursor: pointer;
+    font-weight: bold;
+}

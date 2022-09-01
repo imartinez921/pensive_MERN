@@ -1,25 +1,32 @@
 import {
-    RECEIVE_USER_CHARACTERS,
+    RECEIVE_BOOK_CHARACTERS,
     RECEIVE_NEW_CHARACTER,
     DELETE_CHARACTER
   } from "../actions/character_actions";
+import { RECEIVE_USER_BOOKS } from "../actions/book_actions";
   
   const CharactersReducer = (
-    state = { all: {}, user: {}, new: undefined },
+    state = {},
     action
   ) => {
     Object.freeze(state);
     let newState = Object.assign({}, state);
     switch (action.type) {
-      case RECEIVE_USER_CHARACTERS:
-        newState.user= action.characters.data;
+      case RECEIVE_BOOK_CHARACTERS:
+        debugger
+       Object.values(action.characters).forEach(character=> {
+          newState[character._id] = character;
+      })
         return newState;
       case RECEIVE_NEW_CHARACTER:
-        newState.new = action.character.data;
+        debugger
+        newState[action.character._id] = action.character;
         return newState;
       case DELETE_CHARACTER:
-        delete newState.user[action.characterId];
+        delete newState[action.characterId];
         return newState;
+      case RECEIVE_USER_BOOKS:
+        return {};
       default:
         return state;
     }

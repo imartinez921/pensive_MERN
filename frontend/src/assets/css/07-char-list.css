@@ -1,0 +1,20 @@
+#add-char-icon {
+    text-decoration: none;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 50px;
+    position: relative;
+    cursor: pointer;
+}
+
+#add:hover {
+    color: #636160;
+}
+
+#add-char-icon h3{
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    margin-bottom: 20px;
+}
