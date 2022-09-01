@@ -56,7 +56,7 @@ class SessionForm extends React.Component {
       .then(this.props.closeModal)
     ) : (
       this.props.processForm(this.state)
-      .then(this.props.openModal("login"))
+      .then(this.props.openModal)
           )
   }
 
