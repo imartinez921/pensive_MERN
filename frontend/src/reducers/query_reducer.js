@@ -15,13 +15,13 @@ const queryReducer = (prevState = [], action) => {
     case RECEIVE_DEFINITIONS:
         query = action.definitions[0].word
         if (!newState.includes(query)) {
-            newState.push(query);
+            newState.unshift(query);
         }
         return newState;
     case RECEIVE_SYNONYMS:
         query = action.synonyms.query
         if (!newState.includes(query)) {
-            newState.push(query);
+            newState.unshift(query);
         }
         return newState;
     case CLEAR_QUERIES:

@@ -1,0 +1,106 @@
+div {
+    border-radius: 5px;
+}
+
+label {
+    color: #685126;
+}
+
+.dictionary {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 5px;
+    background: #685126;
+    width: 350px;
+    height: 450px;
+}
+
+input {
+    padding: 10px;
+    background: #EDD9AB;
+    width: 100%;
+    font-family: Trebuchet MS;
+}
+
+button {
+    border-radius: 5px;
+    font-family: Trebuchet MS;
+    background: #EDD9AB;
+    padding: 7px;
+}
+
+button:hover {
+    background: #FED168
+}
+
+h3 {
+    font-size: 15px;
+    font-weight: 700px;
+}
+
+.dict-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.attribution-footer {
+    text-align: center;
+    padding: 2px;
+    background: #EDD9AB;
+    width: 150px;
+}
+
+.search-results {
+    width: 325px;
+    height: 325px;
+    padding: 5px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #EDD9AB;
+    margin-bottom: 8px;
+}
+
+.search-results span {
+    font-family: Trebuchet MS;
+    font-size: 12px;
+   color: black;
+}
+
+.search-results h3 {
+    text-align: center;
+}
+
+a {
+    font-family: Trebuchet MS;
+    font-size: 12px;
+    color: olive;
+}
+
+a:hover {
+    background-color: #FED168
+}
+
+.queries {
+    width: 325px;
+    height: 20px;
+    padding: 5px;
+    background-color: #EDD9AB;
+    margin-bottom: 5px;
+    overflow: auto;
+}
+
+#query-item {
+    background: none;
+    color: olive;
+    border: none;
+    padding: 2px;
+}
+
+#query-item:hover {
+    background-color: #FED168
+}
