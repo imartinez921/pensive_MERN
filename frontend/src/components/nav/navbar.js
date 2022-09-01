@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import ModalContainer from "../modal/modal";
+import "../../assets/css/05-landing-page.css"
 
 class NavBar extends React.Component {
   constructor(props) {
