@@ -8,6 +8,7 @@ import ModalContainer from "../components/modal/modal";
 import MainPage from "./main/main_page";
 import MainDashboard from "./main-dashboard/main_dashboard";
 import BookComposeContainer from "./books/book_compose_container";
+import DictionaryContainer from "./dictionary/dictionary_container";
 import BookEditContainer from "./books/edit_book_container";
 import WritingPageContainer from "./writing-page/writing-page-container";
 
@@ -18,6 +19,7 @@ const App = () => (
     <Switch>
       <AuthRoute exact path="/" component={MainPage} />
       <ProtectedRoute exact path="/profile" component={MainDashboard} />
+      <ProtectedRoute exact path="/define" component={DictionaryContainer} />
       <ProtectedRoute exact path="/writing_page/:id" component={WritingPageContainer} />
       <ProtectedRoute
         exact

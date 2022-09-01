@@ -1,0 +1,35 @@
+.logged-out-navbar {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #EDD9AB;
+    background-image: url('../images/pensiveTransparent.png');
+    background-size: auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+}
+.signup-btn, .login-btn{
+    display: flex;
+    margin: 50px 50px;
+    border: 2px solid rgb(32, 80, 67);
+    height: 50px;
+    width: 100px;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 30px;
+    font-size: 20px;
+    font-family: cursive;
+    color: rgb(32, 80, 67);
+    transition: .3s;
+}
+
+.signup-btn:hover,
+.login-btn:hover{
+    background: rgb(32, 80, 67);
+    color: #EBE2D9;
+}

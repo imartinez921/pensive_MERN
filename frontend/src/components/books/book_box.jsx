@@ -26,9 +26,12 @@ class BookBox extends React.Component {
     
     return (
       <div className="individual-book">
-        <button id="delete-button" onClick={() => this.props.removeBook(this.props.id)}><RiDeleteBin5Line /></button>
-        <button id="edit-button" onClick={this.handleClick}><FaEdit/></button>
         <Link to={`/writing_page/${this.props.id}`} className="book-title-link">{this.props.text}</Link>
+        <div className="book-buttons-container">
+          <button id="delete-button" onClick={() => this.props.removeBook(this.props.id)}><RiDeleteBin5Line /></button>
+          <button id="edit-button" onClick={this.handleClick}><FaEdit/></button>
+        </div>
+
       </div>
     );
   }

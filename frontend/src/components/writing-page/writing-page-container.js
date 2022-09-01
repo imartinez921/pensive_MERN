@@ -3,7 +3,6 @@ import WritingPage from "./writing-page";
 
 
 const mapStateToProps = (state, ownProps) =>{ 
-    debugger
     return({
         book: state.books[ownProps.match.params.id]
     })
