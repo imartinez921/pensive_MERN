@@ -1,7 +1,7 @@
 import React from 'react';
 import parse from "html-react-parser";
 import ExternalLink from '../external_link';
-
+import '../../assets/css/06-dictionary.css'
 
 const DictionaryWindow = (props) => {    
     const { errors,
@@ -18,32 +18,25 @@ const DictionaryWindow = (props) => {
     let display;
     if (errors === undefined || errors.length !== 0)
         {(display = (
-            errors.map( (err, i) => (
-                <li key={`${err}-${i}`}>
-                    <span>{err}</span>
-                </li>
-            ))
+            <span>{errors[0]}</span>
         ))}
     if (definitions === undefined || definitions.length)
         {(display = (
             definitions.map( (def, i) => (
                 <li key={`${def.definition}-${i}`}>
-                    <p/>
                     <span id="part-of-speech">({def.partOfSpeech})</span> <span id='definition-text'>"{parse(def.definition)}" </span>
                     <ExternalLink url={def.sourceUrl}>From {def.sourceName}</ExternalLink>
                     <p/>
                 </li>
             ))
         ))}
+    let relationshipType = synonyms[0];
+    const synMap = synonyms.slice(1);
     if (synonyms === undefined || synonyms.length)
         {(display = (
-            synonyms.map( (syn, i) => (
-                <li key={`${syn}-${i}`}>
-                    <p/>
-                    <span id="synonym">{syn}</span>
-                    <p/>
-                </li>
-            ))
+                synMap.map( (syn, i) => (
+                    <button key={`${syn}-${i}`} id="syn-item" onClick={handlePrevQuery} value={syn}>{syn}</button>
+                ))
         ))}
     
     let displayQueries;
@@ -57,19 +50,20 @@ const DictionaryWindow = (props) => {
             ))
         ))}
 
-    const query = 'bluebird'
     return (
-        <div>
-            <ol>
+        <>
+            <div className='search-results'>
+                <h3>{relationshipType}</h3>
                 {display}
-            </ol>
-            <div>
-                {displayQueries}
-                <button onClick={handlePrevQuery} value={query}>yellow</button>
             </div>
-            <ExternalLink url={wordUrl}>Powered by </ExternalLink>
-            <img src="https://www.wordnik.com/img/wordnik-logo-300px.png" alt="WordNik" width='50'/>
-        </div>
+            <div className='queries'>
+                {displayQueries}
+            </div>
+            <div className='attribution-footer'>
+                <ExternalLink url={wordUrl}>Powered by </ExternalLink>
+                <img src="https://www.wordnik.com/img/wordnik-logo-300px.png" alt="WordNik" width='50'/>
+            </div>
+        </>
     )
 }
 
