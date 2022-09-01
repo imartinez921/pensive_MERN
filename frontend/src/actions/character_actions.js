@@ -48,8 +48,9 @@ export const fetchCharacterById = (id) => (dispatch) =>
 
 export const composeCharacter = (data) => (dispatch) =>
   writeCharacter(data)
-    .then((character) => dispatch(receiveNewCharacter(character.data)),
-      (err) => dispatch(receiveCharacterErrors(err.response.data)));
+    // .then((character) => console.log(character))
+  .then((character) => dispatch(receiveNewCharacter(character.data)),
+    (err) => dispatch(receiveCharacterErrors(err.response.data)));
 
 export const removeCharacter = (id) => (dispatch) => 
   deleteCharacter(id)

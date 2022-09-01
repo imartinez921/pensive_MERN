@@ -33,9 +33,9 @@ router.post(
     const { errors, isValid } = validateCharacterInput(req.body);
 
     if (!isValid) {
-      return res.status(400).json(errors);
+      return res.status(404).json(errors);
     }
-
+    debugger
     const newCharacter = new Character({
       name: req.body.name,
       age: req.body.age,
@@ -46,6 +46,7 @@ router.post(
       description: req.body.description,
       book: req.book.id
     });
+
 
     newCharacter.save().then((character) => res.json(character));
   }

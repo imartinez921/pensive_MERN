@@ -1,60 +1,84 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect, useRef} from "react";
+import { Link , useHistory} from "react-router-dom";
 import "../../assets/css/04-writing-page.css";
 import { useQuill } from 'react-quilljs';
 import 'quill/dist/quill.snow.css'; // Add css for snow theme 
 import axios from "axios";
 import { updateBook } from "../../util/book_api_util";
-import CharacterListContainer from "../characters/character_list"
+import CharacterListContainer from "../characters/character_list";
+import { connect, useDispatch } from "react-redux";
+import { BsFillBackspaceFill } from 'react-icons/bs';
 
 const WritingPage = (props) => {
-    // let {book} = props;
     
-    // const { quill, quillRef } = useQuill();
+    let {book,bookId, fetchBookById} = props;
 
-    // //current state, updating the current state
-    // const [content, setContent] = useState();   
-
-    // React.useEffect(() => {
-    //     if (quill) {
-    //         quill.root.innerHTML = book.content;
-    //         quill.on('text-change', () => {
-    //             setContent(quill.getText());
-    //             book.content = quill.root.innerHTML;
-    //         });
-    //     }
-    // }, [quill]);
+    const { quill, quillRef } = useQuill();
 
 
+    const [currentBook, setCurrentBook] = useState(book)
 
-    // // Save to the database
-    // const onSubmit = (e) =>{
-    //     e.preventDefault();
-    //     book={
-    //         title: book.title,
-    //         editor: book.editor,
-    //         genre: book.genre,
-    //         author: book.author,
-    //         description: book.description,
-    //         content: book.content,
-    //         id: book._id
-    //     }
-    //     updateBook(book);
-    //     setContent("");
-    //     quill.root.innerHTML = "";
-    // }
+    useEffect(()=>{
+            setCurrentBook(JSON.parse(window.localStorage.getItem('currentBook')))
+    },[])
 
-        return (
+    useEffect(() => {
+        window.localStorage.setItem('currentBook', JSON.stringify(currentBook))
+    }, [currentBook])
+
+
+    React.useEffect(() => {
+        if (quill) {
+            quill.root.innerHTML = currentBook.content;
+            quill.on('text-change', () => {
+                currentBook.content = quill.root.innerHTML;
+            });
+        }
+    }, [quill]);
+
+    // Save to the database
+    const onSubmit = (e) =>{
+        e.preventDefault();
+        book={
+            title: currentBook.title,
+            editor: currentBook.editor,
+            genre: currentBook.genre,
+            author: currentBook.author,
+            description: currentBook.description,
+            content: currentBook.content,
+            id: currentBook._id
+        }
+        updateBook(book);
+        quill.root.innerHTML = "";
+    }
+
+    const history = useHistory();
+
+    const handleClick = () => {
+        history.push("/profile")
+    };
+
+
+
+    return (
                 <div className="writing-page-main-container">
-                    <div className="left-container-temp"></div>
+                     <div className="left-container-temp">
+                    <div id="back-to-profile">
+                        <button onClick={handleClick}><BsFillBackspaceFill /></button>
+                    </div>
+                    </div>
                     <div className="middle-container-temp">
                         <div id="writing-piece">
-                            {/* <div ref={quillRef} /> */}
+                            <div ref={quillRef} />
                         </div>
-                        {/* <button type="submit" value="save" onClick={onSubmit}>Save</button> */}
+                        <button type="submit" value="save" onClick={onSubmit}>Save</button>
                     </div>
-                    <div className="right-container-temp" ></div>
-                    <div><CharacterListContainer bookId={props.book._id} book ={props.book} /></div>
+            <div className="right-container-temp" >
+                <div>
+                    <CharacterListContainer bookId={currentBook._id} book={currentBook} />
+                </div>
+            </div>
+                    
                 </div>
         )
 }

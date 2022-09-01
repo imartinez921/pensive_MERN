@@ -1,6 +1,7 @@
 import React from "react";
 import CreateCharacterForm from '../characters/create_character_form';
 
+
 const Modal = (props) => {
     if (!props.modal) return null;
 

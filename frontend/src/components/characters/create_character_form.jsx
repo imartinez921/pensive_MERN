@@ -3,7 +3,8 @@ import { connect, useDispatch } from "react-redux";
 import { composeCharacter } from "../../actions/character_actions";
 import { openModal, closeModal } from "../../actions/modal_actions";
 import { clearErrors } from "../../actions/character_actions";
-
+import '../../assets/css/06-create-char-form.css';
+import {AiOutlineCloseCircle} from "react-icons/ai"
 
 const CreateCharacterForm = (props) => {
     const dispatch = useDispatch();
@@ -44,10 +45,10 @@ const CreateCharacterForm = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         props.composeCharacter(state).then((resp) => {
-            if (resp.type !== "RECEIVE_CHARACTER_ERRORS") {
+            // if (resp.type !== "RECEIVE_CHARACTER_ERRORS") {
                 props.closeModal();
                 props.renderCharacters();
-            }
+            // }
         })
     }
     const closeModal = () => {
@@ -57,23 +58,26 @@ const CreateCharacterForm = (props) => {
     const render = () => {
         return (
             <div className="character-form">
-                <div onClick={closeModal}>close</div>
-                <div className="create-title">Create a character for your book</div>
-                <div>
+                <div onClick={closeModal}><AiOutlineCloseCircle/></div>
+                <div className="create-title">Create a character</div>
+                <div >
                     <form onSubmit={handleSubmit}>
+                        <label id = "label">Name: </label>
                         <input
                             type='text'
                             onChange={update("name")}
-                            placeholder = {"character's name"}
-                        />
-                        <br />
+                            id = "name"
+                            />
+                        <label id = "label">Age: </label>
                         <input
-                            type='text'
+                            type='number'
                             onChange={update("age")}
-                            placeholder = {"character's age"}
+                            min="0" max="500"
+                            name="age"
+                            id = "age"
                         />
                         <br />
-                        <label> Sex
+                        <label>Sex:
                             <div>
                                 <div>
                                     <input
@@ -108,28 +112,36 @@ const CreateCharacterForm = (props) => {
                             </div>
                         </label>
                         <br />
+                        <label id = "label">Height: </label>
                         <input
-                            type='text'
+                            type='number'
                             onChange={update("height")}
-                            placeholder = {"character's height"}
-                        />
+                            min="0"
+                            name="height"
+                            id="height"
+                        /><label>Cm</label>
                         <br />
+                        <label id = "label">Weight: </label>
                         <input
-                            type='text'
+                            type='number'
                             onChange={update("weight")}
-                            placeholder = {"character's weight"}
-                        />
+                            min="0"
+                            name="weight"
+                            id = "weight"
+                        /><label>Kg</label>
                         <br />
+                        <label id = "label">Species: </label>
                         <input
                             type='text'
                             onChange={update("species")}
-                            placeholder = {"character's species"}
+                           id = "species"
                         />
                         <br />
-                        <input
+                        <label id = "label">Description: </label>
+                        <textarea
                             type='text'
                             onChange={update("description")}
-                            placeholder = {"character's description"}
+                            id = "description"
                         />
                         <div className="character-errors">
                             {renderErrors()}

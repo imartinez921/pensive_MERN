@@ -27,7 +27,6 @@ class Profile extends React.Component {
   }
 
   render() {
-    console.log(this.props)
     if (this.state.books.length === 0) {
       return <div>You have no Books</div>;
     } else {

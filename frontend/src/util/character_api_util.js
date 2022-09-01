@@ -10,6 +10,7 @@ export const getCharacter = (charId) => {
 }
 
 export const writeCharacter = (data) => {
+  debugger
   return axios.post("/api/characters/", data);
 };
 
