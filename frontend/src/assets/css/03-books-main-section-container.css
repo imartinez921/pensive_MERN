@@ -1,9 +1,10 @@
 .books-main-section-container{
     min-width: 600px;
+    width: 60%;
     text-align: center;
     padding-top: 60px;
-    background: #aab48c;
-    box-shadow: 0px 0px 20px #aab48c;
+    background-color: rgba(165,136,93,0.3); 
+    box-shadow: 0px 0px 20px rgba(165, 136, 93, 0.3);
 }
 
 .books-main-section-container h2{
@@ -17,8 +18,8 @@
 .temporary{
     height: 100vh;
     width: 200px;
-    box-shadow: 0px 0px 20px #aab48c;
-    background: #aab48c;
+    box-shadow: 0px 0px 20px rgba(165, 136, 93, 0.3);
+    background-color: rgba(165, 136, 93, 0.3); /*dark brown*/
 }
 
 .all-books-container{
@@ -28,19 +29,40 @@
 }
 
 .individual-book{
-    height: 140px;
-    width: 100px;
+    height: 170px;
+    width: 130px;
     margin: auto;
-    background: darkolivegreen;
+    background: rgb(85, 107, 47);
     border-bottom-left-radius: 5px;
     border-top-left-radius: 5px;
     text-align: center;
     font-size: 20px;
     display: flex;
+    transition: .3s;
     flex-direction: column;
     justify-content: end;
     box-shadow: 1px 1px 1px 0px rgb(255 255 255), 2px 2px 1px 0px rgb(0 0 0), 3px 3px 1px 0px rgb(255 255 255), 4px 4px 1px 0px rgb(0 0 0), 4px 4px 3px 1px rgb(0 0 0);
-    
+}
+
+.individual-book:hover{
+    background: rgba(89,110,50,1);
+}
+
+.add-book{
+    height: 170px;
+    width: 130px;
+    border: 3px solid rgba(89, 110, 50, 1);
+    border-radius: 15px;
+    text-decoration: none;
+    color: rgba(89,110,50,1);
+    margin: auto;
+    font-size: 100px;
+    transition: .2s;
+    line-height: 1.5em;
+}
+.add-book:hover{
+    border-color: #FED168;
+    color: #FED168;
 }
 
 .book-buttons-container{
@@ -59,7 +81,12 @@
 }
 
 .book-title-link{
+    display: flex;
+    height: 100%;
+    width: 100%;
     text-decoration: none;
     color: white;
     font-family: sans-serif;
+    justify-content: center;
+    align-items: center;
 }
