@@ -16,11 +16,11 @@ const DictionaryWindow = (props) => {
     console.log('THESE ARE ERRORS', errors);
 
     let display;
-    if (errors === undefined || errors.length !== 0)
+    if (errors !== undefined || errors.length !== 0)
         {(display = (
             <span>{errors[0]}</span>
         ))}
-    if (definitions === undefined || definitions.length)
+    if (definitions !== undefined || definitions.length)
         {(display = (
             definitions.map( (def, i) => (
                 <li key={`${def.definition}-${i}`}>
@@ -40,7 +40,7 @@ const DictionaryWindow = (props) => {
         ))}
     
     let displayQueries;
-    if (queries === undefined || queries.length !== 0)
+    if (queries !== undefined || queries.length !== 0)
         {
             (displayQueries = (
             queries.map( (query, i) => (
