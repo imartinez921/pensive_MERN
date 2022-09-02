@@ -8,6 +8,7 @@ import { updateBook } from "../../util/book_api_util";
 import CharacterListContainer from "../characters/character_list";
 import { connect, useDispatch } from "react-redux";
 import { BsFillBackspaceFill } from 'react-icons/bs';
+import DictionaryContainer from "../dictionary/dictionary_container";
 
 const WritingPage = (props) => {
     
@@ -71,11 +72,14 @@ const WritingPage = (props) => {
                         <div id="writing-piece">
                             <div ref={quillRef} />
                         </div>
-                        <button type="submit" value="save" onClick={onSubmit}>Save</button>
+                        <button type="submit" value="save" onClick={onSubmit} className="save-book-writing">Save</button>
                     </div>
             <div className="right-container-temp" >
                 <div>
-                    <CharacterListContainer bookId={currentBook._id} book={currentBook} />
+                    {/* <CharacterListContainer bookId={currentBook._id} book={currentBook} /> */}
+                </div>
+                <div className="dictionary-container-mood">
+                    <DictionaryContainer />
                 </div>
             </div>
                     

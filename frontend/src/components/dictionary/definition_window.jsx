@@ -24,7 +24,7 @@ const DictionaryWindow = (props) => {
         {(display = (
             definitions.map( (def, i) => (
                 <li key={`${def.definition}-${i}`}>
-                    <span id="part-of-speech">({def.partOfSpeech})</span> <span id='definition-text'>"{parse(def.definition)}" </span>
+                    <span className="part-of-speech">({def.partOfSpeech})</span> <span className='definition-text'>"{parse(def.definition)}" </span>
                     <ExternalLink url={def.sourceUrl}>From {def.sourceName}</ExternalLink>
                     <p/>
                 </li>
@@ -35,7 +35,7 @@ const DictionaryWindow = (props) => {
     if (synonyms === undefined || synonyms.length)
         {(display = (
                 synMap.map( (syn, i) => (
-                    <button key={`${syn}-${i}`} id="syn-item" onClick={handlePrevQuery} value={syn}>{syn}</button>
+                    <button key={`${syn}-${i}`} className="syn-item" onClick={handlePrevQuery} value={syn}>{syn}</button>
                 ))
         ))}
     
@@ -44,7 +44,7 @@ const DictionaryWindow = (props) => {
         {
             (displayQueries = (
             queries.map( (query, i) => (
-                <button key={`${query}-${i}`} id="query-item" onClick={handlePrevQuery} value={query}>
+                <button key={`${query}-${i}`} className="query-item" onClick={handlePrevQuery} value={query}>
                    {query}
                 </button>
             ))
@@ -59,10 +59,7 @@ const DictionaryWindow = (props) => {
             <div className='queries'>
                 {displayQueries}
             </div>
-            <div className='attribution-footer'>
-                <ExternalLink url={wordUrl}>Powered by </ExternalLink>
-                <img src="https://www.wordnik.com/img/wordnik-logo-300px.png" alt="WordNik" width='50'/>
-            </div>
+
         </>
     )
 }

@@ -1,4 +1,4 @@
-
+/* 
 div.dictionary {
     border-radius: 5px;
 }
@@ -122,4 +122,82 @@ h3 {
 
 #syn-item:hover {
     background-color: rgba(254, 209, 104, 1)
+} */
+
+
+
+
+
+
+.dictionary{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+}
+.dictionary-form{
+    margin-top: 2rem;
+}
+.dictionary-form p{
+    font-size: 20px;
+    font-family: sans-serif;
+    font-weight: lighter;
+}
+.dictionary-form input{
+    outline: none;
+    height: 25px;
+    width: 100%;
+    border-radius: 10px;
+    border: none;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0px 0px 10px 0px lightgrey;
+    padding-left: 10px;
+}
+
+.search-results{
+    text-align: left;
+    height: 300px;
+    width: 250px;
+    overflow: overlay;
+    margin-top: 15px;
+    margin-bottom: 25px;
+    border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+    padding-right: 15px;
+}
+
+.search-results li{
+    margin-top: 15px;
+    font-family: monospace;
+}
+.search-results a{
+    color: rgb(39, 142, 115);
+}
+
+.dict-buttons button{
+    background: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(235, 226, 217, 1);
+    border-radius: 5px;
+    margin-left: 4px;
+    margin-right: 4px;
+    transition: .3s;
+}
+
+.dict-buttons button:hover{
+    background: rgb(32, 80, 67);
+    border-color: rgb(32, 80, 67);
+    color: rgba(235, 226, 217, 1);
+}
+.part-of-speech{
+    font-weight: 600;
+}
+.queries button{
+    background: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(235, 226, 217, 1);
+    border-radius: 10px;
+    margin-left: 4px;
+    margin-right: 4px;
 }
