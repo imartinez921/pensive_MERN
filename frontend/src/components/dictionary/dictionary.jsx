@@ -1,5 +1,6 @@
 import React from "react";
 import DictionaryWindow from "./definition_window";
+import '../../assets/css/06-dictionary.css'
 
 class Dictionary extends React.Component {
   constructor(props) {
@@ -86,6 +87,7 @@ class Dictionary extends React.Component {
     const wordUrl = 'https://www.wordnik.com/words/' + `${lastQuery}`
 
     const dictionaryForm = (
+      <div>
       <form>
         <p /><label>Lookup a word
           <p /><input 
@@ -97,19 +99,18 @@ class Dictionary extends React.Component {
           />
         </label>
       </form>
+      </div>
     )
 
     return (
-      <div>
-        <div>
-          {dictionaryForm}
+      <div className="dictionary">
+        {dictionaryForm}
+        <div className="dict-buttons">
           <button onClick={this.handleDefine}>Define</button>
           <button onClick={this.handleThesaurus}>Thesaurus</button>
           <button onClick={this.handleClear}>Clear history</button>
         </div>
-        <div>
           <DictionaryWindow errors={errors} handlePrevQuery={this.handlePrevQuery} wordUrl={wordUrl} queries={queries} definitions={definitions} synonyms={synonyms} anytonyms={antonyms} />
-        </div>
       </div>
     )
   }
