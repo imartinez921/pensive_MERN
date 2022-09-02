@@ -27,11 +27,13 @@ router.post(
   "/",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
+    console.log(req);
     const { errors, isValid } = validateBookInput(req.body);
 
     if (!isValid) {
       return res.status(404).json(errors);
     }
+   
 
     const newBook = new Book({
       title: req.body.title,
@@ -62,7 +64,6 @@ router.patch('/:id', passport.authenticate("jwt", { session: false }),
   if (!isValid) {
     return res.status(400).json(errors);
   } 
-  debugger
   Book.findById(req.params.id)
     .then(book => {
         book.title = req.body.title;

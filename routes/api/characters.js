@@ -35,7 +35,6 @@ router.post(
     if (!isValid) {
       return res.status(404).json(errors);
     }
-    debugger
     const newCharacter = new Character({
       name: req.body.name,
       age: req.body.age,
@@ -44,7 +43,7 @@ router.post(
       weight: req.body.weight,
       species: req.body.species,
       description: req.body.description,
-      book: req.book.id
+      book: req.body.book
     });
 
 
