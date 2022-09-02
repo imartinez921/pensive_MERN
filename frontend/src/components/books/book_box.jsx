@@ -35,5 +35,4 @@ class BookBox extends React.Component {
     );
   }
 }
-
 export default BookBox;
