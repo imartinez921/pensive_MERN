@@ -1,6 +1,6 @@
 import React from "react";
 import DictionaryWindow from "./definition_window";
-import '../../assets/css/06-dictionary.css'
+import '../../assets/css/08-dictionary.css'
 
 class Dictionary extends React.Component {
   constructor(props) {
@@ -88,16 +88,15 @@ class Dictionary extends React.Component {
 
     const dictionaryForm = (
       <div>
-      <form>
-        <p /><label>Lookup a word
-          <p /><input 
+      <form className="dictionary-form">
+        <p>Find new meanings</p>
+        <input 
             type="text" 
             placeholder="Lookup a word"
             value={this.state.query} 
             onChange={this.handleInput('query')}
             onKeyPress={this.handleKeyPress}
           />
-        </label>
       </form>
       </div>
     )

@@ -6,20 +6,17 @@
 .left-container-temp{
     height: 100vh;
     width: 100px;
-    background: lightblue;
 }
 
 .middle-container-temp {
     padding-top: 30px;
-    height: 100vh;
-    width: 50%;
-    background: lightblue;
+    /* height: 100vh; */
+    width: 70%;
 }
 
 .right-container-temp {
     height: 100vh;
-    width: 20%;
-    background: lightblue;
+    min-width: 320px;
 }
 
 #writing-piece{
@@ -27,4 +24,55 @@
     height: 80%;
     display: flex;
     flex-direction: column;
+}
+
+#writing-piece div:first-child{
+    border: none;
+    border-bottom: none;
+    box-shadow: 0px 4px 13px -8px #888;
+   
+}
+.ql-toolbar{
+    text-align: center;
+}
+#back-to-profile button svg{
+    height: 30px;
+    width: 30px;
+    margin-top: 20px;
+    margin-left: 20px;
+    color: rgb(32, 80, 67);
+    transition: .3s;
+}
+
+#back-to-profile button svg:hover{
+    color: rgba(254, 209, 104, 1);
+}
+
+#back-to-profile button{
+    border: none;
+    background: transparent;
+}
+
+.save-book-writing{
+    display: flex;
+    border: 2px solid rgb(32, 80, 67);
+    height: 30px;
+    width: 80px;
+    justify-content: center;
+    border-radius: 30px;
+    font-size: 20px;
+    color: rgb(32, 80, 67);
+    transition: .3s;
+    cursor: pointer;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.save-book-writing:hover{
+    background: rgb(32, 80, 67);
+    color: rgba(235, 226, 217, 1);
+}
+
+.ql-container.ql-snow {
+    border: none !important;
 }

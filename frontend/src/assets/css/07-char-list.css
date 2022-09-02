@@ -12,9 +12,15 @@
 }
 
 #add-char-icon h3{
-    font-size: 1.5rem;
-    font-weight: bold;
+    font-size: 20px;
+    font-family: sans-serif;
+    font-weight: lighter;
     color: rgb(0, 0, 0);
     text-align: center;
     margin-bottom: 20px;
+}
+
+.character-show{
+    text-align: center;
+    font-family: sans-serif;
 }

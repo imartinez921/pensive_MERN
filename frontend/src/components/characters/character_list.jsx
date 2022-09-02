@@ -28,9 +28,8 @@ const CharactersList = (props) => {
 
     const display = (
         Object.values(props.characters).map(character => (
-            <div>
+            <div className="character-show">
                 <li>Name: {character.name}</li>
-                <li>Age: {character.age} years old</li>
             </div>
         ))
     )

@@ -2,7 +2,7 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: #EDD9AB;
+    background-color: rgba(237, 217, 171, 1);
     background-image: url('../images/pensiveTransparent.png');
     background-size: auto;
     background-position: center;
@@ -31,5 +31,5 @@
 .signup-btn:hover,
 .login-btn:hover{
     background: rgb(32, 80, 67);
-    color: #EBE2D9;
+    color: rgba(235, 226, 217, 1);
 }

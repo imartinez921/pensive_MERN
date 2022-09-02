@@ -1,0 +1,220 @@
+/* 
+div.dictionary {
+    border-radius: 5px;
+}
+
+.dictionary form {
+    padding: 0px;
+    margin: 0px;
+    text-align: center;
+    background-color: yel;
+}
+
+.dictionary label {
+    color: #685126;
+}
+
+.dictionary {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 5px;
+    background: #685126;
+    width: 350px;
+    height: 450px;
+}
+
+.dictionary input {
+    padding: 10px;
+    background: #EDD9AB;
+    width: 95%;
+    font-family: Trebuchet MS;
+}
+
+button {
+    border-radius: 5px;
+    font-family: Trebuchet MS;
+    background: #EDD9AB;
+    padding: 7px;
+}
+
+button:hover {
+    background: rgba(254, 209, 104, 1)
+}
+
+h3 {
+    font-size: 15px;
+    font-weight: 700px;
+}
+
+.dict-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.attribution-footer {
+    text-align: center;
+    padding: 2px;
+    background: #EDD9AB;
+    width: 150px;
+}
+
+.search-results {
+    width: 325px;
+    height: 325px;
+    padding: 5px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #EDD9AB;
+    margin-bottom: 8px;
+}
+
+.search-results span {
+    font-family: Trebuchet MS;
+    font-size: 12px;
+   color: black;
+}
+
+.search-results h3 {
+    text-align: center;
+}
+
+.dictionary a{
+    font-family: Trebuchet MS;
+    font-size: 12px;
+    color: olive;
+}
+
+.dictionary a:hover {
+    background-color: rgba(254, 209, 104, 1)
+}
+
+.queries {
+    width: 325px;
+    height: 20px;
+    padding: 5px;
+    background-color: #EDD9AB;
+    margin-bottom: 5px;
+    overflow: auto;
+}
+
+#query-item {
+    background: none;
+    color: olive;
+    border: none;
+    padding: 2px;
+}
+
+#query-item:hover {
+    background-color: rgba(254, 209, 104, 1)
+}
+
+#syn-item {
+    background: none;
+    color: olive;
+    border: none;
+    padding: 2px;
+}
+
+#syn-item:hover {
+    background-color: rgba(254, 209, 104, 1)
+} */
+
+
+
+
+
+
+.dictionary{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+}
+.dictionary-form{
+    margin-top: 2rem;
+}
+.dictionary-form p{
+    font-size: 20px;
+    font-family: sans-serif;
+    font-weight: lighter;
+}
+.dictionary-form input{
+    outline: none;
+    height: 25px;
+    width: 100%;
+    border-radius: 10px;
+    border: none;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0px 0px 10px 0px lightgrey;
+    padding-left: 10px;
+}
+
+.search-results{
+    text-align: left;
+    height: 300px;
+    width: 250px;
+    overflow: overlay;
+    margin-top: 15px;
+    margin-bottom: 25px;
+    border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+    padding-right: 15px;
+}
+
+.search-results li{
+    margin-top: 15px;
+    font-family: monospace;
+}
+.search-results a{
+    color: rgb(39, 142, 115);
+}
+
+.dict-buttons button{
+    background: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(235, 226, 217, 1);
+    border-radius: 5px;
+    margin-left: 4px;
+    margin-right: 4px;
+    transition: .3s;
+}
+
+.dict-buttons button:hover{
+    background: rgb(32, 80, 67);
+    border-color: rgb(32, 80, 67);
+    color: rgba(235, 226, 217, 1);
+}
+.part-of-speech{
+    font-weight: 600;
+}
+.queries button{
+    background: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(235, 226, 217, 1);
+    border-radius: 10px;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+.syn-item {
+    background: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(235, 226, 217, 1);
+    border-radius: 10px;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+.search-results h3{
+    font-size: 16px;
+    font-family: sans-serif;
+    font-weight: bolder;
+    margin-bottom: 10px;
+    text-align: center;
+    margin-top: 10px;
+}

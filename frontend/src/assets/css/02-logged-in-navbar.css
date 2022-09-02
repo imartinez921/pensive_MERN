@@ -12,7 +12,7 @@
 
 .logged-in-navbar button{
     display: flex;
-    border: 2px solid #FED168;
+    border: 2px solid rgba(254, 209, 104, 1);
     height: 50px;
     width: 80px;
     text-align: center;
@@ -21,7 +21,7 @@
     border-radius: 30px;
     font-size: 20px;
     background-color: rgba(32, 80, 67, 0.8);
-    color: #FED168;
+    color: rgba(254, 209, 104, 1);
     transition: .2s;
     margin: auto;
 }

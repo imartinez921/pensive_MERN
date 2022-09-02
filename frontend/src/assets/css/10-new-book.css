@@ -1,0 +1,65 @@
+ .create-book-main-container{
+    min-height: 100vh;
+    background-color: rgba(32, 80, 67,0.8);
+} 
+.create-book-form{
+    width: 400px;
+    height: 600px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.new-book-inputs{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: rgba(254, 209, 104, 0.8);
+    border-radius: 10px;
+}
+
+.new-book-inputs div{
+    width: 300px;
+    text-align: center;
+}
+
+.new-book-inputs div input{
+    width: 100%;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    padding: 5px;
+    font-size: 20px;
+    background: rgba(204, 177, 136, 1);
+}
+.new-book-inputs div input:focus{
+    outline: none;
+}
+
+.create-book-button{
+    padding: 15px;
+    background: rgb(32, 80, 67) !important;
+    border: 0;
+    border-radius: 5px;
+    font-family: cursive;
+    font-size: 20px;
+    color: rgba(237, 217, 171, 1);
+    cursor: pointer;
+}
+
+.create-book-button:hover{
+    background-color: rgb(45, 90, 80);
+}
+
+.create-book-errors{
+    font-size: 16px;
+    font-family: fantasy;
+    font-weight: 900;
+    color: darkred;
+    margin: 7px;
+}
