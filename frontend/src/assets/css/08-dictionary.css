@@ -201,3 +201,11 @@ h3 {
     margin-left: 4px;
     margin-right: 4px;
 }
+
+.syn-item {
+    background: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(235, 226, 217, 1);
+    border-radius: 10px;
+    margin-left: 4px;
+    margin-right: 4px;
+}

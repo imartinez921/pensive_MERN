@@ -76,7 +76,7 @@ const WritingPage = (props) => {
                     </div>
             <div className="right-container-temp" >
                 <div>
-                    {/* <CharacterListContainer bookId={currentBook._id} book={currentBook} /> */}
+                    <CharacterListContainer bookId={currentBook._id} book={currentBook} />
                 </div>
                 <div className="dictionary-container-mood">
                     <DictionaryContainer />
