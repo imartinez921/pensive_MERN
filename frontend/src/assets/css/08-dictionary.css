@@ -209,3 +209,8 @@ h3 {
     margin-left: 4px;
     margin-right: 4px;
 }
+
+.search-results h3 {
+    font-family: monospace;
+    text-align: center;
+}

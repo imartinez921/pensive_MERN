@@ -1,5 +1,5 @@
 import React from "react";
-import DictionaryWindow from "./definition_window";
+import DictionaryWindow from "./dictionary_window";
 import '../../assets/css/08-dictionary.css'
 
 class Dictionary extends React.Component {
