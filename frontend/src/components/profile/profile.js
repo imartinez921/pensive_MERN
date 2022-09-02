@@ -28,7 +28,12 @@ class Profile extends React.Component {
 
   render() {
     if (this.state.books.length === 0) {
-      return <div>You have no Books</div>;
+      return (<div className="books-main-section-container">
+        <div>You have no Books</div>
+        <div className="all-books-container">
+        <Link to={"/new_book"} className="add-book">+</Link>
+        </div>
+      </div>);
     } else {
       return (
         <div className="books-main-section-container">

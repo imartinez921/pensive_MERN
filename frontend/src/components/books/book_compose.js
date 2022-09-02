@@ -37,8 +37,6 @@ class BookCompose extends React.Component {
       description: this.state.description
     };
 
-    debugger
-
     this.props.composeBook(book).then(() => this.props.history.push(`/profile`));
 
   

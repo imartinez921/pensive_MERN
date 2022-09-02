@@ -28,7 +28,7 @@ const CharactersList = (props) => {
 
     const display = (
         Object.values(props.characters).map(character => (
-            <div>
+            <div className="character-show">
                 <li>Name: {character.name}</li>
             </div>
         ))

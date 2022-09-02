@@ -50,6 +50,7 @@ const WritingPage = (props) => {
             id: currentBook._id
         }
         updateBook(book);
+        history.push("/profile")
         quill.root.innerHTML = "";
     }
 
