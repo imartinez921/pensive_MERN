@@ -30,7 +30,6 @@ const CharactersList = (props) => {
         Object.values(props.characters).map(character => (
             <div>
                 <li>Name: {character.name}</li>
-                <li>Age: {character.age} years old</li>
             </div>
         ))
     )
