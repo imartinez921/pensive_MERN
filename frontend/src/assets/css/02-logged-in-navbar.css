@@ -20,14 +20,14 @@
     justify-content: center;
     border-radius: 30px;
     font-size: 20px;
-    background-color: rgb(32, 80, 67);
+    background-color: rgba(32, 80, 67, 0.8);
     color: #FED168;
     transition: .2s;
     margin: auto;
 }
 
 .logged-in-navbar button:hover{
-    background-color: #FED168;
+    background-color: rgba(254,209,104,0.8);
     border-color: rgb(32, 80, 67);
     color: rgb(32, 80, 67);
 }

@@ -47,7 +47,9 @@
 .individual-book:hover{
     background: rgba(89,110,50,1);
 }
-
+.middle-container-temp{
+    background: red;
+}
 .add-book{
     height: 170px;
     width: 130px;
@@ -59,10 +61,12 @@
     font-size: 100px;
     transition: .2s;
     line-height: 1.5em;
+    box-shadow: 1px 1px 10px 2px rgb(0 0 0 / 50%);
 }
 .add-book:hover{
     border-color: #FED168;
     color: #FED168;
+    box-shadow: 1px 1px 10px 2px;
 }
 
 .book-buttons-container{
