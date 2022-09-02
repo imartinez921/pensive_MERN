@@ -39,7 +39,7 @@ button {
 }
 
 button:hover {
-    background: #FED168
+    background: rgba(254, 209, 104, 1)
 }
 
 h3 {
@@ -89,7 +89,7 @@ h3 {
 }
 
 .dictionary a:hover {
-    background-color: #FED168
+    background-color: rgba(254, 209, 104, 1)
 }
 
 .queries {
@@ -109,7 +109,7 @@ h3 {
 }
 
 #query-item:hover {
-    background-color: #FED168
+    background-color: rgba(254, 209, 104, 1)
 }
 
 #syn-item {
@@ -120,5 +120,5 @@ h3 {
 }
 
 #syn-item:hover {
-    background-color: #FED168
+    background-color: rgba(254, 209, 104, 1)
 }

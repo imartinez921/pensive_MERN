@@ -175,7 +175,7 @@ class SessionForm extends React.Component {
         <a
           href="#" 
           onClick={this.loginDemoUser} 
-          id="modal__btn-submit">demo log in</a>
+          id="modal__btn-submit">Demo Log In</a>
     ) : (
         <div></div>
     );

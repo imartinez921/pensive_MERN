@@ -4,12 +4,12 @@
     bottom: 0;
     right: 0;
     left: 0;
-    background: rgba(137, 137, 137, 0.7);
+    background: rgba(32, 80, 67, 0.7);;
     z-index: 10;
   }
   
   .modal-child {
-    background-color: #ebe2d9;
+    background-color: rgba(254, 209, 104, 0.8);
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -37,9 +37,9 @@
 
   .modal__header {
       width: 100%;
-      font-family: 'Fredoka One', cursive;
+      font-family: cursive;
       font-size: 40px;
-      color: #636160;
+      color: rgb(85, 107, 47);
       margin-top: 0px;
       margin-bottom: 10px;
       text-align: center;
@@ -71,7 +71,7 @@
 
 
   .session-input-div p {
-      font-family: 'Fredoka One', cursive;
+      font-family: cursive;
       font-size: 20px;
       color: #636160;
       margin-top: 0px;
@@ -87,6 +87,7 @@
     border: 0;
     font-size: 20px;
     border-radius: 10px;
+    background: rgba(204, 177, 136, 1);
   }
 
   .session-input-div input:focus{
@@ -107,26 +108,34 @@
 
   .modal-session-submit-button input {
     padding: 15px;
-    background-color: #D2E1E9;
+    background-color: rgb(32, 80, 67);
     border: 0;
     border-radius: 5px;
-    font-family: 'Fredoka One', cursive;
+    font-family: cursive;
     font-size: 20px;
-    color: #636160;
+    color: rgba(237, 217, 171, 1);
     cursor: pointer;
+    transition: .3s;
+}
+.modal-session-submit-button input:hover, .modal-session-submit-button a:hover{
+  background-color: rgb(45, 90, 80);
 }
 
 .modal-session-submit-button a {
     padding: 15px;
-    background-color: #D2E1E9;
+    background-color: rgb(32, 80, 67);
     border: 0;
     border-radius: 5px;
-    font-family: 'Fredoka One', cursive;
+    font-family: cursive;
     font-size: 20px;
-    color: #636160;
+    color: rgba(237, 217, 171, 1);
     text-decoration: none;
     padding-top: 16px;
+    display: flex;
+    align-items: center;
+    transition: .3s;
 }
+
 
 .modal__other-form-container {
     display: flex;
@@ -135,13 +144,16 @@
     margin-top: 10px;
     color: rgb(129, 129, 129);
     font-size: 18px;
-    font-family: 'Fredoka One', cursive;
+    font-family: cursive;
     align-items: center;
 }
-
+/* rgba(237, 217, 171, 1) */
 .modal__btn-other-form {
     color: #017033b7;
     text-decoration: none;
+}
+.modal__btn-other-form:hover{
+  color: rgb(32, 80, 67);
 }
 
 .session-errors {
@@ -151,4 +163,12 @@
   justify-content: center;
   align-items: center;
   color: rgb(129, 129, 129);
+}
+
+.modal__btn-close svg{
+  color: rgb(66, 66, 66) !important;
+}
+
+.modal__account-msg{
+  color: rgb(66, 66, 66);
 }

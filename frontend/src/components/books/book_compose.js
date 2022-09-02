@@ -1,4 +1,5 @@
 import React from "react";
+import "../../assets/css/10-new-book.css"
 // import BookBox from "./book_box";
 class BookCompose extends React.Component {
   constructor(props) {
@@ -56,7 +57,7 @@ class BookCompose extends React.Component {
     return (
       <ul>
         {Object.keys(this.state.errors).map((error, i) => (
-          <li key={`error-${i}`}>{this.state.errors[error]}</li>
+          <li key={`error-${i}`} className="create-book-errors">{this.state.errors[error]}</li>
         ))}
       </ul>
     );
@@ -64,35 +65,38 @@ class BookCompose extends React.Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <div>
-            <input
-              type="textarea"
-              value={this.state.title}
-              onChange={this.update("title")}
-              placeholder="Input the title"
-            />
-            <br />
-            <input type="textarea"
-              value={this.state.editor}
-              onChange={this.update("editor")}
-              placeholder="Input your editor" />
-            <br />
-            <input type="textarea"
-              value={this.state.genre}
-              onChange={this.update("genre")}
-              placeholder="Input your genre" />
-            <br />
-            <input type="textarea"
-              value={this.state.description}
-              onChange={this.update("description")}
-              placeholder="Book's description" />
-            <input type="submit" value="Submit" />
-            {this.renderErrors()}
+      <div className="create-book-main-container">
+        <form onSubmit={this.handleSubmit} className="create-book-form">
+          <div className="new-book-inputs">
+            <div>
+                <input type="textarea" value={this.state.title} onChange={this.update("title")} placeholder="What's the title of your next masterpiece?" />
+            </div>
+            <div>
+              <input type="textarea"
+                value={this.state.editor}
+                onChange={this.update("editor")}
+                placeholder="Who will be the editor for this project?" />
+            </div>
+            <div>
+              <input type="textarea"
+                value={this.state.genre}
+                onChange={this.update("genre")}
+                placeholder="What's the genre this time?" />
+            </div>
+            <div>
+              <input type="textarea"
+                value={this.state.description}
+                onChange={this.update("description")}
+                placeholder="Now let's get into the juicy part" />
+            </div>
+            <div>
+              <input type="submit" value="Submit" className="create-book-button"/>
+            </div>
+            <div>
+              {this.renderErrors()}
+            </div>
           </div>
         </form>
-        <br />
       </div>
     );
   }

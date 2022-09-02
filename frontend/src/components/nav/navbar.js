@@ -29,8 +29,8 @@ class NavBar extends React.Component {
     } else {
       return (
         <div className="logged-out-navbar">
-          <div className="signup-btn" onClick={() => this.handleOpenModal('signup')}>Sign up</div>
-          <div className="login-btn" onClick={() => this.handleOpenModal('login')}>Log in</div>
+          <div className="signup-btn" onClick={() => this.handleOpenModal('signup')}>Sign Up</div>
+          <div className="login-btn" onClick={() => this.handleOpenModal('login')}>Log In</div>
           {/* <ModalContainer /> */}
         </div>
       );
