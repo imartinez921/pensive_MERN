@@ -140,6 +140,7 @@ const CreateCharacterForm = (props) => {
                         <label id = "label">Description: </label>
                         <textarea
                             type='text'
+                            placeholder='(personality, alliances, rivalries, family, etc.)'
                             onChange={update("description")}
                             id = "description"
                         />
