@@ -26,11 +26,24 @@ const CharactersList = (props) => {
         });
     };
 
+    const display = (
+        Object.values(props.characters).map(character => (
+            <div>
+                <li>Name: {character.name}</li>
+                <li>Age: {character.age} years old</li>
+            </div>
+        ))
+    )
+
     return (
         <div>
             <div id="add-char-icon" onClick={() => props.openModal("createCharacter", { bookId: props.bookId, renderCharacters: renderCharacters })}>
                 <h3>Characters</h3>
                 <GrAddCircle style={{ color: ' #FED168', size: '50px', transform: "scale(2)"}} id="add" onMouseOver={({ target }) => target.style.color = "white"} />
+            </div>
+            <div>
+                {display}
+                {/* {Object.values(props.characters).map(character => (character.name))} */}
             </div>
         </div>
     )

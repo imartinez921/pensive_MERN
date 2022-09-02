@@ -17,8 +17,9 @@ const Modal = (props) => {
     case 'signup':
       component = <SignupFormContainer />;
       break;
-    case 'createCharacter':
-      component = <CreateCharacterForm />;
+    case "createCharacter":
+     component = <CreateCharacterForm />;
+      break;
     default:
       return null;
   }
