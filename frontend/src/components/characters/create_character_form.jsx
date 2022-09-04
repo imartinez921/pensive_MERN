@@ -120,7 +120,7 @@ const CreateCharacterForm = (props) => {
                                 min="0"
                                 name="height"
                                 id="height"
-                            />Cm
+                            />cm
                         </label>
                         <label id = "label">Weight:
                             <input
@@ -129,7 +129,7 @@ const CreateCharacterForm = (props) => {
                                 min="0"
                                 name="weight"
                                 id = "weight"
-                            />Kg
+                            />kg
                         </label>
                         <label id = "label">Species:
                             <input
@@ -138,11 +138,11 @@ const CreateCharacterForm = (props) => {
                             id = "species"
                             />
                         </label>
-                        <label id = "label">Description: 
+                        <label id = "label">Description - Details regarding physical features, childhood background or pre-story history, personality traits, patterns of speech, and relationships (eg. alliances, rivalries, family members, etc.)
                         <br />
                             <textarea
                                 type='text'
-                                placeholder='Consider details reagrding physical features, personality traits, patterns of speech, and relationships (eg. alliances, rivalries, family members, etc.)'
+                                placeholder='The more detail, the better!'
                                 onChange={update("description")}
                                 id = "description"
                             />
