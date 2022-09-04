@@ -12,14 +12,18 @@ import { openModal, closeModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => {
   return ({
-    // delete_type: PASS THIS IN FROM PARENT PROPS,
+    // deleteType: ownProps.deleteType // PASS THIS IN FROM PARENT PROPS,
+    // redirectTo: ownProps.redirectTo // PASS THIS IN FROM PARENT PROPS,
+    // itemId: ownProps.itemId // PASS THIS IN FROM PARENT PROPS,
+    // history: ownProps.history // PASS THIS IN FROM MainDashboard/WritingPageContainer
   });
 };
 
 const mapDispatchToProps = (dispatch) => {
   return ({
-    removeCharacter: id => dispatch(removeCharacter(id)),
-    removeBook: id => dispatch(removeBook(id)),
+    removeCharacter: (id) => dispatch(removeCharacter(id)),
+    removeBook: (id) => dispatch(removeBook(id)),
+    closeModal: () => dispatch(closeModal()),
     // otherForm: (
     //   <a
     //     href="#"
@@ -28,7 +32,6 @@ const mapDispatchToProps = (dispatch) => {
     //     Sign Up
     //   </a>
     // ),
-    closeModal: () => dispatch(closeModal())
   });
 };
 

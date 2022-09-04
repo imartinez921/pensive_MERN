@@ -36,9 +36,9 @@ const CharactersList = (props) => {
 
     return (
         <div>
-            <div id="add-char-icon" onClick={() => props.openModal("createCharacter", { bookId: props.bookId, renderCharacters: renderCharacters })}>
+            <div class="add-char-icon" onClick={() => props.openModal("createCharacter", { bookId: props.bookId, renderCharacters: renderCharacters })}>
                 <h3>Characters</h3>
-                <GrAddCircle style={{ color: ' #FED168', size: '50px', transform: "scale(2)"}} id="add" onMouseOver={({ target }) => target.style.color = "white"} />
+                <GrAddCircle style={{ color: ' #FED168'}} class="add" onMouseOver={({ target }) => target.style.color = "white"} />
             </div>
             <div>
                 {display}

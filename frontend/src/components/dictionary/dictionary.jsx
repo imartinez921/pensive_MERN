@@ -89,7 +89,6 @@ class Dictionary extends React.Component {
     const dictionaryForm = (
       <div>
       <form className="dictionary-form">
-        <p>Find new meanings</p>
         <input 
             type="text" 
             placeholder="Lookup a word"
