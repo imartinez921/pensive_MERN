@@ -29,6 +29,7 @@ const Modal = (props) => {
   }
 
   const closeModal = () => {
+    console.log('I CLOSED')
     props.closeModal();
   }
 

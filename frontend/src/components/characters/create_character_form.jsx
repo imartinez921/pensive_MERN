@@ -150,7 +150,7 @@ const CreateCharacterForm = (props) => {
                         <div className="character-errors">
                             {renderErrors()}
                         </div>
-                        <button type = 'submit' className="character-create-button">
+                        <button type = 'submit' className="modal-session-submit-button">
                             <div>Create Character</div>
                         </button>
                     </form>

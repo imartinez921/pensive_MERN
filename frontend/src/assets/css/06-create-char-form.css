@@ -64,6 +64,7 @@ input[type="radio"] {
     width: 60%;
 }
 
+/* Using session buttons CSS
 .character-create-button {
     padding: 15px;
     background-color: rgb(32, 80, 67);
@@ -81,14 +82,14 @@ input[type="radio"] {
 
 .character-create-button:hover {
     background-color: rgb(45, 90, 80);
-}
+} */
 
 
 .create-title {
     font-family: fantasy;
     font-size: 1.5rem;
     font-weight: bold;
-    color: rgb(0, 0, 0);
+    color: rgb(85, 107, 47);
     text-align: center;
     margin-top: 1rem;
     margin-bottom: 1.5rem;
