@@ -1,34 +1,18 @@
-.modal-background {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    background: rgba(137, 137, 137, 0.7);
-    z-index: 10;
-  }
-
-.modal-child {
-background-color: #EBE2D9;
-position: absolute;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-border-radius: 5%;
-padding: 20px;
+.character-form {
+    font-family: cursive, 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
+.character-form input {
+    margin-left: 8px;
+    font-family: monospace;
+}
 
-.create-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: rgb(0, 0, 0);
-    text-align: center;
-    margin-bottom: 20px;
+input[type="radio"] {
+    margin-left: 30px;
+}
+
+#name:focus, #age:focus, #height:focus, #weight:focus, #species:focus, #description:focus {
+    outline: none;
 }
 
 #name, #age, #height, #weight, #species, #description {
@@ -38,24 +22,67 @@ padding: 20px;
     margin-bottom: 10px;
 }
 
+#name, #species {
+    margin-left: 10px;
+}
+
+#age, #height, #weight {
+    width: 50px;
+    margin-right: 4px;
+}
+
+#age {
+    margin-left: 25px;
+}
+
+#description {
+    width: 500px;
+    height: 150px;
+}
 
 #label {
     display: block;
     margin-bottom: 5px;
 }
 
-#name:focus, #age:focus, #height:focus, #weight:focus, #species:focus, #description:focus {
-    outline: none;
+#sex {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+#name, #species {
+    width: 80%;
 }
 
 .character-create-button {
     padding: 15px;
-    background-color: #D2E1E9;
+    background-color: rgb(32, 80, 67);
     border: 0;
     border-radius: 5px;
-    font-family: 'Fredoka One', cursive;
+    font-family: cursive;
     font-size: 20px;
-    color: #636160;
-    cursor: pointer;
+    color: rgba(237, 217, 171, 1);
+    text-decoration: none;
+    padding-top: 16px;
+    display: flex;
+    align-items: center;
+    transition: .3s;
+}
+
+.character-create-button:hover {
+    background-color: rgb(45, 90, 80);
+}
+
+
+.create-title {
+    font-family: cursive;
+    font-size: 1.5rem;
     font-weight: bold;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    margin-bottom: 20px;
 }

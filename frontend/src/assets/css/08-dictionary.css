@@ -137,24 +137,34 @@ h3 {
     align-items: center;
     text-align: center;
 }
+
 .dictionary-form{
     margin-top: 2rem;
 }
-.dictionary-form p{
+
+.dictionary-form input::selection {
+    background-color: rgb(255, 228, 164);
+}
+
+.dictionary-form p {
     font-size: 20px;
     font-family: sans-serif;
     font-weight: lighter;
 }
+
 .dictionary-form input{
     outline: none;
     height: 25px;
     width: 100%;
     border-radius: 10px;
-    border: none;
     margin-top: 10px;
     margin-bottom: 15px;
+    border: 1px solid rgba(235, 226, 217, 1);
     box-shadow: 0px 0px 10px 0px lightgrey;
     padding-left: 10px;
+}
+.dictionary-form input:hover {
+    border-color: rgb(32, 80, 67);
 }
 
 .search-results{
@@ -191,10 +201,12 @@ h3 {
     border-color: rgb(32, 80, 67);
     color: rgba(235, 226, 217, 1);
 }
+
 .part-of-speech{
     font-weight: 600;
 }
-.queries button{
+button.query-item{
+    font-family: monospace, sans-serif;
     background: rgba(255, 255, 255, 1);
     border: 1px solid rgba(235, 226, 217, 1);
     border-radius: 10px;
@@ -202,19 +214,36 @@ h3 {
     margin-right: 4px;
 }
 
-.syn-item {
+button.query-item:hover {
+    background-color: rgb(255, 228, 164);
+}
+
+button.syn-item {
+    font-family: monospace, sans-serif;
     background: rgba(255, 255, 255, 1);
     border: 1px solid rgba(235, 226, 217, 1);
     border-radius: 10px;
     margin-left: 4px;
     margin-right: 4px;
+}
+
+button.syn-item:hover {
+    background-color: rgb(255, 228, 164);
 }
 
 .search-results h3{
     font-size: 16px;
     font-family: sans-serif;
-    font-weight: bolder;
+    font-weight: 500;
     margin-bottom: 10px;
     text-align: center;
     margin-top: 10px;
+}
+
+.definition-text::selection {
+    background-color: rgb(255, 232, 180);
+}
+
+.definition-text a::selection {
+    background-color: rgb(255, 232, 180);
 }

@@ -22,14 +22,14 @@ class BookBox extends React.Component {
   }
 
   render() {
-    
     return (
       <div className="individual-book">
         <Link to={`/writing_page/${this.props.id}`} className="book-title-link">{this.props.text}</Link>
         <div className="book-buttons-container">
           <button id="delete-button" onClick={() => this.props.removeBook(this.props.id)}><RiDeleteBin5Line /></button>
+          {/* onClick={() => props.openModal("createCharacter", { bookId: props.bookId, renderCharacters: renderCharacters })}> */}
           <button id="edit-button" onClick={this.handleClick}><FaEdit/></button>
-        </div>
+        </div>  
 
       </div>
     );
