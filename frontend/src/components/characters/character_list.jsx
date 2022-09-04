@@ -26,6 +26,10 @@ const CharactersList = (props) => {
         });
     };
 
+    useEffect(() => {
+        props.fetchBookCharacters(props.bookId)
+    }, []);
+
     const display = (
         Object.values(props.characters).map(character => (
             <div className="character-show">
