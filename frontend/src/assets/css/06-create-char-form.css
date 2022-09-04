@@ -1,14 +1,14 @@
 .character-form {
-    font-family: cursive, 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: fantasy, 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .character-form input {
-    margin-left: 8px;
+    margin-left: 2rem;
     font-family: monospace;
 }
 
 input[type="radio"] {
-    margin-left: 30px;
+    margin-left: 3.3rem;
 }
 
 #name:focus, #age:focus, #height:focus, #weight:focus, #species:focus, #description:focus {
@@ -22,17 +22,22 @@ input[type="radio"] {
     margin-bottom: 10px;
 }
 
-#name, #species {
-    margin-left: 10px;
+#species {
+    margin-left: 1.45rem;
 }
 
-#age, #height, #weight {
+#name {
+    margin-left: 2.5rem;
+}
+
+#height, #weight {
     width: 50px;
     margin-right: 4px;
 }
 
-#age {
-    margin-left: 25px;
+#age  {
+    width: 50px;
+    margin-left: 3.1rem;
 }
 
 #description {
@@ -43,6 +48,7 @@ input[type="radio"] {
 #label {
     display: block;
     margin-bottom: 5px;
+    line-height: 21px;
 }
 
 #sex {
@@ -55,7 +61,7 @@ input[type="radio"] {
 }
 
 #name, #species {
-    width: 80%;
+    width: 60%;
 }
 
 .character-create-button {
@@ -79,10 +85,11 @@ input[type="radio"] {
 
 
 .create-title {
-    font-family: cursive;
+    font-family: fantasy;
     font-size: 1.5rem;
     font-weight: bold;
     color: rgb(0, 0, 0);
     text-align: center;
-    margin-bottom: 20px;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
 }
