@@ -1,5 +1,10 @@
 .character-form {
     font-family: fantasy, 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    display: center;
+    align-items: center;
+    justify-content: center;
+    width: 500px;
+    margin: 1rem 2rem 0rem 2rem;
 }
 
 .character-form input {
@@ -43,6 +48,7 @@ input[type="radio"] {
 #description {
     width: 500px;
     height: 150px;
+    margin-bottom: 0px;
 }
 
 #label {

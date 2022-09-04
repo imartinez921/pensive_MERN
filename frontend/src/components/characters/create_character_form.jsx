@@ -57,12 +57,13 @@ const CreateCharacterForm = (props) => {
 
     const render = () => {
         return (
-            <div className="character-form">
+            <div>
                 <div className="modal__btn-close" onClick={closeModal}>          <IoCloseCircle style={{color: '#cc5500', fontSize: '35px'}}/>
 </div>
-                <div className="create-title">Create a character</div>
+                <div className="modal__header">Create a character</div>
+                {renderErrors()}
                 <div>
-                    <form onSubmit={handleSubmit}>
+                    <form className='character-form' onSubmit={handleSubmit}>
                         <label id = "label">Name:
                             <input
                                 type='text'
@@ -164,10 +165,11 @@ const CreateCharacterForm = (props) => {
 }
 
 
+// Create Character Form Container
 const mSTP = (state) => ({
     bookId: state.ui.modal.props.bookId,
     renderCharacters: state.ui.modal.props.renderCharacters,
-    errors: state.errors.character
+    errors: state.errors.character,
 })
 
 const mDTP = (dispatch) => ({
@@ -177,4 +179,3 @@ const mDTP = (dispatch) => ({
 });
 
 export default connect(mSTP, mDTP)(CreateCharacterForm);
-
