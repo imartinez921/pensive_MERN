@@ -65,7 +65,8 @@ export const removeBook = (id) => (dispatch) =>
       (err) => dispatch(receiveBookErrors(err.response.data)));
 
 export const editBook = (data) => (dispatch) =>
-  updateBook(data)
+  {
+    return updateBook(data)
   .then((book) => dispatch(receiveNewBook(book.data)))
   .catch((err) =>
   {
@@ -73,4 +74,4 @@ export const editBook = (data) => (dispatch) =>
     return new Promise((resolve, reject) => {
       return reject();
     })
-  });
+  })};

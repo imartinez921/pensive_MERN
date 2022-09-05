@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import WritingPage from "./writing-page";
-import { fetchBookById, fetchUserBooks} from "../../actions/book_actions";
+import { fetchBookById, fetchUserBooks, editBook} from "../../actions/book_actions";
 
 
 const mapStateToProps = (state, ownProps) => { 
@@ -15,7 +15,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => ({
     fetchBookById: (id) => dispatch(fetchBookById(id)),
-    fetchUserBooks: (id) => dispatch(fetchUserBooks(id))
+    fetchUserBooks: (id) => dispatch(fetchUserBooks(id)),
+    editBook: (book) => dispatch(editBook(book))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(WritingPage);

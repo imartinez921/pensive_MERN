@@ -1,5 +1,7 @@
 import React from "react";
-import "../../assets/css/10-new-book.css"
+import "../../assets/css/10-new-book.css";
+import { BsFillBackspaceFill } from 'react-icons/bs';
+
 // import BookBox from "./book_box";
 class BookCompose extends React.Component {
   constructor(props) {
@@ -36,15 +38,14 @@ class BookCompose extends React.Component {
       genre: this.state.genre,
       description: this.state.description
     };
-
     this.props.composeBook(book).then(() => this.props.history.push(`/profile`));
-
-  
-
 
     this.setState({ title: "", editor: "", genre: "", description: "" });
     
   }
+  handleClick = () => {
+    this.props.history.push("/profile")
+  };
 
   update(property) {
     return (e) =>
@@ -66,6 +67,9 @@ class BookCompose extends React.Component {
   render() {
     return (
       <div className="create-book-main-container">
+        <div id="back-to-profile">
+          <button onClick={this.handleClick}><BsFillBackspaceFill /></button>
+        </div>
         <form onSubmit={this.handleSubmit} className="create-book-form">
           <div className="new-book-inputs">
             <div>

@@ -4,35 +4,28 @@ import "../../assets/css/04-writing-page.css";
 import { useQuill } from 'react-quilljs';
 import 'quill/dist/quill.snow.css'; // Add css for snow theme 
 import axios from "axios";
-import { updateBook } from "../../util/book_api_util";
 import CharacterListContainer from "../characters/character_list";
 import { connect, useDispatch } from "react-redux";
 import { BsFillBackspaceFill } from 'react-icons/bs';
 import DictionaryContainer from "../dictionary/dictionary_container";
 
 const WritingPage = (props) => {
-    
-    let {book,bookId, fetchBookById} = props;
+    console.log(props);
+    let {book,bookId, fetchBookById, editBook} = props;
+    const history = useHistory();
+
+
+    if (!book){
+        history.push("/profile")
+    }
 
     const { quill, quillRef } = useQuill();
 
-
-    const [currentBook, setCurrentBook] = useState(book)
-
-    useEffect(()=>{
-            setCurrentBook(JSON.parse(window.localStorage.getItem('currentBook')))
-    },[])
-
     useEffect(() => {
-        window.localStorage.setItem('currentBook', JSON.stringify(currentBook))
-    }, [currentBook])
-
-
-    React.useEffect(() => {
         if (quill) {
-            quill.root.innerHTML = currentBook.content;
+            quill.root.innerHTML = book.content;
             quill.on('text-change', () => {
-                currentBook.content = quill.root.innerHTML;
+                book.content = quill.root.innerHTML;
             });
         }
     }, [quill]);
@@ -40,21 +33,21 @@ const WritingPage = (props) => {
     // Save to the database
     const onSubmit = (e) =>{
         e.preventDefault();
+        debugger
         book={
-            title: currentBook.title,
-            editor: currentBook.editor,
-            genre: currentBook.genre,
-            author: currentBook.author,
-            description: currentBook.description,
-            content: currentBook.content,
-            id: currentBook._id
+            title: book.title,
+            editor: book.editor,
+            genre: book.genre,
+            author: book.author,
+            description: book.description,
+            content: book.content,
+            id: book._id
         }
-        updateBook(book);
+        editBook(book);
         history.push("/profile")
         quill.root.innerHTML = "";
     }
 
-    const history = useHistory();
 
     const handleClick = () => {
         history.push("/profile")
@@ -77,7 +70,7 @@ const WritingPage = (props) => {
                     </div>
             <div className="right-container-temp" >
                 <div>
-                    <CharacterListContainer bookId={currentBook._id} book={currentBook} />
+                    <CharacterListContainer bookId={book._id} book={book} />
                 </div>
                 <div className="dictionary-container-mood">
                     <DictionaryContainer />

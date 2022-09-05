@@ -42,6 +42,7 @@
     margin-left: 20px;
     color: rgb(32, 80, 67);
     transition: .3s;
+    cursor: pointer;
 }
 
 #back-to-profile button svg:hover{

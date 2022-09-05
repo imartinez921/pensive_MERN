@@ -35,7 +35,7 @@ class MainDashboard extends React.Component {
                                 <>
                                     <div className={`single-student ${student}`}  key={key}>
                                         <div className="student-face">
-                                            <img src={require(`../../assets/images/${student.name}.jpeg`)} key={key}/>
+                                            <img src={require(`../../assets/images/${student.name}.jpeg`)}/>
                                         </div>
                                         <div className="student-name">
                                             <p>{student.name}</p>

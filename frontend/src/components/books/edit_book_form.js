@@ -1,4 +1,6 @@
 import React from "react";
+import { BsFillBackspaceFill } from 'react-icons/bs';
+
 // import BookBox from "./book_box";
 
 class BookEdit extends React.Component {
@@ -67,10 +69,16 @@ class BookEdit extends React.Component {
       </ul>
     );
   }
+  handleClick = () => {
+    this.props.history.push("/profile")
+  };
 
   render() {
     return (
       <div className="create-book-main-container">
+        <div id="back-to-profile">
+          <button onClick={this.handleClick}><BsFillBackspaceFill /></button>
+        </div>
         <form onSubmit={this.handleSubmit} className="create-book-form">
           <div className="new-book-inputs">
             <div>
