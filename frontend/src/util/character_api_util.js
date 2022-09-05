@@ -2,6 +2,7 @@ import axios from "axios";
 
 
 export const getBookCharacters = (bookId) => {
+  console.log('GETBOOKCHARACTERS ARG',bookId)
   return axios.get(`/api/characters/book/${bookId}`);
 };
 

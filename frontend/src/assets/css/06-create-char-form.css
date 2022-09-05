@@ -1,34 +1,23 @@
-.modal-background {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    background: rgba(137, 137, 137, 0.7);
-    z-index: 10;
-  }
-
-.modal-child {
-background-color: #EBE2D9;
-position: absolute;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-border-radius: 5%;
-padding: 20px;
+.character-form {
+    font-family: fantasy, 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    display: center;
+    align-items: center;
+    justify-content: center;
+    width: 500px;
+    margin: 1rem 2rem 0rem 2rem;
 }
 
+.character-form input {
+    margin-left: 2rem;
+    font-family: monospace;
+}
 
-.create-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: rgb(0, 0, 0);
-    text-align: center;
-    margin-bottom: 20px;
+input[type="radio"] {
+    margin-left: 3.3rem;
+}
+
+#name:focus, #age:focus, #height:focus, #weight:focus, #species:focus, #description:focus {
+    outline: none;
 }
 
 #name, #age, #height, #weight, #species, #description {
@@ -38,24 +27,76 @@ padding: 20px;
     margin-bottom: 10px;
 }
 
+#species {
+    margin-left: 1.45rem;
+}
+
+#name {
+    margin-left: 2.5rem;
+}
+
+#height, #weight {
+    width: 50px;
+    margin-right: 4px;
+}
+
+#age  {
+    width: 50px;
+    margin-left: 3.1rem;
+}
+
+#description {
+    width: 500px;
+    height: 75px;
+    margin-bottom: 0px;
+}
 
 #label {
     display: block;
     margin-bottom: 5px;
+    line-height: 21px;
 }
 
-#name:focus, #age:focus, #height:focus, #weight:focus, #species:focus, #description:focus {
-    outline: none;
+#sex {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 2px;
+    padding-bottom: 2px;
 }
 
+#name, #species {
+    width: 60%;
+}
+
+/* Using session buttons CSS
 .character-create-button {
     padding: 15px;
-    background-color: #D2E1E9;
+    background-color: rgb(32, 80, 67);
     border: 0;
     border-radius: 5px;
-    font-family: 'Fredoka One', cursive;
+    font-family: cursive;
     font-size: 20px;
-    color: #636160;
-    cursor: pointer;
+    color: rgba(237, 217, 171, 1);
+    text-decoration: none;
+    padding-top: 16px;
+    display: flex;
+    align-items: center;
+    transition: .3s;
+}
+
+.character-create-button:hover {
+    background-color: rgb(45, 90, 80);
+} */
+
+
+.create-title {
+    font-family: fantasy;
+    font-size: 1.5rem;
     font-weight: bold;
+    color: rgb(85, 107, 47);
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
 }

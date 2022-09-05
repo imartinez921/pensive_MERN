@@ -1,5 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
+import { removeCharacter } from "../../actions/character_actions";
 
 class DeletionModal extends React.Component {
   constructor(props) {
@@ -11,46 +12,52 @@ class DeletionModal extends React.Component {
     //   errors: {},
     // };
 
-    // this.handleSubmit = this.handleSubmit.bind(this);
-    // this.renderErrors = this.renderErrors.bind(this);
-    // this.handleDemo = this.handleDemo.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
+  // Used to persist a slice of state upon refresh, but idk whether we need this
+  // debugger
+  // componentWillReceiveProps(nextProps) {
     // if (nextProps.currentUser === true) {
     //   this.props.history.push("/books");
     // }
 
     // this.setState({ errors: nextProps.errors });
-  }
+  // }
 
-  update(field) {
+  // update(field) {
+    // debugger
     // return (e) => this.setState({ [field]: e.currentTarget.value });
+  // }
+
+  handleDelete(e) {
+    const { deleteType,
+      removeCharacter,
+      removeBook,
+      itemId,
+      closeModal,
+    } = this.props;
+    
+    e.preventDefault();
+    switch (deleteType) {
+      case 'character':
+        removeCharacter(itemId);
+        break;
+      case 'book':
+        removeBook(itemId);
+        break;
+      // case 'chapter':
+      //   removeChapter(itemId);
+      //break;
+      default:
+        return null;
+    }
+
   }
 
-  handleSubmit(e) {
-    // e.preventDefault();
 
-    // let user = {
-    //   email: this.state.email,
-    //   password: this.state.password,
-    // };
-
-    // this.props.login(user);
-  }
-
-  handleDemo(e) {
-    // e.preventDefault();
-    // let demo = {
-    //   email: "demo@pensive.com",
-    //   password: "password",
-    // };
-
-    // this.props.login(demo);
-}
-
-
-  renderErrors() {
+  // renderErrors() {
+  // debugger
   //   return (
   //     <ul>
   //       {Object.keys(this.state.errors).map((error, i) => (
@@ -58,35 +65,20 @@ class DeletionModal extends React.Component {
   //       ))}
   //     </ul>
   //   );
-  }
+  // }
 
   render() { 
-    return null
-  //   return (
-  //     <div>
-  //       <form onSubmit={this.handleSubmit}>
-  //         <div>
-  //           <input
-  //             type="text"
-  //             value={this.state.email}
-  //             onChange={this.update("email")}
-  //             placeholder="Email"
-  //           />
-  //           <br />
-  //           <input
-  //             type="password"
-  //             value={this.state.password}
-  //             onChange={this.update("password")}
-  //             placeholder="Password"
-  //           />
-  //           <br />
-  //           <input type="submit" value="Log In" />
-  //           {this.renderErrors()}
-  //         </div>
-  //       </form>
-  //       <button onClick={this.handleDemo}>Demo Login</button>
-  //     </div>
-  //   );
+    return (
+      <div className="delete-modal">
+        {/* <h1>Are you sure you want to delete this {props.deleteType}?</h1> */}
+      
+            <br />
+            <input type="submit" value="Log In" />
+            {this.renderErrors()}
+        <button onClick={this.handleDelete}>Yes, I'm sure.</button>
+        <button onClick={this.props.closeModal}>No, cancel.</button>
+      </div>
+    );
   }
 }
 

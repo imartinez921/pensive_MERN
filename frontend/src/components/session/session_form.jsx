@@ -191,6 +191,7 @@ class SessionForm extends React.Component {
           <IoCloseCircle style={{color: '#cc5500', fontSize: '35px'}}/>
         </a>
         <br/>
+        {this.renderErrors()}
         <form 
           onSubmit={this.handleSubmit} 
           className="ui form modal__form">
@@ -205,7 +206,6 @@ class SessionForm extends React.Component {
           <br />
             {demobutton}
             </div>
-          {this.renderErrors()}
         </form>
         <br />
         

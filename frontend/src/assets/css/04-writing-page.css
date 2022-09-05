@@ -77,3 +77,20 @@
 .ql-container.ql-snow {
     border: none !important;
 }
+
+.ql-editor p {
+    font-family: sans-serif;
+}
+
+.ql-editor *::selection, .ql-editor > *::selection, .ql-editor h1::selection, .ql-editor h2::selection, .ql-editor h3::selection,
+    .ql-editor h4::selection, .ql-editor h5::selection, .ql-editor h6::selection,::selection {
+    background-color: rgb(255, 228, 164);
+}
+
+.ql-editor strong {
+    font-weight: 700;
+}
+
+.ql-editor em {
+    font-style: italic;
+}

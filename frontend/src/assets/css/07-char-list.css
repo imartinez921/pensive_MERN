@@ -1,23 +1,37 @@
-#add-char-icon {
+.add-char-icon {
+    outline: none;
     text-decoration: none;
-    display: flex;
-    justify-content: space-evenly;
-    margin: 50px;
+    background: rgba(255, 255, 255, 1);
     position: relative;
-    cursor: pointer;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 25px;
+    width: 169px;
+    border-radius: 10px;
+    border: 1px solid rgba(235, 226, 217, 1);
+    box-shadow: 0px 0px 10px 0px lightgrey;
+    margin: 75px;
+    margin-bottom: 15px;
+    padding: 6px;
+    transition: .3s;
 }
 
-#add:hover {
-    color: #636160;
+.add-char-icon:hover{
+    border-color: rgb(32, 80, 67);
 }
 
-#add-char-icon h3{
+
+.add-char-icon h3{
+    text-transform: uppercase;
     font-size: 20px;
     font-family: sans-serif;
     font-weight: lighter;
     color: rgb(0, 0, 0);
     text-align: center;
-    margin-bottom: 20px;
+    margin: 0px;
+    padding: 0px;
 }
 
 .character-show{

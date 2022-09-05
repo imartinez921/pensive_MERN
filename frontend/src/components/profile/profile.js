@@ -35,12 +35,24 @@ class Profile extends React.Component {
         </div>
       </div>);
     } else {
+      const {removeBook,
+        editBook,
+        fetchBookById,
+        history,
+      } = this.props;
       return (
         <div className="books-main-section-container">
           <h2>Your Books</h2>
           <div className="all-books-container">
           {this.state.books.map((book) => (
-            <BookBox key={book._id} text={book.title} removeBook={this.props.removeBook} id={book._id} data={book} editBook={this.props.editBook} fetchbook={this.props.fetchBookById} history={this.props.history } />
+            <BookBox key={book._id}
+              text={book.title}
+              removeBook={removeBook}
+              id={book._id}
+              data={book}
+              editBook={editBook}
+              fetchbook={fetchBookById}
+              history={history } />
           ))}
             <Link to={"/new_book"} className="add-book">+</Link>
           </div>

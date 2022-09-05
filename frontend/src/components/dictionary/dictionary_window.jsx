@@ -1,14 +1,13 @@
 import React from 'react';
 import parse from "html-react-parser";
 import ExternalLink from '../external_link';
-import '../../assets/css/08-dictionary.css'
+import '../../assets/css/08-dictionary.css';
 
 const DictionaryWindow = (props) => {    
     const { errors,
         definitions,
         synonyms,
         queries,
-        wordUrl,
         handlePrevQuery,
     } = props;
 

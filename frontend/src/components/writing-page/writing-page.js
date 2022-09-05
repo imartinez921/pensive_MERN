@@ -5,7 +5,6 @@ import { useQuill } from 'react-quilljs';
 import 'quill/dist/quill.snow.css'; // Add css for snow theme 
 import axios from "axios";
 import CharacterListContainer from "../characters/character_list";
-import { connect, useDispatch } from "react-redux";
 import { BsFillBackspaceFill } from 'react-icons/bs';
 import DictionaryContainer from "../dictionary/dictionary_container";
 

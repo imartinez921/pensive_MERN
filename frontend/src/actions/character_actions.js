@@ -34,23 +34,26 @@ export const clearErrors = () => ({
   type: CLEAR_ERRORS
 });
 
-
-export const fetchBookCharacters = (id) => (dispatch) =>
-  getBookCharacters(id)
+export const fetchBookCharacters = (bookId) => (dispatch) => {
+   return getBookCharacters(bookId)
     .then((characters) => dispatch(receiveBookCharacters(characters.data)),
       (err) => dispatch(receiveCharacterErrors(err.response.data)));
+}
 
 export const fetchCharacterById = (id) => (dispatch) =>
    getCharacter(id)
-// .then(book => console.log(book))
   .then((character) => dispatch(receiveNewCharacter(character.data)),
     (err) => dispatch(receiveCharacterErrors(err.response.data)));
 
 export const composeCharacter = (data) => (dispatch) =>
   writeCharacter(data)
-    // .then((character) => console.log(character))
-  .then((character) => dispatch(receiveNewCharacter(character.data)),
-    (err) => dispatch(receiveCharacterErrors(err.response.data)));
+  .then((character) => dispatch(receiveNewCharacter(character.data)))
+  .catch ((err) => { 
+    dispatch(receiveCharacterErrors(err.response.data))
+    return new Promise((resolve,reject) => {
+        return reject();
+    })
+  });
 
 export const removeCharacter = (id) => (dispatch) => 
   deleteCharacter(id)
