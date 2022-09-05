@@ -74,7 +74,6 @@ class Dictionary extends React.Component {
 
 
   render() {
-    console.log('DICTIONARY HAS RENDERED')
 
     const {queries,
       definitions,

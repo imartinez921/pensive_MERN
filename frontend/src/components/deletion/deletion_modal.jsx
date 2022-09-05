@@ -42,10 +42,13 @@ class DeletionModal extends React.Component {
     switch (deleteType) {
       case 'character':
         removeCharacter(itemId);
+        break;
       case 'book':
         removeBook(itemId);
+        break;
       // case 'chapter':
       //   removeChapter(itemId);
+      //break;
       default:
         return null;
     }

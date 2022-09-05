@@ -51,8 +51,7 @@ export const fetchBookById = (id) => (dispatch) =>
 export const composeBook = (data) => (dispatch) =>
   writeBook(data)
     .then((book) => dispatch(receiveNewBook(book.data)))
-    .catch((err) =>
-    {
+    .catch((err) => {
       dispatch(receiveBookErrors(err.response.data))
       return new Promise((resolve, reject) => {
         return reject();

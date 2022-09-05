@@ -10,39 +10,39 @@ import '../../assets/css/07-char-list.css'
 
 
 const CharactersList = (props) => {
+    console.log('CHARACTERLIST PROPS', props)
     const [state, setState] = useState({
         characters: props.characters
     });
-
+    
+    let display;
     useEffect(() => {
-        props.fetchBookCharacters(props.bookId)
+        renderCharacters();
+
+        display = (
+            Object.values(props.characters).map(character => (
+                <div className="character-show">
+                    <li>Name: {character.name}</li>
+                </div>
+            ))
+        )
+
     }, []);
 
     const renderCharacters = () => {
-        props.fetchBookCharacters(props.bookId).then(characters => {
+        props.fetchBookCharacters(props.currentBookId)
+        .then(characters => {
             setState({
                 characters
             });
         });
     };
 
-    useEffect(() => {
-        props.fetchBookCharacters(props.bookId)
-    }, []);
-
-    const display = (
-        Object.values(props.characters).map(character => (
-            <div className="character-show">
-                <li>Name: {character.name}</li>
-            </div>
-        ))
-    )
-
     return (
         <div>
-            <div class="add-char-icon" onClick={() => props.openModal("createCharacter", { bookId: props.bookId, renderCharacters: renderCharacters })}>
+            <div className="add-char-icon" onClick={() => props.openModal("createCharacter", { bookId: props.currentBookId, renderCharacters: renderCharacters })}>
                 <h3>Characters</h3>
-                <GrAddCircle style={{ color: ' #FED168'}} class="add" onMouseOver={({ target }) => target.style.color = "white"} />
+                <GrAddCircle className="add" />
             </div>
             <div>
                 {display}

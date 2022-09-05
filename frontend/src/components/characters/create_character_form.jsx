@@ -44,13 +44,10 @@ const CreateCharacterForm = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        props.composeCharacter(state).then((resp) => {
-            // if (resp.type !== "RECEIVE_CHARACTER_ERRORS") {
-                props.closeModal();
-                props.renderCharacters();
-            // }
-        })
+        props.composeCharacter(state)
+            .then(props.closeModal)
     }
+
     const closeModal = () => {
         props.closeModal();
     }
@@ -58,10 +55,13 @@ const CreateCharacterForm = (props) => {
     const render = () => {
         return (
             <div>
-                <div className="modal__btn-close" onClick={closeModal}>          <IoCloseCircle style={{color: '#cc5500', fontSize: '35px'}}/>
-</div>
+                <div className="modal__btn-close" onClick={closeModal}>          
+                    <IoCloseCircle style={{color: '#cc5500', fontSize: '35px'}}/>
+                </div>
                 <div className="modal__header">Create a character</div>
-                {renderErrors()}
+                <div className="session-errors">
+                            {renderErrors()}
+                </div>                
                 <div>
                     <form className='character-form' onSubmit={handleSubmit}>
                         <label id = "label">Name:
@@ -148,10 +148,7 @@ const CreateCharacterForm = (props) => {
                                 id = "description"
                             />
                         </label>
-                        <div className="character-errors">
-                            {renderErrors()}
-                        </div>
-                        <button type = 'submit' className="modal-session-submit-button">
+                        <button type='submit' className="modal-session-submit-button">
                             <div>Create Character</div>
                         </button>
                     </form>

@@ -3,29 +3,27 @@ import { Link , useHistory} from "react-router-dom";
 import "../../assets/css/04-writing-page.css";
 import { useQuill } from 'react-quilljs';
 import 'quill/dist/quill.snow.css'; // Add css for snow theme 
-import axios from "axios";
-import { updateBook } from "../../util/book_api_util";
+import { editBook } from "../../actions/book_actions";
 import CharacterListContainer from "../characters/character_list";
-import { connect, useDispatch } from "react-redux";
 import { BsFillBackspaceFill } from 'react-icons/bs';
 import DictionaryContainer from "../dictionary/dictionary_container";
 
 const WritingPage = (props) => {
     
-    let {book,bookId, fetchBookById} = props;
+    console.log('WRITING PAGE PROPS', props)
+    let {book, bookId, fetchBookById} = props;
 
     const { quill, quillRef } = useQuill();
 
-
     const [currentBook, setCurrentBook] = useState(book)
+    
+        useEffect(() => {
+            window.localStorage.setItem('currentBook', JSON.stringify(currentBook))
+        }, [currentBook])
 
     useEffect(()=>{
             setCurrentBook(JSON.parse(window.localStorage.getItem('currentBook')))
     },[])
-
-    useEffect(() => {
-        window.localStorage.setItem('currentBook', JSON.stringify(currentBook))
-    }, [currentBook])
 
 
     React.useEffect(() => {
@@ -49,7 +47,7 @@ const WritingPage = (props) => {
             content: currentBook.content,
             id: currentBook._id
         }
-        updateBook(book);
+        editBook(book);
         history.push("/profile")
         quill.root.innerHTML = "";
     }
@@ -77,7 +75,7 @@ const WritingPage = (props) => {
                     </div>
             <div className="right-container-temp" >
                 <div>
-                    <CharacterListContainer bookId={currentBook._id} book={currentBook} />
+                    <CharacterListContainer currentBookId={props.bookId} />
                 </div>
                 <div className="dictionary-container-mood">
                     <DictionaryContainer />
