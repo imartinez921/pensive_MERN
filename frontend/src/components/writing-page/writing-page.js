@@ -10,16 +10,15 @@ import DictionaryContainer from "../dictionary/dictionary_container";
 
 const WritingPage = (props) => {
     
-    console.log('WRITING PAGE PROPS', props)
     let {book, bookId, fetchBookById} = props;
 
     const { quill, quillRef } = useQuill();
 
     const [currentBook, setCurrentBook] = useState(book)
     
-        useEffect(() => {
-            window.localStorage.setItem('currentBook', JSON.stringify(currentBook))
-        }, [currentBook])
+    useEffect(() => {
+        window.localStorage.setItem('currentBook', JSON.stringify(currentBook))
+    }, [currentBook])
 
     useEffect(()=>{
             setCurrentBook(JSON.parse(window.localStorage.getItem('currentBook')))

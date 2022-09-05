@@ -5,63 +5,66 @@ import { openModal } from "../../actions/modal_actions";
 import { useHistory } from "react-router-dom";
 // import characters from "../../../../validation/characters";
 import {GrAddCircle} from "react-icons/gr"
-import { fetchUserBooks } from "../../actions/book_actions";
 import '../../assets/css/07-char-list.css'
 
 
-const CharactersList = (props) => {
+const CharacterList = (props) => {
     console.log('CHARACTERLIST PROPS', props)
-    const [state, setState] = useState({
-        characters: props.characters
-    });
-    
+
+    let { characters,
+        fetchBookCharacters,
+        openModal,
+        currentBookId,
+    } = props;
+
+    const [allCharacters, setAllCharacters] = useState(characters)
+
+
     let display;
-    useEffect(() => {
-        renderCharacters();
+    // useEffect(() => {
+    //     renderCharacters()
+    //     .then
+    //     (display = (
+    //         <h1>HERE IS MY DISPLAY</h1>
+    //             // characters.map( (character, i) => (
+    //             //     <div className="character-show">
+    //             //         <li key={`${char acter.name}+${i}`}>Name: {character.name}</li>
+    //             //     </div>
+    //         // ))
+    //     ))
 
-        display = (
-            Object.values(props.characters).map(character => (
-                <div className="character-show">
-                    <li>Name: {character.name}</li>
-                </div>
-            ))
-        )
-
-    }, []);
+    // }, []);
 
     const renderCharacters = () => {
-        props.fetchBookCharacters(props.currentBookId)
-        .then(characters => {
-            setState({
-                characters
-            });
-        });
-    };
+        console.log('RENDERING CHARACTERS')
+        fetchBookCharacters(currentBookId) // response is an action {type, characters}
+        .then( res => setAllCharacters(res.characters))
+    }
 
     return (
         <div>
-            <div className="add-char-icon" onClick={() => props.openModal("createCharacter", { bookId: props.currentBookId, renderCharacters: renderCharacters })}>
+            <div className="add-char-icon" onClick={() => openModal("createCharacter", { bookId: currentBookId, renderCharacters: renderCharacters })}>
                 <h3>Characters</h3>
                 <GrAddCircle className="add" />
             </div>
             <div>
                 {display}
-                {/* {Object.values(props.characters).map(character => (character.name))} */}
             </div>
         </div>
     )
 };
 
-const mSTP = (state, ownProps) => ({
-    characters: state.characters,
-    books: state.books,
-    currentUser: state.session.user,
-});
+const mSTP = (state, ownProps) => {
+    return {
+        characters: state.characters,
+        books: state.books,
+        currentUser: state.session.user,
+        currentBookId: ownProps.currentBookId,
+}};
 
 const mDTP = dispatch => ({
     fetchBookCharacters: (bookId) => dispatch(fetchBookCharacters(bookId)),
-    // fetchUserBooks: (user.id) => dispatch(fetchUserBooks(user.id)),
     openModal: (modal, props) => dispatch(openModal(modal, props))
 })
 
-export default connect(mSTP, mDTP)(CharactersList)
+export default connect(mSTP, mDTP)(CharacterList)
