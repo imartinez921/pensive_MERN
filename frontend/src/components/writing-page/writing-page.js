@@ -32,7 +32,6 @@ const WritingPage = (props) => {
     // Save to the database
     const onSubmit = (e) =>{
         e.preventDefault();
-        debugger
         book={
             title: book.title,
             editor: book.editor,
@@ -69,7 +68,7 @@ const WritingPage = (props) => {
                     </div>
             <div className="right-container-temp" >
                 <div>
-                    <CharacterListContainer bookId={book._id} book={book} />
+                    {/* <CharacterListContainer bookId={book.id} book={book} /> */}
                 </div>
                 <div className="dictionary-container-mood">
                     <DictionaryContainer />
