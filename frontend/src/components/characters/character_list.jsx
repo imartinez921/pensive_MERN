@@ -31,7 +31,7 @@ const CharacterList = (props) => {
         {console.log('ALLCHARACTERS', allCharacters)}
             return ((allCharacters.map( (character, i) =>(
                 <div className="character-show" key={character._id}>
-                    <li key={`${character.name}+${i}`}>Name: {character.name}</li>
+                    <li key={`${character.name}+${i}`}>{character.name}</li>
                 </div>)
         )))}}
 
