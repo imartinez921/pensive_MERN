@@ -10,7 +10,7 @@ import DictionaryContainer from "../dictionary/dictionary_container";
 
 const WritingPage = (props) => {
     console.log(props);
-    let {book,bookId, fetchBookById, editBook} = props;
+    let {book, fetchBookById, editBook} = props;
     const history = useHistory();
 
 
@@ -68,7 +68,8 @@ const WritingPage = (props) => {
                     </div>
             <div className="right-container-temp" >
                 <div>
-                    {/* <CharacterListContainer bookId={book.id} book={book} /> */}
+                    {book ? <CharacterListContainer bookId={book._id} book={props.book} /> 
+                    : null}
                 </div>
                 <div className="dictionary-container-mood">
                     <DictionaryContainer />

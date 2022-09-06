@@ -14,41 +14,35 @@ const CharacterList = (props) => {
     let { characters,
         fetchBookCharacters,
         openModal,
-        currentBookId,
+        bookId,
     } = props;
 
-    const [allCharacters, setAllCharacters] = useState(characters)
+    const [allCharacters, setAllCharacters] = useState(Object.values(characters))
 
-
-    let display;
-    // useEffect(() => {
-    //     renderCharacters()
-    //     .then
-    //     (display = (
-    //         <h1>HERE IS MY DISPLAY</h1>
-    //             // characters.map( (character, i) => (
-    //             //     <div className="character-show">
-    //             //         <li key={`${char acter.name}+${i}`}>Name: {character.name}</li>
-    //             //     </div>
-    //         // ))
-    //     ))
-
-    // }, []);
-
-    const renderCharacters = () => {
-        console.log('RENDERING CHARACTERS')
-        fetchBookCharacters(currentBookId) // response is an action {type, characters}
+    useEffect(() => {
+        fetchBookCharacters(bookId) // response is an action {type, characters}
+        // .then(res => console.log('allCharactersSET', res.characters))
         .then( res => setAllCharacters(res.characters))
     }
+    , []);
+    
+    const renderCharacters = () => 
+    {if (allCharacters.length !== undefined || allCharacters.length !== 0){ 
+        {console.log('ALLCHARACTERS', allCharacters)}
+            return ((allCharacters.map( (character, i) =>(
+                <div className="character-show" key={character._id}>
+                    <li key={`${character.name}+${i}`}>{character.name}</li>
+                </div>)
+        )))}}
 
     return (
         <div>
-            <div className="add-char-icon" onClick={() => openModal("createCharacter", { bookId: currentBookId, renderCharacters: renderCharacters })}>
+            <div className="add-char-icon" onClick={() => openModal("createCharacter", { bookId: bookId })}>
                 <h3>Characters</h3>
                 <GrAddCircle className="add" />
             </div>
             <div>
-                {display}
+           {renderCharacters()}
             </div>
         </div>
     )
@@ -59,7 +53,7 @@ const mSTP = (state, ownProps) => {
         characters: state.characters,
         books: state.books,
         currentUser: state.session.user,
-        currentBookId: ownProps.currentBookId,
+        currentBookId: ownProps.bookId,
 }};
 
 const mDTP = dispatch => ({
