@@ -12,7 +12,6 @@ const books = require("./routes/api/books");
 const characters = require("./routes/api/characters");
 const User = require("./models/User");
 
-
 mongoose
   .connect(db, { useNewUrlParser: true })
   .then(() => console.log("Connected to MongoDB successfully"))

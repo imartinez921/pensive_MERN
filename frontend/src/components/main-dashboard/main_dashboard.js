@@ -16,10 +16,10 @@ class MainDashboard extends React.Component {
 
     render() {
         const STUDENTS = [
-            { name: "claire", github: "shuyangn", linkedin: "shuyang-ning", angelist: ""},
-            { name: "irene", github: "imartinez921", linkedin: "irenemartinez921", angelist: ""},
-            { name: "leonel", github: "leonel040792", linkedin: "leonel-colina", angelist: ""},
-            { name: "shengzhi", github: "ShengzhiLuo", linkedin: "shengzhi-luo", angelist: ""},
+            { name: "claire", github: "shuyangn", linkedin: "shuyang-ning", angelist: "shuyang-ning"},
+            { name: "irene", github: "imartinez921", linkedin: "irenemartinez921", angelist: "imartinez921"},
+            { name: "leonel", github: "leonel040792", linkedin: "leonel-colina", angelist: "leonel-colina"},
+            { name: "shengzhi", github: "ShengzhiLuo", linkedin: "shengzhi-luo", angelist: "shengzhi-luo"},
         ]
         return(
             <>
@@ -41,7 +41,7 @@ class MainDashboard extends React.Component {
                                             <p>{student.name}</p>
                                         </div>
                                         <div className="student-links">
-                                            <a href="#" target="_blank">
+                                            <a href={`https://angel.co/u/${student.angelist}`} target="_blank">
                                                 <img src={require("../../assets/images/angelist.png")} />
                                             </a>
                                             <a href={`https://github.com/${student.github}`} target="_blank">
