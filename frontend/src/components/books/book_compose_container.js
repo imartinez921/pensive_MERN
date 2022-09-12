@@ -5,7 +5,6 @@ import BookCompose from "./book_compose";
 const mapStateToProps = (state, ownProps) => {
   return {
     currentUser: state.session.user,
-    newBook: state.books.new,
     errors: state.errors.book,
   };
 };

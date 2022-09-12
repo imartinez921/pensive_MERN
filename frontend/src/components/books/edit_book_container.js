@@ -5,7 +5,6 @@ import BookEdit from "./edit_book_form";
 const mapStateToProps = (state, ownProps) => {
   return {
     currentUser: state.session.user,
-    newBook: state.books.new,
     errors: state.errors.book,
     book: state.books[ownProps.match.params.id],
 

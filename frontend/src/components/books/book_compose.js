@@ -12,7 +12,6 @@ class BookCompose extends React.Component {
       editor: "",
       genre: "",
       description:"",
-      newBook: "",
       errors: {},
     };
 

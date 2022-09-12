@@ -12,7 +12,6 @@ class BookEdit extends React.Component {
       editor: this.props.book.editor,
       genre: this.props.book.genre,
       description: this.props.book.description,
-      newBook: "",
       errors: {},
     };
 
@@ -22,11 +21,8 @@ class BookEdit extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      // title: nextProps.newBook.title,
-      // editor: nextProps.newBook.editor,
-      // genre: nextProps.newBook.genre,
-      // description: nextProps.newBook.description,
-      errors: nextProps.errors});
+      errors: nextProps.errors
+    });
   }
 
   componentDidMount() {
