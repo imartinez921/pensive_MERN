@@ -50,10 +50,14 @@ export const defineWord = query => dispatch => {
       .then(data => {
         dispatch( receiveDefinitions(data) );
       })
-      .catch(error => {
-        if (typeof error.json === "function") {
-          error.json().then(jsonError => {dispatch( receiveDictionaryError(jsonError) );
-      })}})
+      .catch(error => {console.log(error.json())
+        // if (typeof error.json === "function") {
+        //   error.json()
+        //   .then(jsonError => console.log(jsonError) );
+          // .then(jsonError => {dispatch( receiveDictionaryError(jsonError) );
+      // })
+    // }
+  })
   )}
 
 // RES is an ARRAY of definition objects

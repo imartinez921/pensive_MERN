@@ -11,6 +11,7 @@ import BookComposeContainer from "./books/book_compose_container";
 import DictionaryContainer from "./dictionary/dictionary_container";
 import BookEditContainer from "./books/edit_book_container";
 import WritingPageContainer from "./writing-page/writing-page-container";
+import CreateChapterFormContainer from "./chapters/create_chapter_form_container";
 
 const App = () => (
   <div>
@@ -20,6 +21,7 @@ const App = () => (
       <AuthRoute exact path="/" component={MainPage} />
       <ProtectedRoute exact path="/profile" component={MainDashboard} />
       <ProtectedRoute exact path="/define" component={DictionaryContainer} />
+      <ProtectedRoute exact path="/chapterform" component={CreateChapterFormContainer} />
       <ProtectedRoute exact path="/writing_page/:id" component={WritingPageContainer} />
       <ProtectedRoute
         exact

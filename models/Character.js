@@ -4,31 +4,31 @@ const Schema = mongoose.Schema;
 const CharacterSchema = new Schema({
   name: {
     type: String,
-    require: true,
+    required: true,
   },
   age: {
     type: Number,
-    require: true,
+    required: true,
   },
   sex: {
     type: String,
-    require: true,
+    required: true,
   },
   height: {
     type: Number,
-    require: true,
+    required: true,
   },
   weight: {
     type: Number,
-    require: true,
+    required: true,
   },
   species: {
     type: String,
-    require: true,  
+    required: true,  
   },
   description: {
     type: String,
-    require: true,
+    required: true,
   },
   book: {
     type: Schema.Types.ObjectId,

@@ -41,7 +41,8 @@ router.post(
         const newChapter = new Chapter({
             title: req.body.title,
             description: req.body.description,
-            content: req.body.content
+            content: req.body.content,
+            bookId: req.body.bookId,
         });
 
         newChapter.save().then((chapter) => res.json(chapter));

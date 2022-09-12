@@ -5,6 +5,7 @@ module.exports = function validateChapterInput(data) {
     let errors = {};
 
     data.title = validText(data.title) ? data.title : "";
+    data.bookId = validText(data.bookId) ? data.bookId : "";
 
     if (!Validator.isLength(data.title, { min: 1, max: 50 })) {
         errors.title = "Title must be between 1 & 50 characters";

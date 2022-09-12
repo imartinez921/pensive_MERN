@@ -11,13 +11,13 @@ const DictionaryWindow = (props) => {
         handlePrevQuery,
     } = props;
 
-    console.log('THESE ARE PROPS', props);
     console.log('THESE ARE ERRORS', errors);
 
     let display;
+    let errorList;
     if (errors !== undefined || errors.length !== 0)
-        {(display = (
-            <span>{errors[0]}</span>
+        {(errorList = (
+            <span className='definition-text'>{errors[0]}</span>
         ))}
     if (definitions !== undefined || definitions.length)
         {(display = (
@@ -52,6 +52,7 @@ const DictionaryWindow = (props) => {
     return (
         <>
             <div className='search-results'>
+                {errorList}
                 <h3>{relationshipType}</h3>
                 {display}
             </div>
