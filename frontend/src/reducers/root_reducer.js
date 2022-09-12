@@ -7,6 +7,7 @@ import synonymsReducer from "./synonyms_reducer";
 import queryReducer from "./query_reducer";
 import charactersReducer from "./characters_reducer";
 import uiReducer from "./ui_reducer";
+import chaptersReducer from "./chapters_reducer";
 
 
 const RootReducer = combineReducers({
@@ -18,6 +19,7 @@ const RootReducer = combineReducers({
   definitions: definitionsReducer,
   synonyms: synonymsReducer,
   queries: queryReducer,
+  chapters: chaptersReducer,
 });
 
 export default RootReducer;

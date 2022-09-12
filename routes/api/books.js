@@ -6,7 +6,7 @@ const passport = require("passport");
 const Book = require("../../models/Book");
 const validateBookInput = require("../../validation/books");
 
-// router.get("/test", (req, res) => res.json({ msg: "This is the books route" }));
+// router.get("/test", (req, res) => res.json({ msg: "This is the chapters route" }));
 router.get("/user/:user_id", (req, res) => {
   Book.find({author: req.params.user_id })
     .then((books) => res.json(books))

@@ -14,10 +14,6 @@ const BookSchema = new Schema({
     type: String,
     require: true,
   },
-  // chapter: {
-  //   type: Schema.Types.ObjectId,
-  //   ref: "chapters",
-  // },
   genre: {
     type: String,
     require: true,  
@@ -26,9 +22,6 @@ const BookSchema = new Schema({
     type: String,
     require: true,
   },
-  content: {
-    type: String
-  }
 });
 
 const Book = mongoose.model("books", BookSchema);

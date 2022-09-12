@@ -6,14 +6,10 @@ import { Link } from "react-router-dom";
 
 
 class BookBox extends React.Component {
-  constructor(props)
-  {
+  constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
   }
-  // componentDidMount() {
-  //   this.props.fetchbook(this.props.id);
-  // }
 
   handleClick(e) {
     e.preventDefault();
@@ -27,7 +23,6 @@ class BookBox extends React.Component {
         <Link to={`/writing_page/${this.props.id}`} className="book-title-link">{this.props.text}</Link>
         <div className="book-buttons-container">
           <button id="delete-button" onClick={() => this.props.removeBook(this.props.id)}><RiDeleteBin5Line /></button>
-          {/* onClick={() => props.openModal("createCharacter", { bookId: props.bookId, renderCharacters: renderCharacters })}> */}
           <button id="edit-button" onClick={this.handleClick}><FaEdit/></button>
         </div>  
 

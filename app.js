@@ -11,6 +11,7 @@ const users = require("./routes/api/users");
 const books = require("./routes/api/books");
 const characters = require("./routes/api/characters");
 const User = require("./models/User");
+const chapters = require("./routes/api/chapters")
 
 mongoose
   .connect(db, { useNewUrlParser: true })
@@ -26,6 +27,7 @@ app.use(bodyParser.json());
 app.use("/api/users", users);
 app.use("/api/books", books);
 app.use("/api/characters", characters);
+app.use("/api/chapters", chapters);
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("frontend/build"));
