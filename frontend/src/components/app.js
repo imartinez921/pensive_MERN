@@ -5,19 +5,18 @@ import NavBarContainer from "./nav/navbar_container";
 import '../assets/css/00-reset.css'
 
 import ModalContainer from "../components/modal/modal";
-import MainPage from "./main/main_page";
 import MainDashboard from "./main-dashboard/main_dashboard";
 import BookComposeContainer from "./books/book_compose_container";
 import DictionaryContainer from "./dictionary/dictionary_container";
 import BookEditContainer from "./books/edit_book_container";
 import WritingPageContainer from "./writing-page/writing-page-container";
+import NavbarContainer from "./nav/navbar_container";
 
 const App = () => (
   <div>
-     <NavBarContainer />
      <ModalContainer />
     <Switch>
-      <AuthRoute exact path="/" component={MainPage} />
+      <AuthRoute exact path="/" component={NavbarContainer} />
       <ProtectedRoute exact path="/profile" component={MainDashboard} />
       <ProtectedRoute exact path="/define" component={DictionaryContainer} />
       <ProtectedRoute exact path="/writing_page/:id" component={WritingPageContainer} />

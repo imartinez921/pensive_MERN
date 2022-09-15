@@ -1,10 +1,8 @@
 import { getUserBooks, writeBook, deleteBook, updateBook, getBook} from "../util/book_api_util";
 
-
 export const RECEIVE_USER_BOOKS = "RECEIVE_USER_BOOKS";
 export const RECEIVE_NEW_BOOK = "RECEIVE_NEW_BOOK";
 export const DELETE_BOOK = "DELETE_BOOK";
-
 
 export const RECEIVE_BOOK_ERRORS = "RECEIVE_BOOK_ERRORS";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";

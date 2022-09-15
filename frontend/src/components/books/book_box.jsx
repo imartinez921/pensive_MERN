@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 class BookBox extends React.Component {
   constructor(props) {
     super(props);
+    console.log("these are the props",this.props.id)
     this.handleClick = this.handleClick.bind(this);
   }
 

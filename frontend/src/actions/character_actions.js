@@ -1,14 +1,11 @@
 import { getBookCharacters, writeCharacter, deleteCharacter, updateCharacter, getCharacter} from "../util/character_api_util";
 
-
 export const RECEIVE_BOOK_CHARACTERS = "RECEIVE_BOOK_CHARACTERS";
 export const RECEIVE_NEW_CHARACTER = "RECEIVE_NEW_CHARACTER";
 export const DELETE_CHARACTER = "DELETE_CHARACTER";
 
-
 export const RECEIVE_CHARACTER_ERRORS = "RECEIVE_CHARACTER_ERRORS";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
-
 
 export const receiveBookCharacters = (characters) => ({
   type: RECEIVE_BOOK_CHARACTERS,

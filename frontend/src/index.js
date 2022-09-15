@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { composeChapter } from './actions/chapter_actions';
+import { writeChapter } from './util/chapter_api_util';
 
 // We will create this component shortly
 import Root from './components/root';
@@ -18,7 +20,8 @@ import { logout } from './actions/session_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
-
+  window.composeChapter = composeChapter;
+  window.writeChapter = writeChapter;
   // If a returning user has a session token stored in localStorage
   if (localStorage.jwtToken) {
 

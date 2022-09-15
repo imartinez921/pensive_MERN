@@ -25,12 +25,10 @@ class MainDashboard extends React.Component {
             <>
             <div className="main-dashboard" >
                 <LoggedInNavbar />
-                    <ProfileContainer history={ this.props.history} />
+                <ProfileContainer />
                 <div className="temporary">
                     <div className="students-container">
                         {STUDENTS.map((student, key) => {
-
-
                             return (
                                 <>
                                     <div className={`single-student ${student}`}  key={key}>
