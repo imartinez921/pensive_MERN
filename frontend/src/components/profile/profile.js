@@ -7,22 +7,21 @@ import '../../assets/css/03-books-main-section-container.css';
 class Profile extends React.Component {
   constructor(props) {
     super(props);
-
+    
     this.state = {
       books: [],
     };
   }
-
+  
   componentDidMount() {
     this.props.fetchUserBooks(this.props.currentUser.id);
   }
   
-  componentWillMount() {
-    // console.log(this.props.currentUser.id)
+  UNSAFE_componentWillMount() {
     this.props.fetchUserBooks(this.props.currentUser.id);
   }
 
-  componentWillReceiveProps(newState) {
+  UNSAFE_componentWillReceiveProps(newState) {
     this.setState({ books: newState.books });
   }
 
@@ -52,7 +51,7 @@ class Profile extends React.Component {
               data={book}
               editBook={editBook}
               fetchbook={fetchBookById}
-              history={history } />
+              history={history} />
           ))}
             <Link to={"/new_book"} className="add-book">+</Link>
           </div>

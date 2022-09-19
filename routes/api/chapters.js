@@ -10,7 +10,7 @@ const validateChapterInput = require("../../validation/chapters");
 // router.get("/test", (req, res) => res.json({ msg: "This is the books route" }));
 
 // Chapter Index
-router.get("all/:book_id", (req, res) => {
+router.get("/all/:book_id", (req, res) => {
     Chapter.find({ bookId: req.params.book_id })
         .then((chapters) => res.json(chapters))
         .catch((err) =>

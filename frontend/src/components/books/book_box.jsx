@@ -8,8 +8,8 @@ import { Link } from "react-router-dom";
 class BookBox extends React.Component {
   constructor(props) {
     super(props);
-    console.log("these are the props",this.props.id)
     this.handleClick = this.handleClick.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   handleClick(e) {
@@ -18,12 +18,19 @@ class BookBox extends React.Component {
     this.props.history.push(`/edit_book/${id}`);
   }
 
+  handleDelete(e){
+    e.preventDefault();
+    console.log(this.props)
+    this.props.removeBook(this.props.id)
+  }
+
   render() {
     return (
       <div className="individual-book">
-        <Link to={`/writing_page/${this.props.id}`} className="book-title-link">{this.props.text}</Link>
+        {/* <Link to={`/writing_page/${this.props.id}`} className="book-title-link">{this.props.text}</Link> */}
+        <Link to={`/book/${this.props.id}`} className="book-title-link">{this.props.text}</Link>
         <div className="book-buttons-container">
-          <button id="delete-button" onClick={() => this.props.removeBook(this.props.id)}><RiDeleteBin5Line /></button>
+          <button id="delete-button" onClick={this.handleDelete}><RiDeleteBin5Line /></button>
           <button id="edit-button" onClick={this.handleClick}><FaEdit/></button>
         </div>  
 

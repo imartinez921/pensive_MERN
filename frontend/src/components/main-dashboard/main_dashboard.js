@@ -25,12 +25,11 @@ class MainDashboard extends React.Component {
             <>
             <div className="main-dashboard" >
                 <LoggedInNavbar />
-                <ProfileContainer />
+                <ProfileContainer history={this.props.history}/>
                 <div className="temporary">
                     <div className="students-container">
                         {STUDENTS.map((student, key) => {
                             return (
-                                <>
                                     <div className={`single-student ${student}`}  key={key}>
                                         <div className="student-face">
                                             <img src={require(`../../assets/images/${student.name}.jpeg`)}/>
@@ -50,7 +49,6 @@ class MainDashboard extends React.Component {
                                             </a>
                                         </div>
                                     </div>
-                                </>
                             )
                         })}
                     </div>

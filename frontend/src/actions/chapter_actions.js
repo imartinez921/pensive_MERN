@@ -32,11 +32,11 @@ export const clearErrors = () => ({
 });
 
 
-export const fetchBookChapters = (bookId) => (dispatch) => {
-    return getBookChapters(bookId)
+export const fetchBookChapters = (bookId) => (dispatch) =>
+    getBookChapters(bookId)
         .then((chapters) => dispatch(receiveBookChapters(chapters.data)),
             (err) => dispatch(receiveChapterErrors(err.response.data)));
-}
+
 
 export const fetchChapterById = (id) => (dispatch) =>
     getChapter(id)

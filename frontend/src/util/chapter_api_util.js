@@ -1,7 +1,7 @@
 import axios from "axios";
 
-export const getBookChapters = (id) => {
-    return axios.get(`/api/chapters/all/${id}`);
+export const getBookChapters = (book_id) => {
+    return axios.get(`/api/chapters/all/${book_id}`);
 };
 
 export const getChapter = (id) => {

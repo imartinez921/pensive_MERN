@@ -9,7 +9,7 @@ import '../../assets/css/07-char-list.css'
 
 
 const CharacterList = (props) => {
-    console.log('CHARACTERLIST PROPS', props)
+    // console.log('CHARACTERLIST PROPS', props)
 
     let { characters,
         fetchBookCharacters,
@@ -28,7 +28,7 @@ const CharacterList = (props) => {
     
     const renderCharacters = () => 
     {if (allCharacters.length !== undefined || allCharacters.length !== 0){ 
-        {console.log('ALLCHARACTERS', allCharacters)}
+        // {console.log('ALLCHARACTERS', allCharacters)}
             return ((allCharacters.map( (character, i) =>(
                 <div className="character-show" key={character._id}>
                     <li key={`${character.name}+${i}`}>{character.name}</li>

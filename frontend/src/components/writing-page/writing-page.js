@@ -9,7 +9,7 @@ import { BsFillBackspaceFill } from 'react-icons/bs';
 import DictionaryContainer from "../dictionary/dictionary_container";
 
 const WritingPage = (props) => {
-    console.log(props);
+    // console.log(props);
     let {book, fetchBookById, editBook} = props;
     const history = useHistory();
 
@@ -48,7 +48,9 @@ const WritingPage = (props) => {
 
 
     const handleClick = () => {
-        history.push("/profile")
+        if (window.confirm('Are you sure you want to go back? You will lose any unsaved changes')){
+            history.push(`/book/${book._id}`)
+        }
     };
 
 

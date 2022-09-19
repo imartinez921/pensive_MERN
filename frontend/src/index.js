@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { composeChapter } from './actions/chapter_actions';
-import { writeChapter } from './util/chapter_api_util';
+import { composeChapter, fetchBookChapters } from './actions/chapter_actions';
+import { writeChapter, getBookChapters, getChapter } from './util/chapter_api_util';
 
 // We will create this component shortly
 import Root from './components/root';
@@ -22,6 +22,9 @@ document.addEventListener('DOMContentLoaded', () => {
   let store;
   window.composeChapter = composeChapter;
   window.writeChapter = writeChapter;
+  window.getChapter = getChapter;
+  window.getBookChapters = getBookChapters;
+  window.fetchBookChapters = fetchBookChapters;
   // If a returning user has a session token stored in localStorage
   if (localStorage.jwtToken) {
 
