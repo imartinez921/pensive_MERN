@@ -67,8 +67,7 @@ const WritingPage = (props) => {
                     </div>
             <div className="right-container-temp" >
                 <div>
-                    {chapter ? <CharacterListContainer chapterId={chapter._id} chapter={props.chapter} /> 
-                    : null}
+                    <CharacterListContainer  chapter={chapter} /> 
                 </div>
                 <div className="dictionary-container-mood">
                     <DictionaryContainer />

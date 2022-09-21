@@ -11,7 +11,7 @@ const validateCharacterInput = require("../../validation/characters");
 
 
 router.get("/book/:book_id", (req, res) => {
-  Character.find({book: req.params.book_id })
+  Character.find({bookId: req.params.book_id })
     .then((characters) => res.json(characters))
     .catch((err) =>
       res.status(404).json({ nocharactersfound: "No characters found from that book" })

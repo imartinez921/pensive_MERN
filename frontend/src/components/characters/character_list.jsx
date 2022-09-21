@@ -11,29 +11,19 @@ import '../../assets/css/07-char-list.css'
 const CharacterList = (props) => {
     // console.log('CHARACTERLIST PROPS', props)
 
-    let { characters,
+    let {
         fetchBookCharacters,
         openModal,
         bookId,
     } = props;
 
-    const [allCharacters, setAllCharacters] = useState(Object.values(characters))
+    const [allCharacters, setAllCharacters] = useState([])
 
     useEffect(() => {
-        fetchBookCharacters(bookId) // response is an action {type, characters}
-        // .then(res => console.log('allCharactersSET', res.characters))
+        fetchBookCharacters(bookId)
         .then( res => setAllCharacters(res.characters))
     }
-    , []);
-    
-    const renderCharacters = () => 
-    {if (allCharacters.length !== undefined || allCharacters.length !== 0){ 
-        // {console.log('ALLCHARACTERS', allCharacters)}
-            return ((allCharacters.map( (character, i) =>(
-                <div className="character-show" key={character._id}>
-                    <li key={`${character.name}+${i}`}>{character.name}</li>
-                </div>)
-        )))}}
+    , [bookId]);
 
     return (
         <div>
@@ -42,7 +32,17 @@ const CharacterList = (props) => {
                 <GrAddCircle className="add" />
             </div>
             <div>
-           {renderCharacters()}
+                {allCharacters.map((character, idx) => (
+                    <div className="character-show" key={idx}>
+                        <p>{character.name}</p>
+                        <p>{character.age}</p>
+                        <p>{character.sex}</p>
+                        <p>{character.height}</p>
+                        <p>{character.weight}</p>
+                        <p>{character.species}</p>
+                        <p>{character.description}</p>
+                    </div>)
+                )}
             </div>
         </div>
     )
@@ -50,10 +50,7 @@ const CharacterList = (props) => {
 
 const mSTP = (state, ownProps) => {
     return {
-        characters: state.characters,
-        books: state.books,
-        currentUser: state.session.user,
-        currentBookId: ownProps.bookId,
+        bookId: ownProps.chapter.bookId,
 }};
 
 const mDTP = dispatch => ({

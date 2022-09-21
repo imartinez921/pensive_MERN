@@ -11,7 +11,6 @@ const ChapterForm = ({
     chapter
 }) =>{
 
-    console.log(chapter.title)
     const [title, setTitle] = useState(chapter.title);
     const [description, setDescription] = useState(chapter.description);
 
