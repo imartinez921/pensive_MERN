@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { connect, useDispatch } from "react-redux";
 import { composeCharacter } from "../../actions/character_actions";
-import { openModal, closeModal } from "../../actions/modal_actions";
+import { closeModal } from "../../actions/modal_actions";
 import { clearErrors } from "../../actions/character_actions";
 import '../../assets/css/06-create-char-form.css';
 import { IoCloseCircle } from "react-icons/io5";
@@ -17,11 +17,11 @@ const CreateCharacterForm = (props) => {
         name: '',
         age: '',
         sex: '',
-        book: props.bookId,
         height: '',
         weight: '',
         species: '',
-        description:''
+        description:'',
+        bookId: props.bookId,
     })
     
     const update = (field) => {

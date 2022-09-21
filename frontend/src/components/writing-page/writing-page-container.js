@@ -1,22 +1,25 @@
 import { connect } from "react-redux";
 import WritingPage from "./writing-page";
-import { fetchBookById, fetchUserBooks, editBook} from "../../actions/book_actions";
-
-
+import { fetchChapterById, editChapter } from "../../actions/chapter_actions";
+// import { fetchBookCharacters } from "../../actions/character_actions";
 const mapStateToProps = (state, ownProps) => { 
+
     return ({
-        books: state.books,
-        book: state.books[ownProps.match.params.id],
-        bookId: ownProps.match.params.id,
+        chapters: state.chapters,
+        chapter: state.chapters[ownProps.match.params.id],
+        chapterId: ownProps.match.params.id,
         currentUserId: state.session.user.id
     })
 }
 
 
 const mapDispatchToProps = (dispatch) => ({
-    fetchBookById: (id) => dispatch(fetchBookById(id)),
-    fetchUserBooks: (id) => dispatch(fetchUserBooks(id)),
-    editBook: (book) => dispatch(editBook(book))
+    fetchChapterById: (id) => dispatch(fetchChapterById(id)),
+    editChapter: (data) => dispatch(editChapter(data)),
+
+    // fetchBookById: (id) => dispatch(fetchBookById(id)),
+    // fetchUserBooks: (id) => dispatch(fetchUserBooks(id)),
+    // editBook: (book) => dispatch(editBook(book))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(WritingPage);

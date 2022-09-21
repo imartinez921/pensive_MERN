@@ -6,9 +6,10 @@
     min-height: 100vh;
     height: 100%;
     text-align: center;
-    padding-top: 60px;
+    /* padding-top: 60px; */
     background-color: rgba(165, 136, 93, 0.3);
     box-shadow: 0px 0px 20px rgb(165 136 93 / 30%);
+    /* padding-bottom: 50px; */
 }
 
 .chapters-main-section-container #back-to-profile{

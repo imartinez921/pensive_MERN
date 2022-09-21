@@ -41,7 +41,6 @@ router.post(
       editor: req.body.editor,
       genre: req.body.genre,
       description: req.body.description,
-      content: req.body.content
     });
 
     newBook.save().then((book) => res.json(book));
@@ -72,7 +71,6 @@ router.patch('/:id', passport.authenticate("jwt", { session: false }),
         book.genre = req.body.genre; 
         book.author = req.user.id;
         book.description = req.body.description;
-        book.content = req.body.content;
       
         
         return book.save().then(book => res.json(book)).catch(err => console.log(err))

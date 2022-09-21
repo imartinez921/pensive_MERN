@@ -30,7 +30,7 @@ const CharacterSchema = new Schema({
     type: String,
     require: true,
   },
-  book: {
+  bookId: {
     type: Schema.Types.ObjectId,
     ref: "books",
   }

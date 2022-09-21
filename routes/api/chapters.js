@@ -41,7 +41,8 @@ router.post(
         const newChapter = new Chapter({
             title: req.body.title,
             description: req.body.description,
-            content: req.body.content
+            content: req.body.content,
+            bookId: req.body.bookId,
         });
 
         newChapter.save().then((chapter) => res.json(chapter));
@@ -52,7 +53,7 @@ router.post(
 router.delete('/:id',
     passport.authenticate('jwt', { session: false }),
     (req, res) => {
-        Chapter.findOneAndDelete({ id: req.params.id }).catch((err) => res.status(404).json({ nochapterfound: 'No chapter found with that ID' }))
+        Chapter.findOneAndDelete({ _id: req.params.id }).catch((err) => res.status(404).json({ nochapterfound: 'No chapter found with that ID' }))
 
         res.json({ success: true })
     }
@@ -71,7 +72,7 @@ router.patch('/:id', passport.authenticate("jwt", { session: false }),
                 chapter.title = req.body.title;
                 chapter.description = req.body.description;
                 chapter.content = req.body.content;
-
+                chapter.bookId = req.body.bookId;
                 return chapter.save().then(chapter => res.json(chapter)).catch(err => console.log(err))
             })
             .catch(err => res.status(404).json({ nochapterFound: "No chapter found with that ID" }))

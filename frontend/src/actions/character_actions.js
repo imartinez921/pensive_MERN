@@ -50,7 +50,7 @@ export const composeCharacter = (data) => (dispatch) =>
     return new Promise((resolve,reject) => {
         return reject();
     })
-  });
+  }); 
 
 export const removeCharacter = (id) => (dispatch) => 
   deleteCharacter(id)

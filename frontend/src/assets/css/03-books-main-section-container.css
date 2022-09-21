@@ -40,7 +40,7 @@
     display: flex;
     transition: .3s;
     flex-direction: column;
-    justify-content: end;
+    justify-content: flex-end;
     box-shadow: 1px 1px 1px 0px rgb(255 255 255), 2px 2px 1px 0px rgb(0 0 0), 3px 3px 1px 0px rgb(255 255 255), 4px 4px 1px 0px rgb(0 0 0), 4px 4px 3px 1px rgb(0 0 0);
 }
 

@@ -3,28 +3,27 @@ import { Link , useHistory} from "react-router-dom";
 import "../../assets/css/04-writing-page.css";
 import { useQuill } from 'react-quilljs';
 import 'quill/dist/quill.snow.css'; // Add css for snow theme 
-import axios from "axios";
 import CharacterListContainer from "../characters/character_list";
 import { BsFillBackspaceFill } from 'react-icons/bs';
 import DictionaryContainer from "../dictionary/dictionary_container";
 
 const WritingPage = (props) => {
-    // console.log(props);
-    let {book, fetchBookById, editBook} = props;
+    console.log(props);
+    let {chapter, fetchChapterById, editChapter} = props;
     const history = useHistory();
 
 
-    if (!book){
-        history.push("/profile")
+    if (!chapter){
+        history.push(`/book/${chapter.bookId}`)
     }
 
     const { quill, quillRef } = useQuill();
 
     useEffect(() => {
         if (quill) {
-            quill.root.innerHTML = book.content;
+            quill.root.innerHTML = chapter.content;
             quill.on('text-change', () => {
-                book.content = quill.root.innerHTML;
+                chapter.content = quill.root.innerHTML;
             });
         }
     }, [quill]);
@@ -32,24 +31,22 @@ const WritingPage = (props) => {
     // Save to the database
     const onSubmit = (e) =>{
         e.preventDefault();
-        book={
-            title: book.title,
-            editor: book.editor,
-            genre: book.genre,
-            author: book.author,
-            description: book.description,
-            content: book.content,
-            id: book._id
+        chapter={
+            title: chapter.title,
+            description: chapter.description,
+            bookId: chapter.bookId,
+            content: chapter.content,
+            id: chapter._id
         }
-        editBook(book);
-        history.push("/profile")
+        editChapter(chapter);
+        history.push(`/book/${chapter.bookId}`)
         quill.root.innerHTML = "";
     }
 
 
     const handleClick = () => {
         if (window.confirm('Are you sure you want to go back? You will lose any unsaved changes')){
-            history.push(`/book/${book._id}`)
+            history.push(`/book/${chapter.bookId}`)
         }
     };
 
@@ -70,7 +67,7 @@ const WritingPage = (props) => {
                     </div>
             <div className="right-container-temp" >
                 <div>
-                    {book ? <CharacterListContainer bookId={book._id} book={props.book} /> 
+                    {chapter ? <CharacterListContainer chapterId={chapter._id} chapter={props.chapter} /> 
                     : null}
                 </div>
                 <div className="dictionary-container-mood">

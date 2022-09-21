@@ -20,8 +20,11 @@ class BookBox extends React.Component {
 
   handleDelete(e){
     e.preventDefault();
-    console.log(this.props)
-    this.props.removeBook(this.props.id)
+    // console.log(this.props)
+    if (window.confirm('Are you sure you want delete this book? This cannot be undone')) {
+      this.props.removeBook(this.props.id)
+    }
+    
   }
 
   render() {

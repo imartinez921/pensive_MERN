@@ -43,7 +43,7 @@ router.post(
       weight: req.body.weight,
       species: req.body.species,
       description: req.body.description,
-      book: req.body.book
+      bookId: req.body.bookId
     });
 
 
@@ -74,7 +74,8 @@ router.patch('/:id', passport.authenticate("jwt", { session: false }),
       character.name = req.body.name;
       character.age = req.body.age;
       character.sex = req.body.sex; 
-      character.book = req.book.id;
+      //I modified this from book
+      character.bookId = req.bookId.id;
       character.height= req.body.height;
       character.weight = req.body.weight;
       character.species = req.body.species;
