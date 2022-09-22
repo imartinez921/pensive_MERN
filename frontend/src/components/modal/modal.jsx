@@ -19,10 +19,10 @@ const Modal = (props) => {
       component = <SignupFormContainer />;
       break;
     case 'createCharacter':
-     component = <CreateCharacterForm modalType="create"/>;
+     component = <CreateCharacterForm modalType="Create"/>;
       break;
     case 'updateCharacter':
-      component = <CreateCharacterForm modalType="update" />;
+      component = <CreateCharacterForm modalType="Update" />;
       break;
     case 'deletion':
      component = <DeletionContainer />;

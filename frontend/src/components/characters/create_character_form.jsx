@@ -55,12 +55,11 @@ const CreateCharacterForm = ({
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        if (modalType==="create"){
+        if (modalType==="Create"){
             composeCharacter(state)
                 .then(closeModal)
         }
-        if (modalType==="update"){
-
+        if (modalType==="Update"){
             const editChar = { ...state, id: characterId }
             editCharacter(editChar)
             .then(closeModal)
