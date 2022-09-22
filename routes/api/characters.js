@@ -43,7 +43,7 @@ router.post(
       weight: req.body.weight,
       species: req.body.species,
       description: req.body.description,
-      bookId: req.body.bookId
+      bookId: req.body.bookId,
     });
 
 
@@ -55,7 +55,7 @@ router.post(
 router.delete('/:id',
   passport.authenticate('jwt', { session: false }),
   (req, res) => { 
-    Character.findOneAndDelete({id: req.params.id}).catch((err) =>res.status(404).json({ nocharacterfound: 'No character found with that ID' }))
+    Character.findOneAndDelete({_id: req.params.id}).catch((err) =>res.status(404).json({ nocharacterfound: 'No character found with that ID' }))
     
     res.json({ success: true }) 
   }
@@ -68,21 +68,20 @@ router.patch('/:id', passport.authenticate("jwt", { session: false }),
   if (!isValid) {
     return res.status(400).json(errors);
   }
-
+ debugger
   Character.findById(req.params.id)
     .then(character => {
       character.name = req.body.name;
       character.age = req.body.age;
       character.sex = req.body.sex; 
-      //I modified this from book
-      character.bookId = req.bookId.id;
+      character.bookId = req.body.bookId;
       character.height= req.body.height;
       character.weight = req.body.weight;
       character.species = req.body.species;
       character.description= req.body.description;
         return character.save().then(character => res.json(character)).catch(err => console.log(err))
       })
-        .catch(err => res.status(404).json( { nocharacterFound: "No character found with that ID"} ))
+        .catch(err => res.status(404).json( { nocharacterFound: "No character found with that ID", params: req.params} ))
 });
 
 

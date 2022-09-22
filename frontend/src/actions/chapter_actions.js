@@ -56,7 +56,7 @@ export const composeChapter = (data) => (dispatch) =>
 
 export const deleteBookChapter = (id) => (dispatch) =>
     deleteChapter(id)
-        .then(() => dispatch(deleteBookChapter(id)),
+        .then(() => dispatch(removeChapter(id)),
             (err) => dispatch(receiveChapterErrors(err.response.data)));
 
 export const editChapter = (data) => (dispatch) =>

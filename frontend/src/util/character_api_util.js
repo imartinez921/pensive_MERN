@@ -19,5 +19,5 @@ export const deleteCharacter = (id) => {
 };
 
 export const updateCharacter = (data) => {
-  return axios.put(`/api/characters/${data.id}`, data);
+  return axios.patch(`/api/characters/${data.id}`, data);
 }

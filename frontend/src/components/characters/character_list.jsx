@@ -1,29 +1,40 @@
 import React, { useEffect, useState }from "react";
-import { connect } from "react-redux";
-import { fetchBookCharacters } from "../../actions/character_actions";
+import { connect, useSelector } from "react-redux";
+import { fetchBookCharacters, editCharacter, removeCharacter } from "../../actions/character_actions";
 import { openModal } from "../../actions/modal_actions";
-import { useHistory } from "react-router-dom";
 // import characters from "../../../../validation/characters";
-import {GrAddCircle} from "react-icons/gr"
-import '../../assets/css/07-char-list.css'
+import {GrAddCircle} from "react-icons/gr";
+import '../../assets/css/07-char-list.css';
+import { RiDeleteBin5Line } from 'react-icons/ri';
+import { FaEdit } from 'react-icons/fa';
+import { useDispatch } from "react-redux";
 
 
 const CharacterList = (props) => {
     // console.log('CHARACTERLIST PROPS', props)
 
+    const dispatch = useDispatch();
     let {
         fetchBookCharacters,
         openModal,
         bookId,
     } = props;
 
-    const [allCharacters, setAllCharacters] = useState([])
-
+    // const [allCharacters, setAllCharacters] = useState([])
+    const allCharacters = useSelector((state)=>Object.values(state.characters));
     useEffect(() => {
         fetchBookCharacters(bookId)
-        .then( res => setAllCharacters(res.characters))
     }
     , [bookId]);
+
+
+    const handleDeleteCharacter = (id) =>{
+        dispatch(removeCharacter(id))
+    }
+
+    const handleEditCharacter = () =>{
+
+    }
 
     return (
         <div>
@@ -35,6 +46,8 @@ const CharacterList = (props) => {
                 {allCharacters.map((character, idx) => (
                     <div className="character-show" key={idx}>
                         <p>{character.name}</p>
+                        <button onClick={() => {handleDeleteCharacter(character._id)}}><RiDeleteBin5Line /></button>
+                        <button onClick={() => openModal("updateCharacter", { bookId: bookId, characterId: character._id })}><FaEdit /></button>
                         <p>{character.age}</p>
                         <p>{character.sex}</p>
                         <p>{character.height}</p>
@@ -51,6 +64,7 @@ const CharacterList = (props) => {
 const mSTP = (state, ownProps) => {
     return {
         bookId: ownProps.chapter.bookId,
+        characters: state.characters,
 }};
 
 const mDTP = dispatch => ({

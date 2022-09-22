@@ -19,7 +19,7 @@ const ChapterForm = ({
         const newChapter = {
             title,
             description,
-            bookId: bookId,
+            bookId,
             content: '',
         }
 
@@ -29,15 +29,15 @@ const ChapterForm = ({
                 title,
                 description,
                 bookId: bookId,
-                content: '',
+                content: chapter.content,
                 id: chapter._id,
             }
             editChapter(updatedChapter);
         }
 
-        setTitle('')
-        setDescription('')
-        setModal(!modal)
+        setTitle('');
+        setDescription('');
+        setModal(!modal);
     }
 
     const handleBackground = () =>{

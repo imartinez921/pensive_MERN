@@ -54,7 +54,7 @@ router.delete('/:id',
     passport.authenticate('jwt', { session: false }),
     (req, res) => {
         Chapter.findOneAndDelete({ _id: req.params.id }).catch((err) => res.status(404).json({ nochapterfound: 'No chapter found with that ID' }))
-
+        
         res.json({ success: true })
     }
 )

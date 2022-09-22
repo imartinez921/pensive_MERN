@@ -1,12 +1,21 @@
 import React, {useState, useEffect} from "react";
 import { connect, useDispatch } from "react-redux";
-import { composeCharacter } from "../../actions/character_actions";
+import { composeCharacter, editCharacter } from "../../actions/character_actions";
 import { closeModal } from "../../actions/modal_actions";
 import { clearErrors } from "../../actions/character_actions";
 import '../../assets/css/06-create-char-form.css';
 import { IoCloseCircle } from "react-icons/io5";
 
-const CreateCharacterForm = ({errors,clearErrors, bookId, composeCharacter, closeModal}) => {
+const CreateCharacterForm = ({
+    errors,
+    clearErrors, 
+    bookId, 
+    characterId,
+    composeCharacter, 
+    closeModal,
+    modalType,
+    editCharacter,
+}) => {
 
     const dispatch = useDispatch();
 
@@ -33,20 +42,30 @@ const CreateCharacterForm = ({errors,clearErrors, bookId, composeCharacter, clos
 
     const renderErrors = () => {
         return(
-          <ul>
+          <div>
             {Object.values(errors).map((error, i) => (
-              <li key={`error-${i}`} className="room-errors">
+              <p key={`error-${i}`} className="room-errors">
                 {error}
-              </li>
+              </p>
             ))}
-          </ul>
+          </div>
         );
     }
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        composeCharacter(state)
+
+        if (modalType==="create"){
+            composeCharacter(state)
+                .then(closeModal)
+        }
+        if (modalType==="update"){
+
+            const editChar = { ...state, id: characterId }
+            editCharacter(editChar)
             .then(closeModal)
+        }
+       
     }
 
     return (
@@ -54,7 +73,7 @@ const CreateCharacterForm = ({errors,clearErrors, bookId, composeCharacter, clos
             <div className="modal__btn-close" onClick={closeModal}>          
                 <IoCloseCircle style={{color: '#cc5500', fontSize: '35px'}}/>
             </div>
-            <div className="modal__header">Create a character</div>
+            <div className="modal__header">{modalType} a character</div>
             <div className="session-errors">
                         {renderErrors()}
             </div>                
@@ -145,7 +164,7 @@ const CreateCharacterForm = ({errors,clearErrors, bookId, composeCharacter, clos
                         />
                     </label>
                     <button type='submit' className="modal-session-submit-button">
-                        <div>Create Character</div>
+                        <div>{modalType} Character</div>
                     </button>
                 </form>
             </div>
@@ -157,14 +176,19 @@ const CreateCharacterForm = ({errors,clearErrors, bookId, composeCharacter, clos
 
 
 // Create Character Form Container
-const mSTP = (state) => ({
+const mSTP = (state, ownProps) => {
+       console.log(ownProps);
+    return {
     bookId: state.ui.modal.props.bookId,
+    characterId: state.ui.modal.props.characterId,
     renderCharacters: state.ui.modal.props.renderCharacters,
     errors: state.errors.character,
-})
+    modalType: ownProps.modalType,
+}}
 
 const mDTP = (dispatch) => ({
     composeCharacter: (character) => dispatch(composeCharacter(character)),
+    editCharacter: (character) => dispatch(editCharacter(character)),
     closeModal: () => dispatch(closeModal()),
     clearErrors: () => dispatch(clearErrors())
 });
