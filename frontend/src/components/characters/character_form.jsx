@@ -6,7 +6,7 @@ import { clearErrors } from "../../actions/character_actions";
 import '../../assets/css/06-create-char-form.css';
 import { IoCloseCircle } from "react-icons/io5";
 
-const CreateCharacterForm = ({
+const CharacterForm = ({
     errors,
     clearErrors, 
     bookId, 
@@ -222,4 +222,4 @@ const mDTP = (dispatch) => ({
     clearErrors: () => dispatch(clearErrors())
 });
 
-export default connect(mSTP, mDTP)(CreateCharacterForm);
+export default connect(mSTP, mDTP)(CharacterForm);
