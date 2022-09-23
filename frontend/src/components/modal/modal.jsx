@@ -3,15 +3,17 @@ import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import LoginFormContainer from '../session/login_form_container';
 import SignupFormContainer from '../session/signup_form_container';
-import CreateCharacterForm from '../characters/create_character_form';
+import CharacterForm from '../characters/character_form';
 import '../../assets/css/05-modal.css';
 import DeletionContainer from '../deletion/deletion_container'
 
 const Modal = (props) => {
+  console.log('MODAL.JSX PROPS', props)
   if (!props.modal) return null;
-
+  const { modal } = props;
+  
   let component;
-  switch(props.modal.type) {
+  switch(modal.type) {
     case 'login':
       component = <LoginFormContainer />;
       break;
@@ -19,10 +21,10 @@ const Modal = (props) => {
       component = <SignupFormContainer />;
       break;
     case 'createCharacter':
-     component = <CreateCharacterForm modalType="Create"/>;
+     component = <CharacterForm modalType="Create"/>;
       break;
     case 'updateCharacter':
-      component = <CreateCharacterForm modalType="Update" />;
+      component = <CharacterForm modalType="Update" character={modal.props.character} />;
       break;
     case 'deletion':
      component = <DeletionContainer />;

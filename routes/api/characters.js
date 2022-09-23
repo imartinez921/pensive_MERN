@@ -68,8 +68,7 @@ router.patch('/:id', passport.authenticate("jwt", { session: false }),
   if (!isValid) {
     return res.status(400).json(errors);
   }
- debugger
-  Character.findById(req.params.id)
+  Character.findById(req.body.characterId)
     .then(character => {
       character.name = req.body.name;
       character.age = req.body.age;

@@ -11,6 +11,7 @@ const CreateCharacterForm = ({
     clearErrors, 
     bookId, 
     characterId,
+    character,
     composeCharacter, 
     closeModal,
     modalType,
@@ -22,17 +23,36 @@ const CreateCharacterForm = ({
     useEffect(() => {
         dispatch(clearErrors())
     }, [dispatch])
+
+    let stateObj;
+    if (modalType === 'Create') {
+        console.log('CREATE OBJ ACTIVATED')
+        stateObj = {
+            name: '',
+            age: '',
+            sex: '',
+            height: '',
+            weight: '',
+            species: '',
+            description:'',
+            bookId: bookId,
+        }
+    }
+    if (modalType === 'Update') {
+        console.log('UPDATE OBJ ACTIVATED')
+        stateObj = {
+            name: character.name,
+            age: character.age,
+            sex: character.sex,
+            height: character.height,
+            weight: character.weight,
+            species: character.species,
+            description: character.description,
+            bookId: bookId,
+        }
+    };
     
-    const [state, setState] = useState({
-        name: '',
-        age: '',
-        sex: '',
-        height: '',
-        weight: '',
-        species: '',
-        description:'',
-        bookId: bookId,
-    })
+    const [state, setState] = useState(stateObj);
     
     const update = (field) => {
         return e => setState({
@@ -60,7 +80,8 @@ const CreateCharacterForm = ({
                 .then(closeModal)
         }
         if (modalType==="Update"){
-            const editChar = { ...state, id: characterId }
+            const editChar = { ...state, characterId: characterId };
+            console.log('EDITCHAR',editChar)
             editCharacter(editChar)
             .then(closeModal)
         }
@@ -74,7 +95,7 @@ const CreateCharacterForm = ({
             </div>
             <div className="modal__header">{modalType} a character</div>
             <div className="session-errors">
-                        {renderErrors()}
+                {renderErrors()}
             </div>                
             <div>
                 <form className='character-form' onSubmit={handleSubmit}>
@@ -83,6 +104,7 @@ const CreateCharacterForm = ({
                             type='text'
                             onChange={update("name")}
                             id = "name"
+                            defaultValue={stateObj.name}
                             />
                     </label>
                     <label id = "label">Age:
@@ -92,6 +114,7 @@ const CreateCharacterForm = ({
                             min="0" max="500"
                             name="age"
                             id = "age"
+                            defaultValue={stateObj.age}
                         />
                     </label>
                     <div id='sex'>
@@ -103,6 +126,7 @@ const CreateCharacterForm = ({
                                     name="sex"
                                     id="female"
                                     value = "female"
+                                    defaultChecked={"female" === stateObj.sex}
                                 />
                                 <label htmlFor="female">Female</label>
                             </div>
@@ -113,6 +137,7 @@ const CreateCharacterForm = ({
                                     name="sex"
                                     id="male"
                                     value = "male"
+                                    defaultChecked={"male" === stateObj.sex}
                                 />
                                 <label htmlFor="male">Male</label>
                             </div>
@@ -123,6 +148,7 @@ const CreateCharacterForm = ({
                                     name="sex"
                                     id="other"
                                     value = "other"
+                                    defaultChecked={"other" === stateObj.sex}
                                 />
                                 <label htmlFor="other">Other</label>
                             </div>
@@ -135,6 +161,7 @@ const CreateCharacterForm = ({
                             min="0"
                             name="height"
                             id="height"
+                            defaultValue={stateObj.height}
                         />cm
                     </label>
                     <label id = "label">Weight:
@@ -144,13 +171,15 @@ const CreateCharacterForm = ({
                             min="0"
                             name="weight"
                             id = "weight"
+                            defaultValue={stateObj.weight}
                         />kg
                     </label>
                     <label id = "label">Species:
                         <input
                             type='text'
                             onChange={update("species")}
-                        id = "species"
+                            id = "species"
+                            defaultValue={stateObj.species}
                         />
                     </label>
                     <label id = "label">Description - Details regarding physical features, childhood background or pre-story history, personality traits, patterns of speech, and relationships (eg. alliances, rivalries, family members, etc.)
@@ -160,6 +189,7 @@ const CreateCharacterForm = ({
                             placeholder='The more detail, the better!'
                             onChange={update("description")}
                             id = "description"
+                            defaultValue={stateObj.description}
                         />
                     </label>
                     <button type='submit' className="modal-session-submit-button">
@@ -176,7 +206,7 @@ const CreateCharacterForm = ({
 
 // Create Character Form Container
 const mSTP = (state, ownProps) => {
-       console.log(ownProps);
+       console.log('CHARACTERFORM PROPS',ownProps);
     return {
     bookId: state.ui.modal.props.bookId,
     characterId: state.ui.modal.props.characterId,

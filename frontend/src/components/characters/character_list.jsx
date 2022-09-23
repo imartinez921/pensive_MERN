@@ -32,10 +32,6 @@ const CharacterList = (props) => {
         dispatch(removeCharacter(id))
     }
 
-    const handleEditCharacter = () =>{
-
-    }
-
     return (
         <div>
             <div className="add-char-icon" onClick={() => openModal("createCharacter", { bookId: bookId })}>
@@ -47,7 +43,7 @@ const CharacterList = (props) => {
                     <div className="character-show" key={idx}>
                         <p>{character.name}</p>
                         <button onClick={() => {handleDeleteCharacter(character._id)}}><RiDeleteBin5Line /></button>
-                        <button onClick={() => openModal("updateCharacter", { bookId: bookId, characterId: character._id })}><FaEdit /></button>
+                        <button onClick={() => openModal("updateCharacter", { bookId: bookId, characterId: character._id, character: character })}><FaEdit /></button>
                         <p>{character.age}</p>
                         <p>{character.sex}</p>
                         <p>{character.height}</p>
