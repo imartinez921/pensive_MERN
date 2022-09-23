@@ -11,8 +11,6 @@ import { useDispatch } from "react-redux";
 
 
 const CharacterList = (props) => {
-    // console.log('CHARACTERLIST PROPS', props)
-
     const dispatch = useDispatch();
     let {
         fetchBookCharacters,

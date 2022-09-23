@@ -8,7 +8,6 @@ import '../../assets/css/05-modal.css';
 import DeletionContainer from '../deletion/deletion_container'
 
 const Modal = (props) => {
-  console.log('MODAL.JSX PROPS', props)
   if (!props.modal) return null;
   const { modal } = props;
   
@@ -24,11 +23,7 @@ const Modal = (props) => {
      component = <CharacterForm modalType="Create"/>;
       break;
     case 'updateCharacter':
-<<<<<<< HEAD
-      component = <CreateCharacterForm modalType="Update" character={modal.props.character}/>;
-=======
       component = <CharacterForm modalType="Update" character={modal.props.character} />;
->>>>>>> prepopulate-character-edit
       break;
     case 'deletion':
      component = <DeletionContainer />;
@@ -38,7 +33,6 @@ const Modal = (props) => {
   }
 
   const closeModal = () => {
-    console.log('I CLOSED')
     props.closeModal();
   }
 

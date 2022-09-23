@@ -26,7 +26,6 @@ const CharacterForm = ({
 
     let stateObj;
     if (modalType === 'Create') {
-        console.log('CREATE OBJ ACTIVATED')
         stateObj = {
             name: '',
             age: '',
@@ -39,7 +38,6 @@ const CharacterForm = ({
         }
     }
     if (modalType === 'Update') {
-        console.log('UPDATE OBJ ACTIVATED')
         stateObj = {
             name: character.name,
             age: character.age,
@@ -81,7 +79,6 @@ const CharacterForm = ({
         }
         if (modalType==="Update"){
             const editChar = { ...state, characterId: characterId };
-            console.log('EDITCHAR',editChar)
             editCharacter(editChar)
             .then(closeModal)
         }
