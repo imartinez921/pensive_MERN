@@ -23,7 +23,7 @@ const CharacterForm = ({
     useEffect(() => {
         dispatch(clearErrors())
     }, [dispatch])
-    
+
     let stateObj;
     if (modalType === 'Create') {
         console.log('CREATE OBJ ACTIVATED')
@@ -80,8 +80,8 @@ const CharacterForm = ({
                 .then(closeModal)
         }
         if (modalType==="Update"){
-            const editChar = { ...state, id: characterId }
-            console.log('EDITCHAR', editChar)
+            const editChar = { ...state, characterId: characterId };
+            console.log('EDITCHAR',editChar)
             editCharacter(editChar)
             .then(closeModal)
         }
@@ -95,7 +95,7 @@ const CharacterForm = ({
             </div>
             <div className="modal__header">{modalType} a character</div>
             <div className="session-errors">
-                        {renderErrors()}
+                {renderErrors()}
             </div>                
             <div>
                 <form className='character-form' onSubmit={handleSubmit}>
@@ -104,7 +104,7 @@ const CharacterForm = ({
                             type='text'
                             onChange={update("name")}
                             id = "name"
-                            value={state.name}
+                            defaultValue={stateObj.name}
                             />
                     </label>
                     <label id = "label">Age:
@@ -114,7 +114,7 @@ const CharacterForm = ({
                             min="0" max="500"
                             name="age"
                             id = "age"
-                            value={state.age}
+                            defaultValue={stateObj.age}
                         />
                     </label>
                     <div id='sex'>
@@ -126,7 +126,7 @@ const CharacterForm = ({
                                     name="sex"
                                     id="female"
                                     value = "female"
-                                    defaultChecked={"female" === state.sex}
+                                    defaultChecked={"female" === stateObj.sex}
                                 />
                                 <label htmlFor="female">Female</label>
                             </div>
@@ -137,7 +137,8 @@ const CharacterForm = ({
                                     name="sex"
                                     id="male"
                                     value = "male"
-                                    defaultChecked={"male" === state.sex}                                />
+                                    defaultChecked={"male" === stateObj.sex}
+                                />
                                 <label htmlFor="male">Male</label>
                             </div>
                             <div>
@@ -147,7 +148,8 @@ const CharacterForm = ({
                                     name="sex"
                                     id="other"
                                     value = "other"
-                                    defaultChecked={"other" === state.sex}                                />
+                                    defaultChecked={"other" === stateObj.sex}
+                                />
                                 <label htmlFor="other">Other</label>
                             </div>
                         </div>
@@ -159,7 +161,7 @@ const CharacterForm = ({
                             min="0"
                             name="height"
                             id="height"
-                            value={state.height}
+                            defaultValue={stateObj.height}
                         />cm
                     </label>
                     <label id = "label">Weight:
@@ -169,7 +171,7 @@ const CharacterForm = ({
                             min="0"
                             name="weight"
                             id = "weight"
-                            value={state.weight}
+                            defaultValue={stateObj.weight}
                         />kg
                     </label>
                     <label id = "label">Species:
@@ -177,7 +179,7 @@ const CharacterForm = ({
                             type='text'
                             onChange={update("species")}
                             id = "species"
-                            value={state.species}
+                            defaultValue={stateObj.species}
                         />
                     </label>
                     <label id = "label">Description - Details regarding physical features, childhood background or pre-story history, personality traits, patterns of speech, and relationships (eg. alliances, rivalries, family members, etc.)
@@ -187,7 +189,7 @@ const CharacterForm = ({
                             placeholder='The more detail, the better!'
                             onChange={update("description")}
                             id = "description"
-                            value={state.description}
+                            defaultValue={stateObj.description}
                         />
                     </label>
                     <button type='submit' className="modal-session-submit-button">
@@ -204,7 +206,7 @@ const CharacterForm = ({
 
 // Create Character Form Container
 const mSTP = (state, ownProps) => {
-       console.log(ownProps);
+       console.log('CHARACTERFORM PROPS',ownProps);
     return {
     bookId: state.ui.modal.props.bookId,
     characterId: state.ui.modal.props.characterId,

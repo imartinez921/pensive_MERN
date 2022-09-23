@@ -9,6 +9,7 @@ import DeletionContainer from '../deletion/deletion_container'
 
 const Modal = (props) => {
   if (!props.modal) return null;
+  const { modal } = props;
 
   let component;
   switch(props.modal.type) {
@@ -22,7 +23,7 @@ const Modal = (props) => {
      component = <CreateCharacterForm modalType="Create"/>;
       break;
     case 'updateCharacter':
-      component = <CreateCharacterForm modalType="Update" />;
+      component = <CreateCharacterForm modalType="Update" character={modal.props.character}/>;
       break;
     case 'deletion':
      component = <DeletionContainer />;
