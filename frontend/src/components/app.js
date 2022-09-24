@@ -20,7 +20,7 @@ const App = () => (
       <ProtectedRoute exact path="/profile" component={MainDashboard} />
       <ProtectedRoute exact path="/define" component={DictionaryContainer} />
       <ProtectedRoute exact path="/book/:id" component={ChaptersContainer} />
-      <ProtectedRoute exact path="/writing_page/:id" component={WritingPageContainer} />
+      <ProtectedRoute exact path="/writing_page/:bookId/:id" component={WritingPageContainer} />
       <ProtectedRoute
         exact
         path="/new_book"

@@ -9,12 +9,12 @@ import DictionaryContainer from "../dictionary/dictionary_container";
 
 const WritingPage = (props) => {
     console.log(props);
-    let {chapter, fetchChapterById, editChapter} = props;
+    let {chapter, bookId, editChapter} = props;
     const history = useHistory();
 
 
     if (!chapter){
-        history.push(`/book/${chapter.bookId}`)
+        history.push(`/book/${bookId}`)
     }
 
     const { quill, quillRef } = useQuill();
@@ -67,7 +67,7 @@ const WritingPage = (props) => {
                     </div>
             <div className="right-container-temp" >
                 <div>
-                    <CharacterListContainer  chapter={chapter} /> 
+                    <CharacterListContainer  bookId={bookId} /> 
                 </div>
                 <div className="dictionary-container-mood">
                     <DictionaryContainer />
