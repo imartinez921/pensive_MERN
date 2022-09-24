@@ -55,7 +55,7 @@ const Chapters = ({ bookId, fetchBookChapters, composeChapter, deleteBookChapter
                 {Object.values(chapters).map((chapter, idx) => (
                     
                     <div key={idx}>
-                        <Link to={`/writing_page/${chapter._id}`} className="chapter-title-link" >
+                        <Link to={`/writing_page/${bookId}/${chapter._id}`} className="chapter-title-link" >
                             <div>
                                 {chapter.title}
                             </div>

@@ -11,6 +11,9 @@ import { useDispatch } from "react-redux";
 
 
 const CharacterList = (props) => {
+
+    const [char, setChar]= useState('26px');
+
     const dispatch = useDispatch();
     let {
         fetchBookCharacters,
@@ -18,8 +21,9 @@ const CharacterList = (props) => {
         bookId,
     } = props;
 
-    // const [allCharacters, setAllCharacters] = useState([])
     const allCharacters = useSelector((state)=>Object.values(state.characters));
+
+
     useEffect(() => {
         fetchBookCharacters(bookId)
     }
@@ -27,7 +31,16 @@ const CharacterList = (props) => {
 
 
     const handleDeleteCharacter = (id) =>{
+        
         dispatch(removeCharacter(id))
+    }
+
+    const handleChar = () =>{
+        if (char==="26px"){
+            setChar('')
+        }else{
+            setChar('26px')   
+        }
     }
 
     return (
@@ -36,18 +49,43 @@ const CharacterList = (props) => {
                 <h3>Characters</h3>
                 <GrAddCircle className="add" />
             </div>
-            <div>
+            <div className="characters-container">
                 {allCharacters.map((character, idx) => (
-                    <div className="character-show" key={idx}>
-                        <p>{character.name}</p>
-                        <button onClick={() => {handleDeleteCharacter(character._id)}}><RiDeleteBin5Line /></button>
-                        <button onClick={() => openModal("updateCharacter", { bookId: bookId, characterId: character._id, character: character })}><FaEdit /></button>
-                        <p>{character.age}</p>
-                        <p>{character.sex}</p>
-                        <p>{character.height}</p>
-                        <p>{character.weight}</p>
-                        <p>{character.species}</p>
-                        <p>{character.description}</p>
+                    <div className={`character-show`} style={{maxHeight: char}} onClick={()=> handleChar(char)} key={idx}>
+                        <div className="char char-name">
+                            <div>
+                                <p className="char-title">Name:</p>
+                                <p>{character.name}</p>
+                            </div>
+                            <div>
+                                <button onClick={() => {handleDeleteCharacter(character._id)}}><RiDeleteBin5Line /></button>
+                                <button onClick={() => openModal("updateCharacter", { bookId: bookId, characterId: character._id })}><FaEdit /></button>
+                            </div>
+                        </div>
+                        <div className="char char-age">
+                            <p className="char-title">Age:</p>
+                            <p>{character.age}</p>
+                        </div>
+                        <div className="char char-sex">
+                            <p className="char-title">Sex:</p>
+                            <p>{character.sex}</p>
+                        </div>
+                        <div className="char char-height">
+                            <p className="char-title">Height:</p>
+                            <p>{character.height}</p>
+                        </div>
+                        <div className="char char-weight">
+                            <p className="char-title">Weight:</p>
+                            <p>{character.weight}</p>
+                        </div>
+                        <div className="char char-species">
+                            <p className="char-title">Species:</p>
+                            <p>{character.species}</p>
+                        </div>
+                        <div className="char char-description">
+                            <p className="char-title">Description:</p>
+                            <p>{character.description}</p>
+                        </div>
                     </div>)
                 )}
             </div>
@@ -56,8 +94,9 @@ const CharacterList = (props) => {
 };
 
 const mSTP = (state, ownProps) => {
+    console.log("characterList", ownProps)
     return {
-        bookId: ownProps.chapter.bookId,
+        bookId: ownProps.bookId,
         characters: state.characters,
 }};
 
