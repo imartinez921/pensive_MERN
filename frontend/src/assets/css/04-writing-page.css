@@ -16,7 +16,7 @@
 .right-container-temp {
     max-height: 100vh;
     min-width: 320px;
-    overflow: scroll;
+    overflow: auto;
 }
 
 #writing-piece{
