@@ -1,8 +1,6 @@
 import React from "react";
 import { BsFillBackspaceFill } from 'react-icons/bs';
 
-// import BookBox from "./book_box";
-
 class BookEdit extends React.Component {
   constructor(props) {
     super(props);
@@ -23,12 +21,6 @@ class BookEdit extends React.Component {
     this.setState({
       errors: nextProps.errors
     });
-  }
-
-  componentDidMount() {
-    // this.props.fetchUserBooks(this.props.currentUser.id).then(() => {
-    //   this.props.fetchBookById(this.props.match.params.id)
-    // });
   }
 
   componentWillUnmount() {
@@ -77,6 +69,7 @@ class BookEdit extends React.Component {
         </div>
         <form onSubmit={this.handleSubmit} className="create-book-form">
           <div className="new-book-inputs">
+            <p className="book-form-header">Update your book</p>
             <div>
               <input type="textarea" value={this.state.title} onChange={this.update("title")} placeholder="What's the title of your next masterpiece?" />
             </div>

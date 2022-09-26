@@ -27,7 +27,6 @@ router.post(
   "/",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    console.log(req);
     const { errors, isValid } = validateBookInput(req.body);
 
     if (!isValid) {

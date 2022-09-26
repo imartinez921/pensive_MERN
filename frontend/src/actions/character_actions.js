@@ -42,15 +42,17 @@ export const fetchCharacterById = (id) => (dispatch) =>
   .then((character) => dispatch(receiveNewCharacter(character.data)),
     (err) => dispatch(receiveCharacterErrors(err.response.data)));
 
-export const composeCharacter = (data) => (dispatch) =>
-  writeCharacter(data)
+export const composeCharacter = (data) => (dispatch) =>{
+  console.log(data)
+
+  return writeCharacter(data)
   .then((character) => dispatch(receiveNewCharacter(character.data)))
   .catch ((err) => { 
     dispatch(receiveCharacterErrors(err.response.data))
     return new Promise((resolve,reject) => {
         return reject();
     })
-  }); 
+  }); }
 
 export const removeCharacter = (id) => (dispatch) => 
   deleteCharacter(id)

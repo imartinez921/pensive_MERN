@@ -60,14 +60,14 @@ const Chapters = ({ bookId, fetchBookChapters, composeChapter, deleteBookChapter
                                 {chapter.title}
                             </div>
                         </Link>
-                        <button onClick={()=>{handleDelete(chapter._id)}}><RiDeleteBin5Line /></button>
-                        <button onClick={() => handleModal("update",chapter)}><FaEdit/></button>
+                        <button onClick={()=>{handleDelete(chapter._id)}} className="delete-chapter"><RiDeleteBin5Line /></button>
+                        <button onClick={() => handleModal("update", chapter)} className="edit-chapter"><FaEdit/></button>
                     </div>
                         
                     
                 ))}
 
-                <button onClick={()=> handleModal("create")}  className="add-book">+</button>
+                <button onClick={()=> handleModal("create")}  className="add-book add-chapter">+</button>
 
             </div>
 

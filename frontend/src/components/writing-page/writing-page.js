@@ -8,7 +8,6 @@ import { BsFillBackspaceFill } from 'react-icons/bs';
 import DictionaryContainer from "../dictionary/dictionary_container";
 
 const WritingPage = (props) => {
-    console.log(props);
     let {chapter, bookId, editChapter} = props;
     const history = useHistory();
 

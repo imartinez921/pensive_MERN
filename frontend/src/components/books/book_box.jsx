@@ -20,7 +20,6 @@ class BookBox extends React.Component {
 
   handleDelete(e){
     e.preventDefault();
-    // console.log(this.props)
     if (window.confirm('Are you sure you want delete this book? This cannot be undone')) {
       this.props.removeBook(this.props.id)
     }
@@ -30,7 +29,6 @@ class BookBox extends React.Component {
   render() {
     return (
       <div className="individual-book">
-        {/* <Link to={`/writing_page/${this.props.id}`} className="book-title-link">{this.props.text}</Link> */}
         <Link to={`/book/${this.props.id}`} className="book-title-link">{this.props.text}</Link>
         <div className="book-buttons-container">
           <button id="delete-button" onClick={this.handleDelete}><RiDeleteBin5Line /></button>

@@ -70,15 +70,17 @@ class BookCompose extends React.Component {
           <button onClick={this.handleClick}><BsFillBackspaceFill /></button>
         </div>
         <form onSubmit={this.handleSubmit} className="create-book-form">
+          
           <div className="new-book-inputs">
+            <p className="book-form-header">Create a New Book</p>
             <div>
-                <input type="textarea" value={this.state.title} onChange={this.update("title")} placeholder="What's the title of your next masterpiece?" />
+                <input type="textarea" value={this.state.title} onChange={this.update("title")} placeholder="What's the title?" />
             </div>
             <div>
               <input type="textarea"
                 value={this.state.editor}
                 onChange={this.update("editor")}
-                placeholder="Who will be the editor for this project?" />
+                placeholder="Who will be the editor?" />
             </div>
             <div>
               <input type="textarea"
@@ -90,10 +92,10 @@ class BookCompose extends React.Component {
               <input type="textarea"
                 value={this.state.description}
                 onChange={this.update("description")}
-                placeholder="Now let's get into the juicy part" />
+                placeholder="Here goes the description" />
             </div>
             <div>
-              <input type="submit" value="Submit" className="create-book-button"/>
+              <input type="submit" value="Create" className="create-book-button"/>
             </div>
             <div>
               {this.renderErrors()}

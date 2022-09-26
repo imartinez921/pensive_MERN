@@ -7,7 +7,7 @@
     top: 0;
     justify-content: space-around;
     box-shadow: 0px 0px 20px rgba(165, 136, 93, 0.3); 
-    background-color: rgba(165, 136, 93, 0.3);
+    background-color: rgba(245, 244, 239, .8);
 }
 
 .logged-in-navbar button{

@@ -11,8 +11,6 @@ const DictionaryWindow = (props) => {
         handlePrevQuery,
     } = props;
 
-    // console.log('THESE ARE PROPS', props);
-    // console.log('THESE ARE ERRORS', errors);
 
     let display;
     if (errors !== undefined || errors.length !== 0)

@@ -7,22 +7,13 @@ import '../../assets/css/06-create-char-form.css';
 import { IoCloseCircle } from "react-icons/io5";
 
 const CharacterForm = ({
-    errors,
-    clearErrors, 
     bookId, 
-    characterId,
     character,
     composeCharacter, 
     closeModal,
     modalType,
     editCharacter,
 }) => {
-
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(clearErrors())
-    }, [dispatch])
 
     let stateObj;
     if (modalType === 'Create') {
@@ -39,6 +30,7 @@ const CharacterForm = ({
     }
     if (modalType === 'Update') {
         stateObj = {
+            id: character._id,
             name: character.name,
             age: character.age,
             sex: character.sex,
@@ -53,21 +45,10 @@ const CharacterForm = ({
     const [state, setState] = useState(stateObj);
     
     const update = (field) => {
-        return e => setState({
-            ...state, [field]: e.currentTarget.value
-        })
-    }
-
-    const renderErrors = () => {
-        return(
-          <div>
-            {Object.values(errors).map((error, i) => (
-              <p key={`error-${i}`} className="room-errors">
-                {error}
-              </p>
-            ))}
-          </div>
-        );
+       
+        return e => {
+            setState({...state, [field]: e.currentTarget.value})
+        }
     }
 
     const handleSubmit = (e) => {
@@ -78,8 +59,7 @@ const CharacterForm = ({
                 .then(closeModal)
         }
         if (modalType==="Update"){
-            const editChar = { ...state, characterId: characterId };
-            editCharacter(editChar)
+            editCharacter(state)
             .then(closeModal)
         }
        
@@ -92,7 +72,6 @@ const CharacterForm = ({
             </div>
             <div className="modal__header">{modalType} a character</div>
             <div className="session-errors">
-                {renderErrors()}
             </div>                
             <div>
                 <form className='character-form' onSubmit={handleSubmit}>
@@ -111,6 +90,7 @@ const CharacterForm = ({
                             min="0" max="500"
                             name="age"
                             id = "age"
+                            // value={stateObj.age}
                             defaultValue={stateObj.age}
                         />
                     </label>
@@ -203,13 +183,11 @@ const CharacterForm = ({
 
 // Create Character Form Container
 const mSTP = (state, ownProps) => {
-       console.log('CHARACTERFORM PROPS',ownProps);
+    console.log(ownProps)
     return {
-    bookId: state.ui.modal.props.bookId,
-    characterId: state.ui.modal.props.characterId,
-    renderCharacters: state.ui.modal.props.renderCharacters,
-    errors: state.errors.character,
     modalType: ownProps.modalType,
+    character: ownProps.character,
+    bookId: ownProps.bookId,
 }}
 
 const mDTP = (dispatch) => ({

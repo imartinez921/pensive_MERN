@@ -1,6 +1,7 @@
 .writing-page-main-container{
     display: flex;
     justify-content: space-between;
+    background-color: rgba(245, 244, 239, .8);
 }
 
 .left-container-temp{
@@ -24,6 +25,7 @@
     height: 80%;
     display: flex;
     flex-direction: column;
+    background: white;
 }
 
 #writing-piece div:first-child{

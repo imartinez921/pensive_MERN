@@ -9,7 +9,7 @@
 }
   
 .modal-child {
-  background-color: rgba(254, 209, 104, 0.8);
+  background-color: rgba(245, 244, 239, .8);
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -34,7 +34,6 @@
   font-size: 40px;
   color: rgb(85, 107, 47);
   margin-top: 0px;
-  /* margin-bottom: 5px; */
   text-align: center;
   cursor: default;
 }
@@ -102,19 +101,6 @@
     gap: 5px;
     
   }
-
-  /* using .modal-session-submit-button a styling
-  .modal-session-submit-button input {
-    padding: 15px;
-    background-color: rgb(32, 80, 67);
-    border: 0;
-    border-radius: 5px;
-    font-family: cursive;
-    font-size: 20px;
-    color: rgba(237, 217, 171, 1);
-    cursor: pointer;
-    transition: .3s;
-} */
 
 .modal-session-submit-button input:hover, 
 .modal-session-submit-button a:hover, 

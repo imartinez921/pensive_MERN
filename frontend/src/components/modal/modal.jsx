@@ -10,7 +10,7 @@ import DeletionContainer from '../deletion/deletion_container'
 const Modal = (props) => {
   if (!props.modal) return null;
   const { modal } = props;
-  
+  console.log("modalProps",props)
   let component;
   switch(modal.type) {
     case 'login':
@@ -20,7 +20,7 @@ const Modal = (props) => {
       component = <SignupFormContainer />;
       break;
     case 'createCharacter':
-     component = <CharacterForm modalType="Create"/>;
+     component = <CharacterForm modalType="Create" bookId={modal.props.bookId}/>;
       break;
     case 'updateCharacter':
       component = <CharacterForm modalType="Update" character={modal.props.character} />;
@@ -45,7 +45,7 @@ const Modal = (props) => {
     )
 };
 
-const msp = state => {
+const msp = (state, ownProps) => {
   return ({
     modal: state.ui.modal
   });
