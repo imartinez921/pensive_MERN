@@ -91,7 +91,6 @@ class SessionForm extends React.Component {
   }
 
   render() {
-  console.log(this.props)
 
     // Sign up/Log in message
     let existingAccountMessage;

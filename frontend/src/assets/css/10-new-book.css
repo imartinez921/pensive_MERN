@@ -19,8 +19,15 @@
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    background-color: rgba(254, 209, 104, 0.8);
+    background-color: rgba(245, 244, 239, 1);    
     border-radius: 10px;
+}
+
+.book-form-header{
+    text-transform: capitalize;
+    font-size: 20px;
+    font-family: fantasy;
+    margin-top: 15px;
 }
 
 .new-book-inputs div{

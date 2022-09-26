@@ -33,7 +33,14 @@
     padding: 0px;
 }
 
-
+.add-chapter{
+    width: 80%;
+    height: 100%;
+    margin: 20px auto;
+    font-size: 20px;
+    border-radius: 5px;
+    background: white;
+}
 .characters-container{
     text-align: left;
     height: 200px;
@@ -42,6 +49,7 @@
     border-top: 1px solid lightgray;
     border-bottom: 1px solid lightgray;
     margin: 15px auto;
+    background: white;
 }
 
 .character-show{
@@ -52,7 +60,7 @@
     border: 1px solid darkgray;
     border-radius: 10px;
     transition: 0.8s;
-    max-height: auto;
+    max-height: 26px;
     overflow: hidden;
 }
 

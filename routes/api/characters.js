@@ -31,7 +31,7 @@ router.post(
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     const { errors, isValid } = validateCharacterInput(req.body);
-
+    console.log(req.body)
     if (!isValid) {
       return res.status(404).json(errors);
     }
@@ -45,7 +45,6 @@ router.post(
       description: req.body.description,
       bookId: req.body.bookId,
     });
-
 
     newCharacter.save().then((character) => res.json(character));
   }
@@ -68,7 +67,7 @@ router.patch('/:id', passport.authenticate("jwt", { session: false }),
   if (!isValid) {
     return res.status(400).json(errors);
   }
-  Character.findById(req.body.characterId)
+  Character.findById(req.params.id)
     .then(character => {
       character.name = req.body.name;
       character.age = req.body.age;

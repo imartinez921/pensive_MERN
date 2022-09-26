@@ -2,14 +2,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    /* background: #bac2a2; */
     background-image: url('../images/branch.png');
-    background-color: rgba(254, 209, 104, 1);
-    background-color: rgba(165, 136, 93, 1); /*dark brown*/
-    background-color: rgba(204, 177, 136, 1); /*medium brown*/
-    background-color: rgba(237, 217, 171, 1); /*light brown*/
-    /* background-color: rgba(66,66,66); */
-    /* background-color: #D2E1E9;   */ /*grayish*/
-    /* background-color: #EBE2D9; */
+    background-color: rgba(245, 244, 239, 1);
 
 }

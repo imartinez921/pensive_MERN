@@ -42,6 +42,7 @@
     border-top: 1px solid lightgray;
     border-bottom: 1px solid lightgray;
     padding-right: 15px;
+    background: white;
 }
 
 .search-results li{

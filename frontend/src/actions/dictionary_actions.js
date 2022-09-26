@@ -10,14 +10,12 @@ export const CLEAR_DICTIONARY_ERRORS = "CLEAR_DICTIONARY_ERRORS";
 
 
 const receiveDefinitions = (definitions) => {
-  console.log('RECEIVING DEFINITIONS', definitions)
   return ({
   type: RECEIVE_DEFINITIONS,
   definitions, // this is an array
 });}
 
 const receiveSynonyms = (synonyms) => {
-  console.log('RECEIVING SYNONYMS', synonyms)
   return ({
   type: RECEIVE_SYNONYMS,
   synonyms, // Synonyms object with {query, relationshipType, words}

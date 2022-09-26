@@ -49,22 +49,23 @@ const ChapterForm = ({
             <div className="chapter-modal-background" onClick={handleBackground}></div>
             <div className="chapter-form">
                 <form onSubmit={handleSubmit}>
-                    <label>Title
+                    <p className="chapter-form-header">{formType} your Chapter</p>
                         <input
+                            className="chapter-input"
                             type="text"
+                            placeholder="Write your title"
                             required
                             value={title}
                             onChange={(e) => setTitle(e.target.value)}
                         />
-                    </label>
-                    <label>Description
                         <input
+                            className="chapter-input"
                             type="text"
+                            placeholder="Chapter Description"
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
                         />
-                    </label>
-                    <button>{formType} Chapter</button>
+                    <button className="chapter-form-button">{formType}</button>
                     {/* { isPending && <button disabled>Creating Chapter...</button> } */}
                 </form >
             </div>

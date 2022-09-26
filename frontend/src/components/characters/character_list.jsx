@@ -1,4 +1,4 @@
-import React, { useEffect, useState }from "react";
+import React, { useEffect, useState, useRef }from "react";
 import { connect, useSelector } from "react-redux";
 import { fetchBookCharacters, editCharacter, removeCharacter } from "../../actions/character_actions";
 import { openModal } from "../../actions/modal_actions";
@@ -12,7 +12,7 @@ import { useDispatch } from "react-redux";
 
 const CharacterList = (props) => {
 
-    const [char, setChar]= useState('26px');
+    // const [char, setChar]= useState('26px');
 
     const dispatch = useDispatch();
     let {
@@ -35,12 +35,17 @@ const CharacterList = (props) => {
         dispatch(removeCharacter(id))
     }
 
-    const handleChar = () =>{
-        if (char==="26px"){
-            setChar('')
-        }else{
-            setChar('26px')   
-        }
+    
+    let charHeight = useRef(null)
+    const handleChar = (id) =>{
+        // console.log(charHeight.current)
+        // if (charHeight.current.style.maxHeight === '26px'){
+        //     charHeight.current.style.maxHeight = '500px';
+        // } else{
+        //     charHeight.current.style.maxHeight = '26px';
+        // }
+        let div = document.getElementById(id)
+        div.style.maxHeight==='26px' ? div.style.maxHeight= '500px' : div.style.maxHeight= '26px'
     }
 
     return (
@@ -50,16 +55,25 @@ const CharacterList = (props) => {
                 <GrAddCircle className="add" />
             </div>
             <div className="characters-container">
-                {allCharacters.map((character, idx) => (
-                    <div className={`character-show`} style={{maxHeight: char}} onClick={()=> handleChar(char)} key={idx}>
+                {allCharacters.map((character) => (
+                    <div className={`character-show`} ref={charHeight} onClick={(e)=> {
+                        e.stopPropagation();
+                        handleChar(character._id)
+                    }} key={character._id} id={character._id}>
                         <div className="char char-name">
                             <div>
                                 <p className="char-title">Name:</p>
                                 <p>{character.name}</p>
                             </div>
                             <div>
-                                <button onClick={() => {handleDeleteCharacter(character._id)}}><RiDeleteBin5Line /></button>
-                                <button onClick={() => openModal("updateCharacter", { bookId: bookId, characterId: character._id })}><FaEdit /></button>
+                                <button onClick={(e) => {
+                                    e.stopPropagation();
+                                    handleDeleteCharacter(character._id)
+                                    }}><RiDeleteBin5Line /></button>
+                                <button onClick={(e) => {
+                                    e.stopPropagation();
+                                    openModal("updateCharacter", { bookId: bookId, character: character })
+                                    }}><FaEdit /></button>
                             </div>
                         </div>
                         <div className="char char-age">
@@ -94,7 +108,6 @@ const CharacterList = (props) => {
 };
 
 const mSTP = (state, ownProps) => {
-    console.log("characterList", ownProps)
     return {
         bookId: ownProps.bookId,
         characters: state.characters,
