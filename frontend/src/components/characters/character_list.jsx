@@ -1,8 +1,7 @@
 import React, { useEffect, useState, useRef }from "react";
 import { connect, useSelector } from "react-redux";
-import { fetchBookCharacters, editCharacter, removeCharacter } from "../../actions/character_actions";
+import { fetchBookCharacters, removeCharacter } from "../../actions/character_actions";
 import { openModal } from "../../actions/modal_actions";
-// import characters from "../../../../validation/characters";
 import {GrAddCircle} from "react-icons/gr";
 import '../../assets/css/07-char-list.css';
 import { RiDeleteBin5Line } from 'react-icons/ri';
@@ -31,8 +30,9 @@ const CharacterList = (props) => {
 
 
     const handleDeleteCharacter = (id) =>{
-        
-        dispatch(removeCharacter(id))
+        if (window.confirm("Do you want to delete this character?")){
+            dispatch(removeCharacter(id))
+        }
     }
 
     
@@ -59,7 +59,7 @@ const CharacterList = (props) => {
                     <div className={`character-show`} ref={charHeight} onClick={(e)=> {
                         e.stopPropagation();
                         handleChar(character._id)
-                    }} key={character._id} id={character._id}>
+                    }} key={character._id} id={character._id} style={{maxHeight: '26px'}}>
                         <div className="char char-name">
                             <div>
                                 <p className="char-title">Name:</p>

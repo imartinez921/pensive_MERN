@@ -70,27 +70,6 @@ input[type="radio"] {
     width: 60%;
 }
 
-/* Using session buttons CSS
-.character-create-button {
-    padding: 15px;
-    background-color: rgb(32, 80, 67);
-    border: 0;
-    border-radius: 5px;
-    font-family: cursive;
-    font-size: 20px;
-    color: rgba(237, 217, 171, 1);
-    text-decoration: none;
-    padding-top: 16px;
-    display: flex;
-    align-items: center;
-    transition: .3s;
-}
-
-.character-create-button:hover {
-    background-color: rgb(45, 90, 80);
-} */
-
-
 .create-title {
     font-family: fantasy;
     font-size: 1.5rem;

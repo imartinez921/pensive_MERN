@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { IoCloseCircle } from "react-icons/io5";
 
 
@@ -24,12 +23,7 @@ class SessionForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.loginDemoUser = this.loginDemoUser.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
-    // this.closeModal = this.closeModal.bind(this);
   }
-
-//   componentDidMount() {
-//     this.props.clearErrors();
-//   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.currentUser === true) {
@@ -43,11 +37,6 @@ class SessionForm extends React.Component {
     return (e) => this.setState({ [field]: e.currentTarget.value });
   }
 
-  // handleSubmit(e) {
-  //   e.preventDefault();
-  //   this.props.processForm(this.state)
-  //     .then(this.props.closeModal);
-  // }
 
   handleSubmit(e) {
     e.preventDefault();

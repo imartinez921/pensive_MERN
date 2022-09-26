@@ -1,6 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import ModalContainer from "../modal/modal";
 import "../../assets/css/05-landing-page.css"
 
 class NavBar extends React.Component {
@@ -31,7 +29,6 @@ class NavBar extends React.Component {
         <div className="logged-out-navbar">
           <div className="signup-btn" onClick={() => this.handleOpenModal('signup')}>Sign Up</div>
           <div className="login-btn" onClick={() => this.handleOpenModal('login')}>Log In</div>
-          {/* <ModalContainer /> */}
         </div>
       );
     }

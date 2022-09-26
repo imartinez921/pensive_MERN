@@ -17,7 +17,6 @@ const ChaptersReducer = (
             return newState;
         case REMOVE_CHAPTER:
             delete newState[action.chapterId];
-            // newState = newState.filter(chap => chap.chapterId !== action.chapterId)
             return newState;
         case RECEIVE_USER_BOOKS:
             return {};

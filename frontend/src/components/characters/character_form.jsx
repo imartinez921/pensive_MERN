@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { connect, useDispatch } from "react-redux";
+import { connect } from "react-redux";
 import { composeCharacter, editCharacter } from "../../actions/character_actions";
 import { closeModal } from "../../actions/modal_actions";
 import { clearErrors } from "../../actions/character_actions";
@@ -45,7 +45,6 @@ const CharacterForm = ({
     const [state, setState] = useState(stateObj);
     
     const update = (field) => {
-       
         return e => {
             setState({...state, [field]: e.currentTarget.value})
         }
@@ -90,55 +89,54 @@ const CharacterForm = ({
                             min="0" max="500"
                             name="age"
                             id = "age"
-                            // value={stateObj.age}
                             defaultValue={stateObj.age}
                         />
                     </label>
                     <div id='sex'>
                         Sex:
                         <div>
-                                <input
-                                    type='radio'
-                                    onClick={update("sex")}
-                                    name="sex"
-                                    id="female"
-                                    value = "female"
-                                    defaultChecked={"female" === stateObj.sex}
-                                />
-                                <label htmlFor="female">Female</label>
-                            </div>
-                            <div>
-                                <input
-                                    type='radio'
-                                    onClick={update("sex")}
-                                    name="sex"
-                                    id="male"
-                                    value = "male"
-                                    defaultChecked={"male" === stateObj.sex}
-                                />
-                                <label htmlFor="male">Male</label>
-                            </div>
-                            <div>
-                                <input
-                                    type='radio'
-                                    onClick={update("sex")}
-                                    name="sex"
-                                    id="other"
-                                    value = "other"
-                                    defaultChecked={"other" === stateObj.sex}
-                                />
-                                <label htmlFor="other">Other</label>
-                            </div>
+                            <input
+                                type='radio'
+                                onClick={update("sex")}
+                                name="sex"
+                                id="female"
+                                value = "female"
+                                defaultChecked={"female" === stateObj.sex}
+                            />
+                            <label htmlFor="female">Female</label>
                         </div>
+                        <div>
+                            <input
+                                type='radio'
+                                onClick={update("sex")}
+                                name="sex"
+                                id="male"
+                                value = "male"
+                                defaultChecked={"male" === stateObj.sex}
+                            />
+                            <label htmlFor="male">Male</label>
+                        </div>
+                        <div>
+                            <input
+                                type='radio'
+                                onClick={update("sex")}
+                                name="sex"
+                                id="other"
+                                value = "other"
+                                defaultChecked={"other" === stateObj.sex}
+                            />
+                            <label htmlFor="other">Other</label>
+                        </div>
+                    </div>
                     <br />
                     <label id = "label">Height:
                         <input
-                            type='number'
+                            type='text'
                             onChange={update("height")}
                             min="0"
                             name="height"
                             id="height"
-                            defaultValue={stateObj.height}
+                            value={stateObj.height}
                         />cm
                     </label>
                     <label id = "label">Weight:

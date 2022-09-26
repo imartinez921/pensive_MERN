@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef} from "react";
-import { Link , useHistory} from "react-router-dom";
+import React, { useEffect} from "react";
+import { useHistory} from "react-router-dom";
 import "../../assets/css/04-writing-page.css";
 import { useQuill } from 'react-quilljs';
 import 'quill/dist/quill.snow.css'; // Add css for snow theme 

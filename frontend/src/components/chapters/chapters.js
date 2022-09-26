@@ -34,7 +34,6 @@ const Chapters = ({ bookId, fetchBookChapters, composeChapter, deleteBookChapter
        if ( window.confirm('Are you sure you want to delete this chapter?')){
             deleteBookChapter(id).then(
                 () => setAllChapters(Object.values(allChapters).filter(oneChapter => oneChapter._id !== id))
-
             )
         }
     }
@@ -80,7 +79,6 @@ const Chapters = ({ bookId, fetchBookChapters, composeChapter, deleteBookChapter
                 editChapter={editChapter}
                 chapter={chapt}
             />)}
-            
         </div>
     )
 }

@@ -59,9 +59,7 @@
     justify-content: center;
     flex-direction: column;
     width: 100%;
-
   }
-
 
   .session-input-div p {
       font-family: cursive;
@@ -70,7 +68,6 @@
       margin-top: 0px;
       margin-bottom: 10px;
       cursor: default;
-      
   }
 
   .session-input-div input {
@@ -99,7 +96,6 @@
     display: flex;
     justify-content: center;
     gap: 5px;
-    
   }
 
 .modal-session-submit-button input:hover, 

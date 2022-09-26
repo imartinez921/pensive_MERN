@@ -91,10 +91,6 @@
     max-height: auto;
 }
 
-.open-char{
-
-}
-
 .closed-char{
     max-height: 26px;
     overflow: hidden;

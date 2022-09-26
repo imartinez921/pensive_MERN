@@ -7,7 +7,6 @@ const mapStateToProps = (state, ownProps) =>{
         bookId: ownProps.match.params.id,
         chapters: state.chapters,
     }
-
 }
 
 const mapDispatchToProps = (dispatch) => ({

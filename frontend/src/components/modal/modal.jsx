@@ -5,7 +5,6 @@ import LoginFormContainer from '../session/login_form_container';
 import SignupFormContainer from '../session/signup_form_container';
 import CharacterForm from '../characters/character_form';
 import '../../assets/css/05-modal.css';
-import DeletionContainer from '../deletion/deletion_container'
 
 const Modal = (props) => {
   if (!props.modal) return null;
@@ -24,9 +23,6 @@ const Modal = (props) => {
       break;
     case 'updateCharacter':
       component = <CharacterForm modalType="Update" character={modal.props.character} />;
-      break;
-    case 'deletion':
-     component = <DeletionContainer />;
       break;
     default:
       return null;

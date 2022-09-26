@@ -24,32 +24,11 @@ module.exports = function validateCharacterInput(data) {
     errors.sex = "Sex field is required";
   }
 
-  data.age = validText(data.age) ? data.age : "";
-
-  if (Validator.isEmpty(data.age)) {
-    errors.age = "Age field is required";
-  }
-  
-
-  data.height = validText(data.height) ? data.height : "";
-
-  if (Validator.isEmpty(data.height)) {
-    errors.height = "Height field is required";
-  }
-
-
-  data.weight = validText(data.weight) ? data.weight : "";
-
-  if (Validator.isEmpty(data.weight)) {
-    errors.weight = "Weight field is required";
-  }
-
   data.species = validText(data.species) ? data.species : "";
 
   if (Validator.isEmpty(data.species)) {
     errors.species = "Species field is required";
   }
-
 
   data.description = validText(data.description) ? data.description : "";
 

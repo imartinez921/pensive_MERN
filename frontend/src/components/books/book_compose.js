@@ -2,7 +2,6 @@ import React from "react";
 import "../../assets/css/10-new-book.css";
 import { BsFillBackspaceFill } from 'react-icons/bs';
 
-// import BookBox from "./book_box";
 class BookCompose extends React.Component {
   constructor(props) {
     super(props);

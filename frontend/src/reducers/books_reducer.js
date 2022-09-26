@@ -14,8 +14,6 @@ import { RECEIVE_USER_LOGOUT } from "../actions/session_actions";
     let newState = Object.assign({}, state);
     switch (action.type) {
       case RECEIVE_USER_BOOKS:
-        // const books = action.books.data;
-        // books.forEach((book) => newState[book._id] = book);
         Object.values(action.books).forEach(book => {
           newState[book._id] = book;
       })

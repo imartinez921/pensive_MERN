@@ -7,9 +7,6 @@ const Character = require("../../models/Character");
 const validateCharacterInput = require("../../validation/characters");
 
 
-
-
-
 router.get("/book/:book_id", (req, res) => {
   Character.find({bookId: req.params.book_id })
     .then((characters) => res.json(characters))
