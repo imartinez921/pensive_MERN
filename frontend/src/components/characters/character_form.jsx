@@ -131,7 +131,7 @@ const CharacterForm = ({
                     <br />
                     <label id = "label">Height:
                         <input
-                            type='text'
+                            type='number'
                             onChange={update("height")}
                             min="0"
                             name="height"
