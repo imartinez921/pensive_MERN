@@ -136,7 +136,7 @@ const CharacterForm = ({
                             min="0"
                             name="height"
                             id="height"
-                            value={stateObj.height}
+                            defaultValue={stateObj.height}
                         />cm
                     </label>
                     <label id = "label">Weight:
