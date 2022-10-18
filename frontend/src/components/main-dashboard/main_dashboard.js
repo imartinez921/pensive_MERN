@@ -16,7 +16,7 @@ class MainDashboard extends React.Component {
         const STUDENTS = [
             { name: "claire", github: "shuyangn", linkedin: "shuyang-ning", angelist: "shuyang-ning"},
             { name: "irene", github: "imartinez921", linkedin: "irenemartinez921", angelist: "imartinez921"},
-            { name: "leonel", github: "leonel040792", linkedin: "leonel-colina", angelist: "leonel-colina"},
+            { name: "leonel", github: "LeonelColinaTang", linkedin: "leonel-colina", angelist: "leonel-colina"},
             { name: "shengzhi", github: "ShengzhiLuo", linkedin: "shengzhi-luo", angelist: "shengzhi-luo"},
         ]
         return(

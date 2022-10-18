@@ -37,6 +37,7 @@ const CharacterList = (props) => {
 
     
     let charHeight = useRef(null)
+    
     const handleChar = (id) =>{
         // console.log(charHeight.current)
         // if (charHeight.current.style.maxHeight === '26px'){
@@ -44,8 +45,8 @@ const CharacterList = (props) => {
         // } else{
         //     charHeight.current.style.maxHeight = '26px';
         // }
-        let div = document.getElementById(id)
-        div.style.maxHeight==='26px' ? div.style.maxHeight= '500px' : div.style.maxHeight= '26px'
+        let div = document.getElementById(id);
+        div.style.maxHeight==='26px' ? div.style.maxHeight= '500px' : div.style.maxHeight= '26px';
     }
 
     return (
