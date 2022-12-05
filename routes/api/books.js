@@ -32,7 +32,6 @@ router.post(
     if (!isValid) {
       return res.status(404).json(errors);
     }
-   
 
     const newBook = new Book({
       title: req.body.title,
